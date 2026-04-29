@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        // SI NO ESTÁ LOGUEADO, MANDA A LOGIN/REGISTRO OBLIGATORIO
+        // SOLO LA PRIMERA VEZ MANDA A LOGIN, SI YA ESTÁ LOGUEADO SE QUEDA AQUÍ
         if (!localStorage.getItem('manguito_session')) {
             window.location.href = '/login.html';
         }
@@ -12,15 +12,10 @@
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
     <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Fundado por Carlos Ramírez desde Trujillo, Perú.">
 
-    <meta name="keywords" content="GOJOBOT-MD, Manguito Programs, MANGUITO, RTC, Bot WhatsApp, Carlos Ramirez, Erick Lopez, Bobby Flow, Trujillo Peru">
-    <meta name="author" content="Carlos Ramírez - Manguito Programs">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://manguitoprograms.vercel.app/">
-
     <meta property="og:title" content="Manguito Programs™ - GOJOBOT-MD | Carlos Ramirez ">
     <meta property="og:description" content="GOJOBOT-MD: Creado por la compañía Manguito Programs™. Node.js + Baileys + Docker.">
     <meta property="og:image" content="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp">
-    <meta property="og:url" content="https://manguitoprograms.vercel.app">
+    <meta property="og:url" content="https://carlos13ra.github.io">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp">
@@ -58,7 +53,7 @@
             padding-top: 80px;
         }
 
-        /* NAVBAR CON DASHBOARD --- */
+        /* NAVBAR SIMPLE - SOLO USUARIO Y SALIR */
       .top-navbar {
             position: fixed;
             top: 0;
@@ -110,15 +105,36 @@
             color: #000;
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-      .nav-btn.dash {
-            background: linear-gradient(135deg, var(--purple), var(--cyan));
-            color: #000;
-            border: none;
-            padding: 8px 16px;
-        }
       .nav-user {
             color: var(--cyan);
             font-weight: 700;
+        }
+
+        /* BOTÓN DASHBOARD AL LADO DEL TÍTULO */
+      .title-dash-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+      .dash-btn-inline {
+            background: linear-gradient(135deg, var(--purple), var(--cyan));
+            color: #000;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px var(--purple-glow);
+            display: inline-block;
+        }
+      .dash-btn-inline:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
 
         /* FONDO 3D */
@@ -144,7 +160,7 @@
 
         @keyframes grid-move {
             0% { background-position: 0 0, 0 0, center, center; }
-            100% { background-position: 100px 100px, 100px 100px, center, center; }
+            100% { background-position: 100px 100px, 100px 100px, center; }
         }
 
         body::after {
@@ -170,14 +186,8 @@
         }
 
         @keyframes particles-float {
-            0%, 100% {
-                background-position: 0% 0%;
-                transform: translateZ(0);
-            }
-            50% {
-                background-position: 100% 100%;
-                transform: translateZ(50px);
-            }
+            0%, 100% { background-position: 0% 0%; transform: translateZ(0); }
+            50% { background-position: 100% 100%; transform: translateZ(50px); }
         }
 
       .scanlines {
@@ -224,12 +234,8 @@
         }
 
         @keyframes pulse-glow {
-            0%, 100% {
-                box-shadow: 0 0 40px var(--cyan-glow), inset 0 0 20px rgba(0, 245, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0, 0.6);
-            }
+            0%, 100% { box-shadow: 0 0 40px var(--cyan-glow), inset 0 0 20px rgba(0, 245, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0, 0.6); }
         }
 
       .banner {
@@ -257,7 +263,6 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: clamp(2.5rem, 6vw, 3.5rem);
-            margin-bottom: 1rem;
             background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -570,41 +575,35 @@
         }
 
         @media (max-width: 600px) {
-          .container { padding: 2rem 1rem; }
-          .glass-panel { padding: 1.5rem; }
-          .links { flex-direction: column; }
-          .links a { width: 100%; justify-content: center; }
+         .container { padding: 2rem 1rem; }
+         .glass-panel { padding: 1.5rem; }
+         .links { flex-direction: column; }
+         .links a { width: 100%; justify-content: center; }
             body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-          .music-player {
+         .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-          .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-          .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-          .track-info { max-width: 70px; }
-          .track-name { font-size: 0.55rem; }
-          .tiktok-avatar { width: 50px; height: 50px; }
-          .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-          .nav-buttons { flex-wrap: wrap; justify-content: center; }
+         .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+         .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+         .track-info { max-width: 70px; }
+         .track-name { font-size: 0.55rem; }
+         .tiktok-avatar { width: 50px; height: 50px; }
+         .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
+         .nav-buttons { flex-wrap: wrap; justify-content: center; }
+         .title-dash-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR CON DASHBOARD --- -->
+    <!-- NAVBAR SIMPLE -->
     <nav class="top-navbar">
         <div class="nav-container">
             <div class="nav-logo">🥭 MANGUITO™</div>
             <div class="nav-buttons">
                 <span class="nav-user" id="navUser"></span>
-                <a href="/dashboard.html" class="nav-btn dash">
-                    <div style="text-align: center; line-height: 1;">
-                        <div style="font-size: 0.7rem;">---</div>
-                        DASHBOARD
-                        <div style="font-size: 0.7rem;">---</div>
-                    </div>
-                </a>
                 <button class="nav-btn" onclick="logout()">SALIR</button>
             </div>
         </div>
@@ -632,22 +631,22 @@
         <div class="glass-panel tiktok-highlight">
             <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
             <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
-                <img src="https://i.postimg.cc/9F8k8QkB/tiktok-avatar.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
+                <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
                 <div>
                     <p style="font-size: 1.4rem; margin: 0; font-weight: 900;">
-                        <strong>ERICK LOPEZ</strong>
+                        <strong>ERICK LOPEZ💥 </strong>
                     </p>
                     <p style="color: #ff0050; font-size: 1.1rem; margin: 0; font-weight: 700;">
-                        Alias Bobby Flow
+                        Bobby Flow⚡
                     </p>
                 </div>
             <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.5rem;">
-                ⚡ DALE FOLLOW PARA MÁS CONTENIDO DE GOJOBOT-MD ⚡<br>
-                Tutoriales, trucos y novedades exclusivas
+                ⚡ DALE FOLLOW PARA APOYAR A UN THERIANS🐶 QUE QUIERE SER INFLUENCER⚡<br>
+                Todo para ver frases y videos de humor
             </p>
             <div class="links" style="justify-content: center;">
                 <a href="https://www.tiktok.com/@lrbat4" target="_blank" rel="noopener" class="tiktok-btn">
-                    <img src="https://i.postimg.cc/9F8k8QkB/tiktok-avatar.jpg" alt="@lrbat4" class="tiktok-avatar" style="width: 28px; height: 28px; border: 2px solid #fff;">
+                    <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="@lrbat4" class="tiktok-avatar" style="width: 28px; height: 28px; border: 2px solid #fff;">
                     @lrbat4 EN TIKTOK
                 </a>
             </div>
@@ -655,8 +654,12 @@
 
         <div class="glass-panel">
             <header>
-                <h1>🥭 GOJOBOT-MD™ | MANGUITO PROGRAMS</h1>
-                <p><strong>GOJOBOT-MD</strong> es el bot de WhatsApp Multi-Dispositivo creado por <strong>Manguito Programs™</strong> y <strong>RTC</strong>. Sistema desarrollado por Carlos Ramírez desde Trujillo, Perú.</p>
+                <div class="title-dash-container">
+                    <h1 style="margin: 0;">🥭 MANGUITO PROGRAMS™</h1>
+                    <a href="/dashboard.html" class="dash-btn-inline">DASHBOARD</a>
+                </div>
+                <p><strong>SISTEMA DE DESARROLLO AUTÓNOMO</strong></p>
+                <p>Iniciativa independiente desde Trujillo, Perú. Construyendo el futuro del software.</p>
                 <div class="badge">❤️SOMOS TODOS JUNTOS CON GOJOBOT-MD❤️</div>
             </header>
         </div>
