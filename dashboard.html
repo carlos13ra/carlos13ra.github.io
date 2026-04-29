@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | GOJOBOT-MD™</title>
+    <title>Dashboard VOC | GOJOBOT-MD™</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --cyan: #00f5ff;
             --cyan-glow: rgba(0, 245, 255, 0.4);
             --purple: #b300ff;
-            --purple-glow: rgba(179, 0, 255, 0.3);
             --bg-void: #050510;
             --bg-glass: rgba(10, 10, 30, 0.6);
             --text: #e0f7ff;
@@ -66,7 +65,7 @@
             box-shadow: 0 0 20px var(--cyan-glow);
         }
        .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 2rem auto;
             padding: 0 2rem;
         }
@@ -169,6 +168,17 @@
             color: var(--purple);
             font-family: 'Orbitron', sans-serif;
         }
+       .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--purple), var(--cyan));
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 2rem 0 1rem 0;
+            font-family: 'Orbitron', sans-serif;
+        }
         code {
             background: rgba(0, 0, 0, 0.5);
             padding: 2px 6px;
@@ -189,19 +199,19 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🥭DASHBOARD</div>
+        <div class="logo">🥭 VOC DASHBOARD</div>
         <a href="/index.html" class="back-btn">← VOLVER AL MENÚ</a>
     </nav>
 
     <div class="container">
         <div class="glass-panel">
-            <h1 id="welcomeUser">BIENVENIDO AL MUNDO DE COMANDOS</h1>
+            <h1 id="welcomeUser">BIENVENIDO AL VOC</h1>
             <p>Panel de control de GOJOBOT-MD™. Aquí tienes toda la info, comandos y tutoriales del VOC.</p>
         </div>
 
         <!-- INFO DEL VOC CON FOTOS -->
         <div class="glass-panel">
-            <h2>📱 INFO DEL PROYECTO</h2>
+            <h2>📱 INFO DEL VOC</h2>
             <p><strong>GOJOBOT-MD™</strong> es el bot de WhatsApp Multi-Dispositivo creado por Manguito Programs™. Versión actual: <code>v3.5.2 RTC</code></p>
             
             <div class="voc-gallery">
@@ -221,57 +231,92 @@
             <h2>🤖 COMANDOS DEL VOC</h2>
             <p>Lista completa de comandos activos. Cópialos y úsalos en tu grupo:</p>
 
+            <div class="category-badge">📋 PRINCIPALES</div>
             <div class="cmd-grid">
-                <div class="cmd-card">
-                    <div class="cmd-name">.menu</div>
-                    <div class="cmd-desc">Muestra todos los comandos disponibles del bot</div>
-                    <div class="cmd-example">Ejemplo: .menu</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.play</div>
-                    <div class="cmd-desc">Descarga música de YouTube en formato mp3</div>
-                    <div class="cmd-example">Ejemplo: .play bad bunny monaco</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.sticker / .s</div>
-                    <div class="cmd-desc">Convierte imagen o video a sticker de WhatsApp</div>
-                    <div class="cmd-example">Ejemplo: responde a una imagen con .s</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.tiktok</div>
-                    <div class="cmd-desc">Descarga videos de TikTok sin marca de agua</div>
-                    <div class="cmd-example">Ejemplo: .tiktok https://vt.tiktok.com/...</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.kick</div>
-                    <div class="cmd-desc">Expulsa a un usuario del grupo (solo admins)</div>
-                    <div class="cmd-example">Ejemplo: .kick @usuario</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.tagall</div>
-                    <div class="cmd-desc">Menciona a todos los miembros del grupo</div>
-                    <div class="cmd-example">Ejemplo: .tagall reunión hoy</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.ai</div>
-                    <div class="cmd-desc">Habla con la IA de Manguito Programs</div>
-                    <div class="cmd-example">Ejemplo: .ai que es nodejs</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.qr</div>
-                    <div class="cmd-desc">Genera código QR de cualquier texto o link</div>
-                    <div class="cmd-example">Ejemplo: .qr hola mundo</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.toimg</div>
-                    <div class="cmd-desc">Convierte un sticker a imagen</div>
-                    <div class="cmd-example">Ejemplo: responde a sticker con .toimg</div>
-                </div>
-                <div class="cmd-card">
-                    <div class="cmd-name">.ytmp4</div>
-                    <div class="cmd-desc">Descarga videos de YouTube</div>
-                    <div class="cmd-example">Ejemplo: .ytmp4 https://youtube.com/...</div>
-                </div>
+                <div class="cmd-card"><div class="cmd-name">.menu</div><div class="cmd-desc">Muestra todos los comandos disponibles</div><div class="cmd-example">Ejemplo: .menu</div></div>
+                <div class="cmd-card"><div class="cmd-name">.help</div><div class="cmd-desc">Muestra ayuda sobre el bot</div><div class="cmd-example">Ejemplo: .help</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ping</div><div class="cmd-desc">Velocidad de respuesta del bot</div><div class="cmd-example">Ejemplo: .ping</div></div>
+                <div class="cmd-card"><div class="cmd-name">.owner</div><div class="cmd-desc">Contacto del creador</div><div class="cmd-example">Ejemplo: .owner</div></div>
+            </div>
+
+            <div class="category-badge">⬇️ DESCARGAS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.play / .play2</div><div class="cmd-desc">Descarga música de YouTube en mp3</div><div class="cmd-example">Ejemplo: .play bad bunny monaco</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ytmp4 / .ytv</div><div class="cmd-desc">Descarga videos de YouTube</div><div class="cmd-example">Ejemplo: .ytmp4 https://youtube.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tiktok / .tt</div><div class="cmd-desc">Descarga videos de TikTok sin marca</div><div class="cmd-example">Ejemplo: .tiktok https://vt.tiktok.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.instagram / .ig</div><div class="cmd-desc">Descarga fotos/videos de Instagram</div><div class="cmd-example">Ejemplo: .ig https://instagram.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.facebook / .fb</div><div class="cmd-desc">Descarga videos de Facebook</div><div class="cmd-example">Ejemplo: .fb https://fb.watch/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.twitter / .x</div><div class="cmd-desc">Descarga videos de Twitter/X</div><div class="cmd-example">Ejemplo: .x https://x.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mediafire</div><div class="cmd-desc">Descarga archivos de Mediafire</div><div class="cmd-example">Ejemplo: .mediafire https://mediafire.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.apk</div><div class="cmd-desc">Descarga APKs de apps</div><div class="cmd-example">Ejemplo: .apk whatsapp</div></div>
+            </div>
+
+            <div class="category-badge">🎨 STICKERS Y MEDIA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.sticker / .s</div><div class="cmd-desc">Convierte imagen/video a sticker</div><div class="cmd-example">Ejemplo: responde a imagen con .s</div></div>
+                <div class="cmd-card"><div class="cmd-name">.toimg</div><div class="cmd-desc">Convierte sticker a imagen</div><div class="cmd-example">Ejemplo: responde a sticker con .toimg</div></div>
+                <div class="cmd-card"><div class="cmd-name">.togif</div><div class="cmd-desc">Convierte video a GIF</div><div class="cmd-example">Ejemplo: responde a video con .togif</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tomp3</div><div class="cmd-desc">Extrae audio de video</div><div class="cmd-example">Ejemplo: responde a video con .tomp3</div></div>
+                <div class="cmd-card"><div class="cmd-name">.wm</div><div class="cmd-desc">Cambia marca de agua de sticker</div><div class="cmd-example">Ejemplo: .wm Manguito|Programs</div></div>
+                <div class="cmd-card"><div class="cmd-name">.attp</div><div class="cmd-desc">Sticker de texto animado</div><div class="cmd-example">Ejemplo: .attp hola</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ttp</div><div class="cmd-desc">Sticker de texto</div><div class="cmd-example">Ejemplo: .ttp hola mundo</div></div>
+            </div>
+
+            <div class="category-badge">🛡️ GRUPOS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.kick / .ban</div><div class="cmd-desc">Expulsa usuario del grupo</div><div class="cmd-example">Ejemplo: .kick @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.promote</div><div class="cmd-desc">Dar admin a usuario</div><div class="cmd-example">Ejemplo: .promote @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.demote</div><div class="cmd-desc">Quitar admin a usuario</div><div class="cmd-example">Ejemplo: .demote @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tagall / .invocar</div><div class="cmd-desc">Menciona a todos los miembros</div><div class="cmd-example">Ejemplo: .tagall reunión</div></div>
+                <div class="cmd-card"><div class="cmd-name">.hidetag</div><div class="cmd-desc">Menciona a todos sin mostrar</div><div class="cmd-example">Ejemplo: .hidetag mensaje</div></div>
+                <div class="cmd-card"><div class="cmd-name">.link</div><div class="cmd-desc">Obtiene link del grupo</div><div class="cmd-example">Ejemplo: .link</div></div>
+                <div class="cmd-card"><div class="cmd-name">.resetlink</div><div class="cmd-desc">Resetea link del grupo</div><div class="cmd-example">Ejemplo: .resetlink</div></div>
+                <div class="cmd-card"><div class="cmd-name">.group open/close</div><div class="cmd-desc">Abre o cierra el grupo</div><div class="cmd-example">Ejemplo: .group close</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setwelcome</div><div class="cmd-desc">Configura mensaje de bienvenida</div><div class="cmd-example">Ejemplo: .setwelcome Hola @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setbye</div><div class="cmd-desc">Configura mensaje de despedida</div><div class="cmd-example">Ejemplo: .setbye Adiós @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.antilink</div><div class="cmd-desc">Activa/desactiva anti-link</div><div class="cmd-example">Ejemplo: .antilink on</div></div>
+                <div class="cmd-card"><div class="cmd-name">.anti-delete</div><div class="cmd-desc">Anti-eliminación de mensajes</div><div class="cmd-example">Ejemplo: .anti-delete on</div></div>
+            </div>
+
+            <div class="category-badge">🎮 JUEGOS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.tictactoe / .ttt</div><div class="cmd-desc">Juego 3 en raya</div><div class="cmd-example">Ejemplo: .ttt @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ppt</div><div class="cmd-desc">Piedra papel o tijera</div><div class="cmd-example">Ejemplo: .ppt piedra</div></div>
+                <div class="cmd-card"><div class="cmd-name">.slot</div><div class="cmd-desc">Máquina tragamonedas</div><div class="cmd-example">Ejemplo: .slot 100</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ruleta</div><div class="cmd-desc">Ruleta rusa</div><div class="cmd-example">Ejemplo: .ruleta</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ahorcado</div><div class="cmd-desc">Juego del ahorcado</div><div class="cmd-example">Ejemplo: .ahorcado</div></div>
+                <div class="cmd-card"><div class="cmd-name">.sopa</div><div class="cmd-desc">Sopa de letras</div><div class="cmd-example">Ejemplo: .sopa</div></div>
+            </div>
+
+            <div class="category-badge">💎 ECONOMÍA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.balance / .bal</div><div class="cmd-desc">Ver tu balance de coins</div><div class="cmd-example">Ejemplo: .bal</div></div>
+                <div class="cmd-card"><div class="cmd-name">.daily</div><div class="cmd-desc">Reclama recompensa diaria</div><div class="cmd-example">Ejemplo: .daily</div></div>
+                <div class="cmd-card"><div class="cmd-name">.transfer</div><div class="cmd-desc">Transfiere coins a usuario</div><div class="cmd-example">Ejemplo: .transfer 100 @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.shop</div><div class="cmd-desc">Tienda del bot</div><div class="cmd-example">Ejemplo: .shop</div></div>
+                <div class="cmd-card"><div class="cmd-name">.buy</div><div class="cmd-desc">Comprar item de tienda</div><div class="cmd-example">Ejemplo: .buy premium</div></div>
+            </div>
+
+            <div class="category-badge">🔧 HERRAMIENTAS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.ai / .gpt</div><div class="cmd-desc">Habla con IA</div><div class="cmd-example">Ejemplo: .ai que es nodejs</div></div>
+                <div class="cmd-card"><div class="cmd-name">.dalle</div><div class="cmd-desc">Genera imágenes con IA</div><div class="cmd-example">Ejemplo: .dalle un gato astronauta</div></div>
+                <div class="cmd-card"><div class="cmd-name">.qr</div><div class="cmd-desc">Genera código QR</div><div class="cmd-example">Ejemplo: .qr hola mundo</div></div>
+                <div class="cmd-card"><div class="cmd-name">.translate / .tr</div><div class="cmd-desc">Traduce texto</div><div class="cmd-example">Ejemplo: .tr es Hello</div></div>
+                <div class="cmd-card"><div class="cmd-name">.calc</div><div class="cmd-desc">Calculadora</div><div class="cmd-example">Ejemplo: .calc 5+5*2</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ss / .ssweb</div><div class="cmd-desc">Screenshot de web</div><div class="cmd-example">Ejemplo: .ss https://google.com</div></div>
+                <div class="cmd-card"><div class="cmd-name">.clima</div><div class="cmd-desc">Ver clima de ciudad</div><div class="cmd-example">Ejemplo: .clima Lima</div></div>
+                <div class="cmd-card"><div class="cmd-name">.google</div><div class="cmd-desc">Busca en Google</div><div class="cmd-example">Ejemplo: .google node js</div></div>
+            </div>
+
+            <div class="category-badge">👑 OWNER</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.join</div><div class="cmd-desc">Unir bot a grupo</div><div class="cmd-example">Ejemplo: .join https://chat.whatsapp.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.leave</div><div class="cmd-desc">Sacar bot del grupo</div><div class="cmd-example">Ejemplo: .leave</div></div>
+                <div class="cmd-card"><div class="cmd-name">.block / .unblock</div><div class="cmd-desc">Bloquear/desbloquear usuario</div><div class="cmd-example">Ejemplo: .block @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.bc / .broadcast</div><div class="cmd-desc">Mensaje a todos los chats</div><div class="cmd-example">Ejemplo: .bc hola a todos</div></div>
+                <div class="cmd-card"><div class="cmd-name">.update</div><div class="cmd-desc">Actualiza el bot desde GitHub</div><div class="cmd-example">Ejemplo: .update</div></div>
+                <div class="cmd-card"><div class="cmd-name">.restart</div><div class="cmd-desc">Reinicia el bot</div><div class="cmd-example">Ejemplo: .restart</div></div>
             </div>
         </div>
 
@@ -295,13 +340,8 @@
             </div>
 
             <div class="tutorial-box">
-                <strong>PASO 4: COMANDOS PREMIUM</strong><br>
-                Para activar <code>.anti-delete</code>, <code>.autoban</code>, <code>.welcome</code> y más, contacta a Manguito por WhatsApp: <a href="https://wa.me/595987467408" class="whatsapp-link">+595 987 467 408</a>
-            </div>
-
-            <div class="tutorial-box">
-                <strong>PASO 5: SOPORTE</strong><br>
-                ¿Dudas o problemas? Habla directo con el creador por WhatsApp: <a href="https://wa.me/595987467408" class="whatsapp-link">Clic aquí</a>
+                <strong>PASO 4: SOPORTE</strong><br>
+                ¿Dudas o problemas? Habla directo con el creador por WhatsApp: <a href="https://wa.me/595987467408" class="whatsapp-link">+595 987 467 408</a>
             </div>
         </div>
     </div>
@@ -312,4 +352,4 @@
         document.getElementById('welcomeUser').textContent = `BIENVENIDO, ${session.toUpperCase()}`;
     </script>
 </body>
-</html>
+                                                                           </html> 
