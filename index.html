@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
-    <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™.Fundada por Carlos Ramírez desde Trujillo, Perú.">
+    <title>MANGUITO PROGRAMS™ | Sistemas Futuristas | Carlos Ramírez</title>
+    <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Trujillo, Perú.">
     
-    <!-- FUENTES FUTURISTAS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     
-    <link rel="icon" type="image/png" href="https://i.imgur.com/yk1XCtA.png">
+    <!-- FAVICON NUEVO - SIN IMGUR -->
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/3x3QzqP8/favicon-manguito.png">
     <link rel="preload" href="https://i.postimg.cc/FzZLxS09/fondo.jpg" as="image">
     
     <style>
@@ -91,17 +91,56 @@
             50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1); }
         }
         
-        .banner {
+        /* BANNER CSS PURO - SIN IMAGEN EXTERNA */
+        .banner-css {
             width: 100%;
-            max-height: 250px;
-            object-fit: cover;
+            height: 220px;
             border-radius: 20px;
             margin-bottom: 2rem;
             border: 2px solid var(--cyan);
             box-shadow: 
                 0 0 40px var(--cyan-glow),
                 0 0 80px var(--purple-glow);
-            filter: saturate(1.2) contrast(1.1);
+            background: linear-gradient(135deg, var(--bg-void) 0%, #0a0a2e 50%, var(--bg-void) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-css::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                var(--cyan-glow) 10px,
+                var(--cyan-glow) 11px
+            );
+            animation: slide 20s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translate(-50%, -50%); }
+            100% { transform: translate(0%, 0%); }
+        }
+        
+        .banner-text {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s linear infinite;
+            z-index: 1;
+            text-transform: uppercase;
+            letter-spacing: 8px;
         }
         
         h1 { 
@@ -283,6 +322,7 @@
         @media (max-width: 600px) {
             .container { padding: 2rem 1rem; }
             .glass-panel { padding: 1.5rem; }
+            .banner-text { font-size: 2rem; letter-spacing: 4px; }
             .links { flex-direction: column; }
             .links a { width: 100%; justify-content: center; }
         }
@@ -290,7 +330,10 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://i.imgur.com/JvYJtVV.png" alt="Manguito Programs Banner" class="banner" loading="eager">
+        <!-- BANNER CSS PURO - YA NO USA IMGUR -->
+        <div class="banner-css">
+            <div class="banner-text">🥭 MANGUITO</div>
+        </div>
         
         <div class="glass-panel">
             <header>
@@ -354,4 +397,4 @@
         </footer>
     </div>
 </body>
-</html>
+</html> 
