@@ -10,6 +10,8 @@
             --cyan: #00f5ff;
             --cyan-glow: rgba(0, 245, 255, 0.4);
             --purple: #b300ff;
+            --purple-glow: rgba(179, 0, 255, 0.3);
+            --gold: #ffd700;
             --bg-void: #050510;
             --bg-glass: rgba(10, 10, 30, 0.6);
             --text: #e0f7ff;
@@ -179,6 +181,10 @@
             margin: 2rem 0 1rem 0;
             font-family: 'Orbitron', sans-serif;
         }
+       .gold-badge {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
         code {
             background: rgba(0, 0, 0, 0.5);
             padding: 2px 6px;
@@ -286,15 +292,50 @@
                 <div class="cmd-card"><div class="cmd-name">.ruleta</div><div class="cmd-desc">Ruleta rusa</div><div class="cmd-example">Ejemplo: .ruleta</div></div>
                 <div class="cmd-card"><div class="cmd-name">.ahorcado</div><div class="cmd-desc">Juego del ahorcado</div><div class="cmd-example">Ejemplo: .ahorcado</div></div>
                 <div class="cmd-card"><div class="cmd-name">.sopa</div><div class="cmd-desc">Sopa de letras</div><div class="cmd-example">Ejemplo: .sopa</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mates</div><div class="cmd-desc">Problemas matemáticos</div><div class="cmd-example">Ejemplo: .mates</div></div>
+                <div class="cmd-card"><div class="cmd-name">.pregunta</div><div class="cmd-desc">Preguntas trivia</div><div class="cmd-example">Ejemplo: .pregunta</div></div>
             </div>
 
-            <div class="category-badge">💎 ECONOMÍA</div>
+            <div class="category-badge gold-badge">💎 ECONOMÍA</div>
             <div class="cmd-grid">
                 <div class="cmd-card"><div class="cmd-name">.balance / .bal</div><div class="cmd-desc">Ver tu balance de coins</div><div class="cmd-example">Ejemplo: .bal</div></div>
                 <div class="cmd-card"><div class="cmd-name">.daily</div><div class="cmd-desc">Reclama recompensa diaria</div><div class="cmd-example">Ejemplo: .daily</div></div>
-                <div class="cmd-card"><div class="cmd-name">.transfer</div><div class="cmd-desc">Transfiere coins a usuario</div><div class="cmd-example">Ejemplo: .transfer 100 @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.weekly</div><div class="cmd-desc">Recompensa semanal</div><div class="cmd-example">Ejemplo: .weekly</div></div>
+                <div class="cmd-card"><div class="cmd-name">.monthly</div><div class="cmd-desc">Recompensa mensual</div><div class="cmd-example">Ejemplo: .monthly</div></div>
+                <div class="cmd-card"><div class="cmd-name">.transfer / .pay</div><div class="cmd-desc">Transfiere coins a usuario</div><div class="cmd-example">Ejemplo: .transfer 100 @user</div></div>
                 <div class="cmd-card"><div class="cmd-name">.shop</div><div class="cmd-desc">Tienda del bot</div><div class="cmd-example">Ejemplo: .shop</div></div>
                 <div class="cmd-card"><div class="cmd-name">.buy</div><div class="cmd-desc">Comprar item de tienda</div><div class="cmd-example">Ejemplo: .buy premium</div></div>
+                <div class="cmd-card"><div class="cmd-name">.inventory / .inv</div><div class="cmd-desc">Ver tu inventario</div><div class="cmd-example">Ejemplo: .inv</div></div>
+                <div class="cmd-card"><div class="cmd-name">.work / .trabajar</div><div class="cmd-desc">Trabaja para ganar coins</div><div class="cmd-example">Ejemplo: .work</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mine / .minar</div><div class="cmd-desc">Mina para obtener recursos</div><div class="cmd-example">Ejemplo: .mine</div></div>
+                <div class="cmd-card"><div class="cmd-name">.crime / .robar</div><div class="cmd-desc">Robar coins (con riesgo)</div><div class="cmd-example">Ejemplo: .crime</div></div>
+                <div class="cmd-card"><div class="cmd-name">.bank / .banco</div><div class="cmd-desc">Guarda coins en banco</div><div class="cmd-example">Ejemplo: .bank deposit 500</div></div>
+                <div class="cmd-card"><div class="cmd-name">.lb / .leaderboard</div><div class="cmd-desc">Top usuarios más ricos</div><div class="cmd-example">Ejemplo: .lb</div></div>
+            </div>
+
+            <div class="category-badge gold-badge">⚔️ RPG</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.adventure / .adv</div><div class="cmd-desc">Ir de aventura y ganar XP</div><div class="cmd-example">Ejemplo: .adv</div></div>
+                <div class="cmd-card"><div class="cmd-name">.profile / .perfil</div><div class="cmd-desc">Ver tu perfil RPG</div><div class="cmd-example">Ejemplo: .perfil</div></div>
+                <div class="cmd-card"><div class="cmd-name">.levelup</div><div class="cmd-desc">Subir de nivel</div><div class="cmd-example">Ejemplo: .levelup</div></div>
+                <div class="cmd-card"><div class="cmd-name">.heal / .curar</div><div class="cmd-desc">Curar tu HP</div><div class="cmd-example">Ejemplo: .heal</div></div>
+                <div class="cmd-card"><div class="cmd-name">.duel / .pvp</div><div class="cmd-desc">Duelo contra otro usuario</div><div class="cmd-example">Ejemplo: .duel @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.train / .entrenar</div><div class="cmd-desc">Entrena para subir stats</div><div class="cmd-example">Ejemplo: .train</div></div>
+                <div class="cmd-card"><div class="cmd-name">.hunt / .cazar</div><div class="cmd-desc">Caza monstruos por loot</div><div class="cmd-example">Ejemplo: .hunt</div></div>
+                <div class="cmd-card"><div class="cmd-name">.dungeon</div><div class="cmd-desc">Entra a mazmorra</div><div class="cmd-example">Ejemplo: .dungeon</div></div>
+                <div class="cmd-card"><div class="cmd-name">.equip</div><div class="cmd-desc">Equipa items</div><div class="cmd-example">Ejemplo: .equip espada</div></div>
+                <div class="cmd-card"><div class="cmd-name">.use</div><div class="cmd-desc">Usar item del inventario</div><div class="cmd-example">Ejemplo: .use pocion</div></div>
+            </div>
+
+            <div class="category-badge gold-badge">🎰 GACHA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.gacha</div><div class="cmd-desc">Tira gacha para personajes</div><div class="cmd-example">Ejemplo: .gacha 10</div></div>
+                <div class="cmd-card"><div class="cmd-name">.waifu</div><div class="cmd-desc">Invoca waifu aleatoria</div><div class="cmd-example">Ejemplo: .waifu</div></div>
+                <div class="cmd-card"><div class="cmd-name">.husbando</div><div class="cmd-desc">Invoca husbando aleatorio</div><div class="cmd-example">Ejemplo: .husbando</div></div>
+                <div class="cmd-card"><div class="cmd-name">.claim</div><div class="cmd-desc">Reclama personaje diario</div><div class="cmd-example">Ejemplo: .claim</div></div>
+                <div class="cmd-card"><div class="cmd-name">.harem</div><div class="cmd-desc">Ver tu colección de personajes</div><div class="cmd-example">Ejemplo: .harem</div></div>
+                <div class="cmd-card"><div class="cmd-name">.trade</div><div class="cmd-desc">Intercambia personajes</div><div class="cmd-example">Ejemplo: .trade @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.roll</div><div class="cmd-desc">Ruleta gacha premium</div><div class="cmd-example">Ejemplo: .roll</div></div>
             </div>
 
             <div class="category-badge">🔧 HERRAMIENTAS</div>
@@ -307,6 +348,7 @@
                 <div class="cmd-card"><div class="cmd-name">.ss / .ssweb</div><div class="cmd-desc">Screenshot de web</div><div class="cmd-example">Ejemplo: .ss https://google.com</div></div>
                 <div class="cmd-card"><div class="cmd-name">.clima</div><div class="cmd-desc">Ver clima de ciudad</div><div class="cmd-example">Ejemplo: .clima Lima</div></div>
                 <div class="cmd-card"><div class="cmd-name">.google</div><div class="cmd-desc">Busca en Google</div><div class="cmd-example">Ejemplo: .google node js</div></div>
+                <div class="cmd-card"><div class="cmd-name">.wiki</div><div class="cmd-desc">Busca en Wikipedia</div><div class="cmd-example">Ejemplo: .wiki Perú</div></div>
             </div>
 
             <div class="category-badge">👑 OWNER</div>
@@ -317,6 +359,8 @@
                 <div class="cmd-card"><div class="cmd-name">.bc / .broadcast</div><div class="cmd-desc">Mensaje a todos los chats</div><div class="cmd-example">Ejemplo: .bc hola a todos</div></div>
                 <div class="cmd-card"><div class="cmd-name">.update</div><div class="cmd-desc">Actualiza el bot desde GitHub</div><div class="cmd-example">Ejemplo: .update</div></div>
                 <div class="cmd-card"><div class="cmd-name">.restart</div><div class="cmd-desc">Reinicia el bot</div><div class="cmd-example">Ejemplo: .restart</div></div>
+                <div class="cmd-card"><div class="cmd-name">.addcoins</div><div class="cmd-desc">Dar coins a usuario</div><div class="cmd-example">Ejemplo: .addcoins 1000 @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ban / .unban</div><div class="cmd-desc">Banear usuario del bot</div><div class="cmd-example">Ejemplo: .ban @user</div></div>
             </div>
         </div>
 
@@ -352,4 +396,4 @@
         document.getElementById('welcomeUser').textContent = `BIENVENIDO, ${session.toUpperCase()}`;
     </script>
 </body>
-                                                                           </html> 
+                                          </html> 
