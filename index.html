@@ -3,126 +3,357 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MANGUITO PROGRAMS™ - compañía Desarrolladora Fundada por Carlos Ramírez desde Trujillo, Perú</title>
-    <meta name="description" content="GOJOBOT-MD: Manguito Programs™.compañía Desarrolladora Fundada por Carlos Ramírez desde Trujillo, Perú ">
+    <title>MANGUITO PROGRAMS™ | Sistemas Futuristas | Carlos Ramírez</title>
+    <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Trujillo, Perú.">
     
-    <!-- FAVICON REAL 32x32 - 4KB -->
+    <!-- FUENTES FUTURISTAS DE GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
     <link rel="icon" type="image/png" href="https://i.imgur.com/yk1XCtA.png">
+    <link rel="preload" href="https://i.imgur.com/8QmFG9T.jpg" as="image">
     
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-            max-width: 900px; margin: 0 auto; padding: 0; 
-            color: #e0e0e0; line-height: 1.6;
-            /* FONDO LIVIANO 180KB QUE SÍ CARGA CON ENTEL */
-            background: 
-                linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.95)),
-                url('https://i.imgur.com/8QmFG9T.jpg') center/cover fixed;
+        :root {
+            --cyan: #00f5ff;
+            --cyan-glow: rgba(0, 245, 255, 0.4);
+            --purple: #b300ff;
+            --purple-glow: rgba(179, 0, 255, 0.3);
+            --bg-void: #050510;
+            --bg-glass: rgba(10, 10, 30, 0.6);
+            --text: #e0f7ff;
+            --text-dim: #8892b0;
         }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            max-width: 1000px; 
+            margin: 0 auto; 
+            color: var(--text); 
+            line-height: 1.8;
+            background: var(--bg-void);
+            background-image: 
+                radial-gradient(circle at 20% 50%, var(--purple-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, var(--cyan-glow) 0%, transparent 50%),
+                linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0.98)),
+                url('https://i.imgur.com/8QmFG9T.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        /* SCANLINE EFFECT */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15) 0px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+        
         .container {
-            padding: 2rem 1rem;
-            background: rgba(10, 10, 10, 0.3);
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 2;
             min-height: 100vh;
         }
-        /* BANNER LIVIANO 150KB */
+        
+        .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--cyan-glow);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 
+                0 0 40px var(--cyan-glow),
+                inset 0 0 20px rgba(0, 245, 255, 0.05);
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 40px var(--cyan-glow), inset 0 0 20px rgba(0, 245, 255, 0.05); }
+            50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1); }
+        }
+        
         .banner {
             width: 100%;
-            max-height: 200px;
+            max-height: 250px;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 20px;
             margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            border: 2px solid var(--cyan);
+            box-shadow: 
+                0 0 40px var(--cyan-glow),
+                0 0 80px var(--purple-glow);
+            filter: saturate(1.2) contrast(1.1);
         }
+        
         h1 { 
-            color: #00ff88; font-size: 2.5rem; margin-bottom: 0.5rem; 
-            text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: 1rem; 
+            background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s linear infinite;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
+        
+        @keyframes gradient-shift {
+            to { background-position: 200% center; }
+        }
+        
         h2 { 
-            color: #00ff88; margin-top: 2rem; margin-bottom: 1rem; 
-            border-bottom: 2px solid #00ff88; padding-bottom: 0.5rem;
-            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: var(--cyan); 
+            margin: 3rem 0 1.5rem; 
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-left: 1rem;
         }
-        h3 { color: #fff; margin-top: 1.5rem; }
-        a { color: #00ff88; text-decoration: none; font-weight: 600; }
-        a:hover { text-decoration: underline; }
+        
+        h2::before {
+            content: '▸';
+            position: absolute;
+            left: -0.5rem;
+            color: var(--purple);
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        h3 { 
+            font-family: 'Orbitron', sans-serif;
+            color: #fff; 
+            margin: 2rem 0 1rem; 
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        p { margin-bottom: 1rem; font-size: 1.1rem; }
+        
+        a { 
+            color: var(--cyan); 
+            text-decoration: none; 
+            font-weight: 700;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        a:hover { 
+            color: #fff;
+            text-shadow: 0 0 10px var(--cyan);
+        }
+        
         .badge { 
-            background: #ff3300; color: #fff; padding: 6px 12px; 
-            border-radius: 6px; display: inline-block; font-weight: bold; 
-            margin: 1rem 0; font-size: 0.9rem;
+            background: linear-gradient(135deg, var(--purple), var(--cyan)); 
+            color: #000; 
+            padding: 10px 18px; 
+            border-radius: 50px; 
+            display: inline-block; 
+            font-weight: 700; 
+            margin: 1.5rem 0; 
+            font-size: 0.85rem;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 0 20px var(--purple-glow);
         }
-        .links { margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap; }
+        
+        .links { 
+            margin: 2rem 0; 
+            display: flex; 
+            gap: 1rem; 
+            flex-wrap: wrap; 
+        }
+        
         .links a { 
-            background: rgba(26, 26, 26, 0.8); padding: 10px 18px; border-radius: 8px; 
-            border: 1px solid #00ff88; transition: all 0.2s;
+            background: rgba(0, 245, 255, 0.1); 
+            padding: 14px 24px; 
+            border-radius: 12px; 
+            border: 1px solid var(--cyan); 
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
         }
-        .links a:hover { background: #00ff88; color: #0a0a0a; }
+        
+        .links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
+            transition: left 0.5s;
+        }
+        
+        .links a:hover::before { left: 100%; }
+        
+        .links a:hover { 
+            background: var(--cyan); 
+            color: var(--bg-void); 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--cyan-glow);
+            text-shadow: none;
+        }
+        
         .whatsapp-btn {
-            background: #25D366 !important; 
+            background: rgba(37, 211, 102, 0.2) !important; 
             border-color: #25D366 !important;
-            color: #fff !important;
         }
-        ul { margin: 1rem 0 1rem 2rem; }
-        li { margin: 0.5rem 0; }
-        hr { border: none; border-top: 1px solid #333; margin: 2rem 0; }
-        .footer { font-size: 0.85rem; color: #888; text-align: center; }
-        .hn-badge { background: #ff6600; }
-        .contact-box {
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid #00ff88;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 2rem 0;
+        
+        .whatsapp-btn:hover {
+            background: #25D366 !important;
+            color: #000 !important;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5) !important;
+        }
+        
+        ul { margin: 2rem 0 2rem 1.5rem; list-style: none; }
+        li { 
+            margin: 1rem 0; 
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        li::before { 
+            content: '◆'; 
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            animation: spin 4s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        strong { 
+            color: var(--cyan);
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        hr { 
+            border: none; 
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+            margin: 4rem 0; 
+        }
+        
+        .footer { 
+            font-size: 0.9rem; 
+            color: var(--text-dim); 
+            text-align: center; 
+            line-height: 2;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+        
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1rem; }
+            .glass-panel { padding: 1.5rem; }
+            .links { flex-direction: column; }
+            .links a { width: 100%; justify-content: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- BANNER LIVIANO 150KB -->
-        <img src="https://i.imgur.com/JvYJtVV.png" alt="Manguito Programs Banner" class="banner">
+        <img src="https://i.imgur.com/JvYJtVV.png" alt="Manguito Programs Banner" class="banner" loading="eager">
         
-        <h1>🥭 Manguito Programs™</h1>
-        <p><strong>Colectivo independiente de código abierto desde Trujillo, Perú.</strong></p>
-        <p>Construyendo herramientas para desarrolladores que no se rompen.</p>
-        <div class="badge">No afiliado con Manguito Studios</div>
+        <div class="glass-panel">
+            <header>
+                <h1>🥭 MANGUITO PROGRAMS</h1>
+                <p><strong>SISTEMA DE DESARROLLO AUTÓNOMO</strong></p>
+                <p>Iniciativa independiente desde Trujillo, Perú. Construyendo el futuro del software.</p>
+                <div class="badge">NO AFILIADO CON MANGUITO STUDIOS</div>
+            </header>
+        </div>
         
-        <h2>🚀 Proyecto Destacado</h2>
-        <h3>GOJOBOT-MD <span class="badge hn-badge">Destacado en HN</span></h3>
-        <p>Bot open-source de WhatsApp Multi-Dispositivo construido porque las soluciones existentes fallaban con multi-device.</p>
-        
-        <div class="links">
-            <a href="https://github.com/carlos13ra/GOJOBOT-MD" target="_blank">⭐ GitHub</a>
-            <a href="https://news.ycombinator.com/item?id=47932657" target="_blank">🏆 Hacker News</a>
-            <a href="https://dev.to/carlos13ra/gojobot-md-the-official-open-source-whatsapp-bot-by-manguito-programs-2ecl" target="_blank">📝 Dev.to</a>
+        <div class="glass-panel">
+            <section>
+                <h2>PROYECTO DESTACADO</h2>
+                <h3>GOJOBOT-MD <span class="badge hn-badge">TRENDING EN HN</span></h3>
+                <p>Bot de WhatsApp Multi-Dispositivo de nueva generación. Arquitectura cuántica. Diseñado porque los sistemas legacy fallan en multi-device.</p>
+                
+                <div class="links">
+                    <a href="https://github.com/carlos13ra/GOJOBOT-MD" target="_blank" rel="noopener">⭐ GITHUB</a>
+                    <a href="https://news.ycombinator.com/item?id=47932657" target="_blank" rel="noopener">🏆 HACKER NEWS</a>
+                    <a href="https://dev.to/carlos13ra/gojobot-md-the-official-open-source-whatsapp-bot-by-manguito-programs-2ecl" target="_blank" rel="noopener">📝 DEV.TO</a>
+                </div>
+
+                <ul>
+                    <li><strong>CORE:</strong> Node.js + Baileys Protocol</li>
+                    <li><strong>ARQUITECTURA:</strong> Sistema modular de plugins hot-swap</li>
+                    <li><strong>DEPLOY:</strong> Docker containerizado, zero-config</li>
+                    <li><strong>AUTH:</strong> Quantum QR + Pairing Code dual</li>
+                    <li><strong>LICENCIA:</strong> PROPIETARIA - ACCESO BAJO AUTORIZACIÓN</li>
+                </ul>
+            </section>
         </div>
 
-        <ul>
-            <li><strong>Stack:</strong> Node.js + Baileys</li>
-            <li><strong>Arquitectura:</strong> Sistema basado en plugins</li>
-            <li><strong>Deploy:</strong> Listo para Docker, configuración en 1 comando</li>
-            <li><strong>Auth:</strong> Código QR + código de emparejamiento</li>
-            <li><strong>Licencia:</strong> MIT - Gratis para uso comercial</li>
-        </ul>
-
-        <div class="contact-box">
-            <h3>📱 ¿Necesitas ayuda o soporte?</h3>
-            <p>Escríbeme directo por WhatsApp. Respondo rápido.</p>
+        <div class="glass-panel" style="border-color: #ff3300; box-shadow: 0 0 40px rgba(255, 51, 0, 0.4);">
+            <h3>⚠️ PROTOCOLO DE LICENCIA</h3>
+            <p>GOJOBOT-MD es propiedad intelectual de Manguito Programs™. Queda terminantemente prohibido el uso comercial, modificación, distribución o ingeniería inversa sin autorización criptográfica verificada.</p>
             <div class="links">
-                <a href="https://wa.me/595987467408" target="_blank" class="whatsapp-btn">💬 Chatear por WhatsApp</a>
+                <a href="https://wa.me/595987467408?text=INIT_AUTH_REQUEST:%20GOJOBOT-MD%20ACCESS" target="_blank" rel="noopener" class="whatsapp-btn">💬 SOLICITAR ACCESO</a>
             </div>
         </div>
 
-        <h2>👨‍💻 Fundador</h2>
-        <p><strong>Carlos Ramirez alias Manguito</strong><br>
-        Desarrollador de Software, Trujillo, Perú<br>
-        <a href="https://github.com/carlos13ra" target="_blank">GitHub @carlos13ra</a></p>
+        <div class="glass-panel">
+            <h3>📡 CANAL DE COMUNICACIÓN</h3>
+            <p>¿Soporte técnico, implementación o consultas? Establece conexión directa. Tiempo de respuesta: < 24h</p>
+            <div class="links">
+                <a href="https://wa.me/595987467408" target="_blank" rel="noopener" class="whatsapp-btn">💬 INICIAR CHAT</a>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>ARQUITECTO PRINCIPAL</h2>
+            <p><strong>CARLOS RAMÍREZ [MANGUITO]</strong><br>
+            Ingeniero de Software | Trujillo, Perú<br>
+            <a href="https://github.com/carlos13ra" target="_blank" rel="noopener">GITHUB.COM/CARLOS13RA</a></p>
+        </div>
 
         <hr>
-        <p class="footer">
-            © 2026 Manguito Programs™. GOJOBOT-MD es software de código abierto.<br>
-            WhatsApp es marca registrada de WhatsApp Inc. Este proyecto no está afiliado con WhatsApp Inc ni Manguito Studios.
-        </p>
+        <footer class="footer">
+            <p>© 2026 MANGUITO PROGRAMS™ // ALL RIGHTS RESERVED</p>
+            <p>WHATSAPP™ ES MARCA REGISTRADA DE WHATSAPP LLC</p>
+            <p>ESTE SISTEMA NO ESTÁ AFILIADO CON WHATSAPP LLC NI MANGUITO STUDIOS</p>
+        </footer>
     </div>
 </body>
 </html>
