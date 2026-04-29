@@ -3,18 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manguito Programs™ - Open Source desde Trujillo, Perú</title>
+    <title>MANGUITO PROGRAMS™ - Open Source desde Trujillo, Perú</title>
     <meta name="description" content="GOJOBOT-MD: Bot open-source de WhatsApp MD por Manguito Programs™. Node.js + Baileys + Docker. No afiliado con Manguito Studios.">
     <meta name="keywords" content="Manguito Programs, GOJOBOT-MD, Bot WhatsApp, Node.js, Baileys, Yoyobo, Carlos Ramirez, Trujillo Peru, Codigo Abierto">
+    
+    <!-- FAVICON / ICONO -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
-            max-width: 800px; margin: 0 auto; padding: 2rem 1rem; 
+            max-width: 900px; margin: 0 auto; padding: 0; 
             background: #0a0a0a; color: #e0e0e0; line-height: 1.6;
             position: relative;
             overflow-x: hidden;
         }
+        /* IMAGEN DE FONDO + OVERLAY GOJO */
         body::before {
             content: '';
             position: fixed;
@@ -23,50 +29,85 @@
             width: 100%;
             height: 100%;
             background: 
-                radial-gradient(circle at 20% 30%, rgba(0, 119, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+                linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
+                url('fondo.jpg') center/cover no-repeat fixed;
+            z-index: -2;
+        }
+        /* EFECTO GLOW GOJO ENCIMA DEL FONDO */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 119, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.2) 0%, transparent 50%);
             z-index: -1;
             animation: pulse 8s ease-in-out infinite;
         }
         @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 0.8; }
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
         }
-        h1 { color: #00ff88; font-size: 2.5rem; margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
-        h2 { color: #00ff88; margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid #00ff88; padding-bottom: 0.5rem; }
+        .container {
+            padding: 2rem 1rem;
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(5px);
+            min-height: 100vh;
+        }
+        /* BANNER */
+        .banner {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        h1 { 
+            color: #00ff88; font-size: 2.5rem; margin-bottom: 0.5rem; 
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+        }
+        h2 { 
+            color: #00ff88; margin-top: 2rem; margin-bottom: 1rem; 
+            border-bottom: 2px solid #00ff88; padding-bottom: 0.5rem;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+        }
         h3 { color: #fff; margin-top: 1.5rem; }
         a { color: #00ff88; text-decoration: none; font-weight: 600; }
         a:hover { text-decoration: underline; text-shadow: 0 0 10px rgba(0, 255, 136, 0.8); }
         .badge { 
             background: #ff3300; color: #fff; padding: 6px 12px; 
             border-radius: 6px; display: inline-block; font-weight: bold; 
-            margin: 1rem 0; font-size: 0.9rem; box-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+            margin: 1rem 0; font-size: 0.9rem; box-shadow: 0 0 15px rgba(255, 51, 0, 0.5);
         }
         .links { margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap; }
         .links a { 
-            background: rgba(26, 26, 26, 0.8); padding: 10px 18px; border-radius: 8px; 
+            background: rgba(26, 26, 26, 0.7); padding: 10px 18px; border-radius: 8px; 
             border: 1px solid #00ff88; transition: all 0.2s; backdrop-filter: blur(10px);
         }
         .links a:hover { 
             background: #00ff88; color: #0a0a0a; text-decoration: none; 
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.6); transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.7); transform: translateY(-2px);
         }
         .whatsapp-btn {
             background: #25D366 !important; 
             border-color: #25D366 !important;
             color: #fff !important;
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.5);
         }
         .whatsapp-btn:hover {
             background: #1faa52 !important;
-            box-shadow: 0 0 30px rgba(37, 211, 102, 0.8) !important;
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.9) !important;
         }
         ul { margin: 1rem 0 1rem 2rem; }
         li { margin: 0.5rem 0; }
         hr { border: none; border-top: 1px solid #333; margin: 2rem 0; }
         .footer { font-size: 0.85rem; color: #888; text-align: center; }
-        .hn-badge { background: #ff6600; box-shadow: 0 0 15px rgba(255, 102, 0, 0.4); }
+        .hn-badge { background: #ff6600; box-shadow: 0 0 15px rgba(255, 102, 0, 0.5); }
         .contact-box {
             background: rgba(0, 255, 136, 0.1);
             border: 1px solid #00ff88;
@@ -74,50 +115,56 @@
             padding: 1rem;
             margin: 2rem 0;
             backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
         }
     </style>
 </head>
 <body>
-    <h1>🥭 Manguito Programs™</h1>
-    <p><strong>Colectivo independiente de código abierto desde Trujillo, Perú.</strong></p>
-    <p>Construyendo herramientas para desarrolladores que no se rompen.</p>
-    <div class="badge">No afiliado con Manguito Studios</div>
-    
-    <h2>🚀 Proyecto Destacado</h2>
-    <h3>GOJOBOT-MD <span class="badge hn-badge">Destacado en HN</span></h3>
-    <p>Bot open-source de WhatsApp Multi-Dispositivo construido porque las soluciones existentes fallaban con multi-device.</p>
-    
-    <div class="links">
-        <a href="https://github.com/carlos13ra/GOJOBOT-MD" target="_blank">⭐ GitHub</a>
-        <a href="https://news.ycombinator.com/item?id=47932657" target="_blank">🏆 Hacker News</a>
-        <a href="https://dev.to/carlos13ra/gojobot-md-the-official-open-source-whatsapp-bot-by-manguito-programs-2ecl" target="_blank">📝 Dev.to</a>
-    </div>
-
-    <ul>
-        <li><strong>Stack:</strong> Node.js + Baileys</li>
-        <li><strong>Arquitectura:</strong> Sistema basado en plugins</li>
-        <li><strong>Deploy:</strong> Listo para Docker, configuración en 1 comando</li>
-        <li><strong>Auth:</strong> Código QR + código de emparejamiento</li>
-        <li><strong>Licencia:</strong> MIT - Gratis para uso comercial</li>
-    </ul>
-
-    <div class="contact-box">
-        <h3>📱 ¿Necesitas ayuda o soporte?</h3>
-        <p>Escríbeme directo por WhatsApp. Respondo rápido.</p>
+    <div class="container">
+        <!-- BANNER -->
+        <img src="banner.png" alt="Manguito Programs Banner" class="banner">
+        
+        <h1>🥭 Manguito Programs™</h1>
+        <p><strong>Colectivo independiente de código abierto desde Trujillo, Perú.</strong></p>
+        <p>Construyendo herramientas para desarrolladores que no se rompen.</p>
+        <div class="badge">No afiliado con Manguito Studios</div>
+        
+        <h2>🚀 Proyecto Destacado</h2>
+        <h3>GOJOBOT-MD <span class="badge hn-badge">Destacado en HN</span></h3>
+        <p>Bot open-source de WhatsApp Multi-Dispositivo construido porque las soluciones existentes fallaban con multi-device.</p>
+        
         <div class="links">
-            <a href="https://wa.me/595987467408" target="_blank" class="whatsapp-btn">💬 Chatear por WhatsApp</a>
+            <a href="https://github.com/carlos13ra/GOJOBOT-MD" target="_blank">⭐ GitHub</a>
+            <a href="https://news.ycombinator.com/item?id=47932657" target="_blank">🏆 Hacker News</a>
+            <a href="https://dev.to/carlos13ra/gojobot-md-the-official-open-source-whatsapp-bot-by-manguito-programs-2ecl" target="_blank">📝 Dev.to</a>
         </div>
+
+        <ul>
+            <li><strong>Stack:</strong> Node.js + Baileys</li>
+            <li><strong>Arquitectura:</strong> Sistema basado en plugins</li>
+            <li><strong>Deploy:</strong> Listo para Docker, configuración en 1 comando</li>
+            <li><strong>Auth:</strong> Código QR + código de emparejamiento</li>
+            <li><strong>Licencia:</strong> MIT - Gratis para uso comercial</li>
+        </ul>
+
+        <div class="contact-box">
+            <h3>📱 ¿Necesitas ayuda o soporte?</h3>
+            <p>Escríbeme directo por WhatsApp. Respondo rápido.</p>
+            <div class="links">
+                <a href="https://wa.me/51XXXXXXXXX" target="_blank" class="whatsapp-btn">💬 Chatear por WhatsApp</a>
+            </div>
+        </div>
+
+        <h2>👨‍💻 Fundador</h2>
+        <p><strong>Carlos Ramirez alias Manguito</strong><br>
+        Desarrollador de Software, Trujillo, Perú<br>
+        <a href="https://github.com/carlos13ra" target="_blank">GitHub @carlos13ra</a></p>
+
+        <hr>
+        <p class="footer">
+            © 2026 Manguito Programs™. GOJOBOT-MD es software de código abierto.<br>
+            WhatsApp es marca registrada de WhatsApp Inc. Este proyecto no está afiliado con WhatsApp Inc ni Manguito Studios.
+        </p>
     </div>
-
-    <h2>👨‍💻 Fundador</h2>
-    <p><strong>Carlos Ramirez alias Yoyobo</strong><br>
-    Desarrollador de Software, Trujillo, Perú<br>
-    <a href="https://github.com/carlos13ra" target="_blank">GitHub @carlos13ra</a></p>
-
-    <hr>
-    <p class="footer">
-        © 2026 Manguito Programs™. GOJOBOT-MD es software de código abierto.<br>
-        WhatsApp es marca registrada de WhatsApp Inc. Este proyecto no está afiliado con WhatsApp Inc ni Manguito Studios.
-    </p>
 </body>
 </html> 
