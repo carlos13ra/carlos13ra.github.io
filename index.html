@@ -348,11 +348,30 @@
         }
 
 .tiktok-avatar {
-            width: 28px;
-            height: 28px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            border: 2px solid #fff;
+            border: 3px solid #ff0050;
             object-fit: cover;
+            box-shadow: 0 0 20px rgba(255, 0, 80, 0.6);
+            animation: avatar-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes avatar-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 80, 0.6); }
+            50% { box-shadow: 0 0 35px rgba(255, 0, 80, 0.9); }
+        }
+
+.tiktok-highlight {
+            background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
+            border: 2px solid #ff0050;
+            text-align: center;
+            animation: tiktok-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes tiktok-glow {
+            0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 80, 0.4); }
+            50% { box-shadow: 0 0 50px rgba(255, 0, 80, 0.7); }
         }
 
         ul { margin: 2rem 0 2rem 1.5rem; list-style: none; }
@@ -513,21 +532,22 @@
         }
 
         @media (max-width: 600px) {
-     .container { padding: 2rem 1rem; }
-     .glass-panel { padding: 1.5rem; }
-     .links { flex-direction: column; }
-     .links a { width: 100%; justify-content: center; }
+  .container { padding: 2rem 1rem; }
+  .glass-panel { padding: 1.5rem; }
+  .links { flex-direction: column; }
+  .links a { width: 100%; justify-content: center; }
             body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-     .music-player {
+  .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-     .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-     .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-     .track-info { max-width: 70px; }
-     .track-name { font-size: 0.55rem; }
+  .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+  .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+  .track-info { max-width: 70px; }
+  .track-name { font-size: 0.55rem; }
+  .tiktok-avatar { width: 50px; height: 50px; }
         }
     </style>
 </head>
@@ -551,6 +571,31 @@
     <div class="container">
         <!-- BANNER CON TU IMAGEN DE GOJO -->
         <img src="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp" alt="Manguito Programs™ Banner" class="banner" loading="eager">
+
+        <!-- SECCIÓN TIKTOK DESTACADA ARRIBA -->
+        <div class="glass-panel tiktok-highlight">
+            <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
+                <img src="https://i.postimg.cc/9F8k8QkB/tiktok-avatar.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
+                <div>
+                    <p style="font-size: 1.4rem; margin: 0; font-weight: 900;">
+                        <strong>ERICK LOPEZ</strong>
+                    </p>
+                    <p style="color: #ff0050; font-size: 1.1rem; margin: 0; font-weight: 700;">
+                        Bobby Flow
+                    </p>
+                </div>
+            <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.5rem;">
+                ⚡ DALE FOLLOW PARA APOYAR A UN TERIANS QUE QUIERE SER INFLUENCER⚡<br>
+                Todo para ver frases y videos de humor 
+            </p>
+            <div class="links" style="justify-content: center;">
+                <a href="https://www.tiktok.com/@lrbat4" target="_blank" rel="noopener" class="tiktok-btn">
+                    <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="@lrbat4" class="tiktok-avatar" style="width: 28px; height: 28px; border: 2px solid #fff;">
+                    @lrbat4 EN TIKTOK
+                </a>
+            </div>
+        </div>
 
         <div class="glass-panel">
             <header>
@@ -604,13 +649,6 @@
             <p><strong>CARLOS RAMÍREZ [MANGUITO]</strong><br>
              Desarrollador de Software | Trujillo, Perú<br>
             <a href="https://github.com/carlos13ra" target="_blank" rel="noopener">GITHUB.COM/CARLOS13RA</a></p>
-
-            <div class="links">
-                <a href="https://www.tiktok.com/@lrbat4" target="_blank" rel="noopener" class="tiktok-btn">
-                    <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1a7e5e5e5e5e~c5_720x720.jpeg" alt="@lrbat4" class="tiktok-avatar">
-                    @lrbat4 EN TIKTOK
-                </a>
-            </div>
         </div>
 
         <hr>
