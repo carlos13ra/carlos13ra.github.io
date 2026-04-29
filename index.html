@@ -7,9 +7,8 @@
     <meta name="description" content="GOJOBOT-MD: Bot open-source de WhatsApp MD por Manguito Programs™. Node.js + Baileys + Docker. No afiliado con Manguito Studios.">
     <meta name="keywords" content="Manguito Programs, GOJOBOT-MD, Bot WhatsApp, Node.js, Baileys, Yoyobo, Carlos Ramirez, Trujillo Peru, Codigo Abierto">
     
-    <!-- FAVICON / ICONO -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,9 +17,8 @@
             max-width: 900px; margin: 0 auto; padding: 0; 
             background: #0a0a0a; color: #e0e0e0; line-height: 1.6;
             position: relative;
-            overflow-x: hidden;
         }
-        /* IMAGEN DE FONDO + OVERLAY GOJO */
+        /* FONDO ARREGLADO PARA MÓVIL */
         body::before {
             content: '';
             position: fixed;
@@ -30,10 +28,9 @@
             height: 100%;
             background: 
                 linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
-                url('fondo.jpg') center/cover no-repeat fixed;
+                url('fondo.jpg') center/cover no-repeat;
             z-index: -2;
         }
-        /* EFECTO GLOW GOJO ENCIMA DEL FONDO */
         body::after {
             content: '';
             position: fixed;
@@ -57,7 +54,6 @@
             backdrop-filter: blur(5px);
             min-height: 100vh;
         }
-        /* BANNER */
         .banner {
             width: 100%;
             max-height: 200px;
@@ -121,7 +117,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- BANNER -->
         <img src="banner.png" alt="Manguito Programs Banner" class="banner">
         
         <h1>🥭 Manguito Programs™</h1>
@@ -156,7 +151,7 @@
         </div>
 
         <h2>👨‍💻 Fundador</h2>
-        <p><strong>Carlos Ramirez alias Manguito</strong><br>
+        <p><strong>Carlos Ramirez alias Yoyobo</strong><br>
         Desarrollador de Software, Trujillo, Perú<br>
         <a href="https://github.com/carlos13ra" target="_blank">GitHub @carlos13ra</a></p>
 
