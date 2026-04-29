@@ -852,48 +852,48 @@ const playlist = [
     { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
     { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
     { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }
-];
+    ];
 
-let currentTrack = 0;
-let isPlaying = false;
+    let currentTrack = 0;
+    let isPlaying = false;
 
-function loadTrack(index) {
-    audio.src = playlist[index].url;
-    trackName.textContent = playlist[index].name;
-}
-
-function playPause() {
-    if (isPlaying) {
-        audio.pause();
-        playIcon.textContent = '▶';
-        playBtn.classList.remove('playing');
-    } else {
-        audio.play().catch(e => console.log('Autoplay bloqueado:', e));
-        playIcon.textContent = '⏸';
-        playBtn.classList.add('playing');
+    function loadTrack(index) {
+        audio.src = playlist[index].url;
+        trackName.textContent = playlist[index].name;
     }
-    isPlaying =!isPlaying;
-}
 
-function nextTrack() {
-    currentTrack = (currentTrack + 1) % playlist.length;
-    loadTrack(currentTrack);
-    if (isPlaying) audio.play();
-}
+    function playPause() {
+        if (isPlaying) {
+            audio.pause();
+            playIcon.textContent = '▶';
+            playBtn.classList.remove('playing');
+        } else {
+            audio.play().catch(e => console.log('Autoplay bloqueado:', e));
+            playIcon.textContent = '⏸';
+            playBtn.classList.add('playing');
+        }
+        isPlaying =!isPlaying;
+    }
 
-function prevTrack() {
-    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-    loadTrack(currentTrack);
-    if (isPlaying) audio.play();
-}
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) audio.play().catch(e => console.log('Error:', e));
+    }
 
-playBtn.addEventListener('click', playPause);
-nextBtn.addEventListener('click', nextTrack);
-prevBtn.addEventListener('click', prevTrack);
-audio.addEventListener('ended', nextTrack);
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) audio.play().catch(e => console.log('Error:', e));
+    }
 
-// CARGAR PRIMERA CANCIÓN
-loadTrack(0);
+    playBtn.addEventListener('click', playPause);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
+    audio.addEventListener('ended', nextTrack);
+
+    // CARGAR PRIMERA CANCIÓN
+    loadTrack(0);
     </script>
 </body>
 </html>
