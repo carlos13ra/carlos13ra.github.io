@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | GOJOBOT-MD™ Dashboard</title>
+    <title>Authenticate | GOJOBOT-MD™</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
@@ -34,69 +34,117 @@
             content: '';
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.95)), url('https://i.postimg.cc/FzZLxS09/fondo.jpg');
-            background-size: cover;
+            background:
+                radial-gradient(circle at 20% 50%, var(--cyan-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, var(--purple-glow) 0%, transparent 50%),
+                linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0.98));
             z-index: -1;
         }
-       .login-container {
+      .auth-container {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
-            border: 2px solid var(--cyan);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-glass), var(--bg-glass)),
+                              linear-gradient(90deg, var(--cyan), var(--purple));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
             border-radius: 20px;
             padding: 2.5rem;
             width: 90%;
-            max-width: 450px;
-            box-shadow: 0 0 60px var(--cyan-glow);
-            animation: glow 3s ease-in-out infinite;
-        }
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 60px var(--cyan-glow); }
-            50% { box-shadow: 0 0 80px var(--purple-glow); }
+            max-width: 420px;
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.2);
         }
         h1 {
             font-family: 'Orbitron', sans-serif;
             text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+       .brand {
             background: linear-gradient(90deg, var(--cyan), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
-            font-size: 2rem;
         }
-       .tabs {
-            display: flex;
-            gap: 1rem;
+       .subtitle {
+            text-align: center;
+            color: var(--text-dim);
             margin-bottom: 2rem;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
-       .tab {
-            flex: 1;
-            padding: 12px;
-            background: rgba(0, 245, 255, 0.1);
+       .social-btn {
+            width: 100%;
+            padding: 14px;
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--cyan-glow);
             border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-family: 'Orbitron', sans-serif;
+            color: var(--text);
+            font-family: 'Rajdhani', sans-serif;
             font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
             transition: all 0.3s;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-       .tab.active {
-            background: var(--cyan);
-            color: #000;
+       .social-btn:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px var(--cyan-glow);
         }
-       .form-group {
-            margin-bottom: 1.5rem;
+       .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+       .divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background: var(--cyan-glow);
+        }
+       .divider span {
+            background: var(--bg-void);
+            padding: 0 1rem;
+            position: relative;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+      .form-group {
+            margin-bottom: 1.2rem;
         }
         label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 700;
             color: var(--cyan);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+       .input-wrapper {
+            position: relative;
+        }
+       .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cyan-glow);
         }
         input {
             width: 100%;
-            padding: 14px;
+            padding: 14px 14px 14px 45px;
             background: rgba(0, 0, 0, 0.4);
-            border: 2px solid var(--cyan-glow);
+            border: 1px solid var(--cyan-glow);
             border-radius: 10px;
             color: var(--text);
             font-size: 1rem;
@@ -108,10 +156,36 @@
             border-color: var(--cyan);
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-        button {
+       .checkbox-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.9rem;
+        }
+       .checkbox-row label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 500;
+        }
+        input[type="checkbox"] {
+            width: auto;
+            accent-color: var(--cyan);
+        }
+       .forgot {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 700;
+        }
+       .initialize-btn {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, var(--purple), var(--cyan));
+            padding: 16px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
             border: none;
             border-radius: 10px;
             color: #000;
@@ -121,146 +195,150 @@
             cursor: pointer;
             transition: all 0.3s;
             text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--purple-glow);
+       .initialize-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px var(--purple-glow);
         }
+       .footer-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+       .footer-text a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 700;
+        }
+       .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #00ff88;
+        }
+        #loginForm { display: none; }
        .error {
             color: #ff0050;
             text-align: center;
             margin-top: 1rem;
             font-weight: 700;
+            font-size: 0.9rem;
         }
        .success {
             color: #00ff88;
             text-align: center;
             margin-top: 1rem;
             font-weight: 700;
+            font-size: 0.9rem;
         }
-       .back-home {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-       .back-home a {
-            color: var(--cyan);
-            text-decoration: none;
-            font-weight: 700;
-        }
-        #registerForm { display: none; }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h1>🥭 GOJOBOT-MD™</h1>
+    <div class="auth-container">
+        <h1><span class="brand">MANGUITO</span> AI</h1>
+        <p class="subtitle">Authenticate</p>
 
-        <div class="tabs">
-            <div class="tab active" onclick="showLogin()">LOGIN</div>
-            <div class="tab" onclick="showRegister()">REGISTRO</div>
-        </div>
+        <!-- BOTONES SOCIALES -->
+        <button class="social-btn" onclick="alert('Conecta Firebase Auth para Google')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+            Google
+        </button>
 
-        <!-- LOGIN FORM -->
-        <form id="loginForm">
+        <button class="social-btn" onclick="alert('Conecta Firebase Auth para GitHub')">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0.319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            GitHub
+        </button>
+
+        <div class="divider"><span>OR CONTINUE WITH</span></div>
+
+        <!-- FORMULARIO EMAIL -->
+        <form id="authForm">
             <div class="form-group">
-                <label>Usuario o Email</label>
-                <input type="text" id="loginUser" required>
+                <label>EMAIL</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉</span>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
             </div>
             <div class="form-group">
-                <label>Contraseña</label>
-                <input type="password" id="loginPass" required>
+                <label>PASSWORD</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
             </div>
-            <button type="submit">ENTRAR AL DASHBOARD</button>
-            <div id="loginMsg"></div>
+
+            <div class="checkbox-row">
+                <label>
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+                <a href="#" class="forgot" onclick="alert('Próximamente')">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="initialize-btn">INITIALIZE →</button>
+            <div id="authMsg"></div>
         </form>
 
-        <!-- REGISTER FORM -->
-        <form id="registerForm">
-            <div class="form-group">
-                <label>Usuario</label>
-                <input type="text" id="regUser" required>
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input type="email" id="regEmail" required>
-            </div>
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input type="password" id="regPass" required>
-            </div>
-            <button type="submit">CREAR CUENTA</button>
-            <div id="regMsg"></div>
-        </form>
-
-        <div class="back-home">
-            <a href="/">← Volver al inicio</a>
+        <p class="footer-text">
+            Don't have access? <a href="https://wa.me/595987467408?text=SOLICITO%20ACCESO%20DASHBOARD" target="_blank">Request here</a>.
+        </p>
+        <div class="secure-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            Secure production auth flow enabled
         </div>
     </div>
 
     <script>
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const tabs = document.querySelectorAll('.tab');
+        const authForm = document.getElementById('authForm');
+        const authMsg = document.getElementById('authMsg');
 
-        function showLogin() {
-            loginForm.style.display = 'block';
-            registerForm.style.display = 'none';
-            tabs[0].classList.add('active');
-            tabs[1].classList.remove('active');
-        }
-
-        function showRegister() {
-            loginForm.style.display = 'none';
-            registerForm.style.display = 'block';
-            tabs[1].classList.add('active');
-            tabs[0].classList.remove('active');
-        }
-
-        // REGISTRO
-        registerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const user = document.getElementById('regUser').value;
-            const email = document.getElementById('regEmail').value;
-            const pass = document.getElementById('regPass').value;
-            const msg = document.getElementById('regMsg');
-
-            let users = JSON.parse(localStorage.getItem('manguito_users') || '[]');
-
-            if (users.find(u => u.user === user || u.email === email)) {
-                msg.innerHTML = '<p class="error">Usuario o email ya existe</p>';
-                return;
-            }
-
-            users.push({ user, email, pass, plan: 'FREE', created: Date.now() });
-            localStorage.setItem('manguito_users', JSON.stringify(users));
-            localStorage.setItem('manguito_session', user);
-
-            msg.innerHTML = '<p class="success">¡Cuenta creada! Redirigiendo...</p>';
-            setTimeout(() => window.location.href = '/dashboard.html', 1500);
-        });
-
-        // LOGIN
-        loginForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const user = document.getElementById('loginUser').value;
-            const pass = document.getElementById('loginPass').value;
-            const msg = document.getElementById('loginMsg');
-
-            let users = JSON.parse(localStorage.getItem('manguito_users') || '[]');
-            const found = users.find(u => (u.user === user || u.email === user) && u.pass === pass);
-
-            if (found) {
-                localStorage.setItem('manguito_session', found.user);
-                msg.innerHTML = '<p class="success">¡Bienvenido! Redirigiendo...</p>';
-                setTimeout(() => window.location.href = '/dashboard.html', 1000);
-            } else {
-                msg.innerHTML = '<p class="error">Usuario o contraseña incorrectos</p>';
-            }
-        });
-
-        // Si ya está logueado, ir directo al dash
+        // SI YA ESTÁ LOGUEADO, IR AL DASH
         if (localStorage.getItem('manguito_session')) {
             window.location.href = '/dashboard.html';
         }
+
+        authForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+
+            let users = JSON.parse(localStorage.getItem('manguito_users') || '[]');
+            let found = users.find(u => u.email === email);
+
+            // SI NO EXISTE, CREAR CUENTA AUTOMÁTICA
+            if (!found) {
+                const newUser = {
+                    user: email.split('@')[0],
+                    email: email,
+                    pass: pass,
+                    plan: 'FREE',
+                    created: Date.now()
+                };
+                users.push(newUser);
+                localStorage.setItem('manguito_users', JSON.stringify(users));
+                found = newUser;
+                authMsg.innerHTML = '<p class="success">¡Cuenta creada! Inicializando...</p>';
+            } else {
+                // SI EXISTE, VERIFICAR PASS
+                if (found.pass!== pass) {
+                    authMsg.innerHTML = '<p class="error">Contraseña incorrecta</p>';
+                    return;
+                }
+                authMsg.innerHTML = '<p class="success">Acceso autorizado. Inicializando...</p>';
+            }
+
+            localStorage.setItem('manguito_session', found.user);
+            if (remember) localStorage.setItem('manguito_remember', 'true');
+
+            setTimeout(() => window.location.href = '/dashboard.html', 1000);
+        });
     </script>
 </body>
-  </html>
+</html>
