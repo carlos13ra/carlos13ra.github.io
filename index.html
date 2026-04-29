@@ -112,7 +112,7 @@
         }
 
         /* SCANLINES CRT */
-  .scanlines {
+.scanlines {
             position: fixed;
             top: 0;
             left: 0;
@@ -134,14 +134,14 @@
             100% { transform: translateY(10px); }
         }
 
-  .container {
+.container {
             padding: 3rem 2rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
 
-  .glass-panel {
+.glass-panel {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--cyan-glow);
@@ -167,7 +167,7 @@
             }
         }
 
-  .banner {
+.banner {
             width: 100%;
             max-height: 280px;
             object-fit: cover;
@@ -181,7 +181,7 @@
             transition: all 0.4s ease;
             transform-style: preserve-3d;
         }
-  .banner:hover {
+.banner:hover {
             transform: scale(1.02) rotateX(2deg) rotateY(-2deg);
             box-shadow:
                 0 0 60px var(--cyan-glow),
@@ -241,7 +241,7 @@
             margin: 2rem 0 1rem;
             font-size: 1.3rem;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         p { margin-bottom: 1rem; font-size: 1.1rem; }
@@ -258,7 +258,7 @@
             text-shadow: 0 0 15px var(--cyan);
         }
 
-  .badge {
+.badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             padding: 10px 18px;
@@ -279,14 +279,14 @@
             50% { transform: translateY(-5px); }
         }
 
-  .links {
+.links {
             margin: 2rem 0;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-  .links a {
+.links a {
             background: rgba(0, 245, 255, 0.1);
             padding: 14px 24px;
             border-radius: 12px;
@@ -301,7 +301,7 @@
             transform-style: preserve-3d;
         }
 
-  .links a::before {
+.links a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -312,9 +312,9 @@
             transition: left 0.5s;
         }
 
-  .links a:hover::before { left: 100%; }
+.links a:hover::before { left: 100%; }
 
-  .links a:hover {
+.links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-3px) translateZ(10px);
@@ -322,15 +322,37 @@
             text-shadow: none;
         }
 
-  .whatsapp-btn {
+.whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-  .whatsapp-btn:hover {
+.whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
+        }
+
+.tiktok-btn {
+            background: rgba(0, 0, 0, 0.3)!important;
+            border-color: #ff0050!important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+.tiktok-btn:hover {
+            background: #ff0050!important;
+            color: #fff!important;
+            box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
+        }
+
+.tiktok-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
         }
 
         ul { margin: 2rem 0 2rem 1.5rem; list-style: none; }
@@ -369,7 +391,7 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-  .footer {
+.footer {
             font-size: 0.9rem;
             color: var(--text-dim);
             text-align: center;
@@ -377,65 +399,65 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-  .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+.hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
         /* REPRODUCTOR DE MÚSICA FLOTANTE NEÓN - MÁS CHICO */
-  .music-player {
+.music-player {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            bottom: 20px;
+            right: 20px;
             z-index: 9999;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: rgba(10, 10, 30, 0.7);
             backdrop-filter: blur(25px);
             border: 2px solid var(--cyan);
-            border-radius: 40px;
-            padding: 8px 15px 8px;
+            border-radius: 35px;
+            padding: 6px 12px 6px;
             box-shadow:
-                0 0 30px var(--cyan-glow),
-                0 0 60px var(--purple-glow),
-                inset 0 0 15px rgba(0, 245, 255, 0.1);
+                0 0 25px var(--cyan-glow),
+                0 0 50px var(--purple-glow),
+                inset 0 0 12px rgba(0, 245, 255, 0.1);
             animation: music-float 3s ease-in-out infinite;
         }
 
         @keyframes music-float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+            50% { transform: translateY(-5px); }
         }
 
-  .music-btn {
-            width: 40px;
-            height: 40px;
+.music-btn {
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             background: rgba(0, 245, 255, 0.15);
             border: 2px solid var(--cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--cyan);
             cursor: pointer;
-            box-shadow: 0 0 15px var(--cyan-glow);
+            box-shadow: 0 0 12px var(--cyan-glow);
             transition: all 0.3s ease;
             position: relative;
         }
 
-  .music-btn:hover {
+.music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
-            box-shadow: 0 0 30px var(--cyan-glow);
+            box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-  .play-btn-music {
-            width: 48px;
-            height: 48px;
-            font-size: 1.2rem;
+.play-btn-music {
+            width: 42px;
+            height: 42px;
+            font-size: 1rem;
         }
 
-  .play-btn-music.playing {
+.play-btn-music.playing {
             animation: music-spin 4s linear infinite;
         }
 
@@ -444,21 +466,21 @@
             to { transform: rotate(360deg); }
         }
 
-  .volume-indicator {
+.volume-indicator {
             position: absolute;
-            top: -3px;
-            right: -3px;
-            width: 14px;
-            height: 14px;
+            top: -2px;
+            right: -2px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #00ff88;
             border: 2px solid #000;
-            box-shadow: 0 0 12px #00ff88;
+            box-shadow: 0 0 10px #00ff88;
             opacity: 0;
             transition: opacity 0.3s;
         }
 
-  .play-btn-music.playing.volume-indicator {
+.play-btn-music.playing.volume-indicator {
             opacity: 1;
             animation: volume-beat 0.6s ease-in-out infinite;
         }
@@ -468,13 +490,13 @@
             50% { transform: scale(1.4); }
         }
 
-  .track-info {
+.track-info {
             font-family: 'Orbitron', sans-serif;
-            max-width: 120px;
+            max-width: 100px;
         }
 
-  .track-name {
-            font-size: 0.7rem;
+.track-name {
+            font-size: 0.65rem;
             font-weight: 700;
             color: var(--cyan);
             text-shadow: 0 0 10px var(--cyan-glow);
@@ -491,21 +513,21 @@
         }
 
         @media (max-width: 600px) {
-       .container { padding: 2rem 1rem; }
-       .glass-panel { padding: 1.5rem; }
-       .links { flex-direction: column; }
-       .links a { width: 100%; justify-content: center; }
+     .container { padding: 2rem 1rem; }
+     .glass-panel { padding: 1.5rem; }
+     .links { flex-direction: column; }
+     .links a { width: 100%; justify-content: center; }
             body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-       .music-player {
-                bottom: 15px;
-                right: 15px;
-                padding: 6px 12px 6px;
-                gap: 6px;
+     .music-player {
+                bottom: 12px;
+                right: 12px;
+                padding: 5px 10px 5px;
+                gap: 5px;
             }
-       .music-btn { width: 36px; height: 36px; font-size: 0.9rem; }
-       .play-btn-music { width: 44px; height: 44px; font-size: 1.1rem; }
-       .track-info { max-width: 80px; }
-       .track-name { font-size: 0.6rem; }
+     .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+     .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+     .track-info { max-width: 70px; }
+     .track-name { font-size: 0.55rem; }
         }
     </style>
 </head>
@@ -523,7 +545,7 @@
         <div class="track-info">
             <div class="track-name" id="trackName">Cargando...</div>
         </div>
-        <audio id="bgMusic" preload="auto" autoplay></audio>
+        <audio id="bgMusic" preload="auto"></audio>
     </div>
 
     <div class="container">
@@ -582,6 +604,13 @@
             <p><strong>CARLOS RAMÍREZ [MANGUITO]</strong><br>
              Desarrollador de Software | Trujillo, Perú<br>
             <a href="https://github.com/carlos13ra" target="_blank" rel="noopener">GITHUB.COM/CARLOS13RA</a></p>
+
+            <div class="links">
+                <a href="https://www.tiktok.com/@lrbat4" target="_blank" rel="noopener" class="tiktok-btn">
+                    <img src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1a7e5e5e5e5e~c5_720x720.jpeg" alt="@lrbat4" class="tiktok-avatar">
+                    @lrbat4 EN TIKTOK
+                </a>
+            </div>
         </div>
 
         <hr>
@@ -591,7 +620,7 @@
     </div>
 
     <script>
-    // REPRODUCTOR CON AUTOPLAY AGRESIVO + SHUFFLE
+    // REPRODUCTOR CON AUTOPLAY FORZADO + SHUFFLE
     const bgMusic = document.getElementById('bgMusic');
     const playPauseBtn = document.getElementById('playPauseBtn');
     const playIcon = document.getElementById('playIcon');
@@ -608,7 +637,7 @@
 
     let currentTrack = Math.floor(Math.random() * playlist.length); // ALEATORIO AL INICIAR
     let isPlaying = false;
-    let userInteracted = false;
+    let audioUnlocked = false;
     bgMusic.volume = 0.3;
 
     function loadTrack(index) {
@@ -617,24 +646,15 @@
         bgMusic.load();
     }
 
-    function playMusic() {
+    function forcePlay() {
         bgMusic.play().then(() => {
             playIcon.textContent = '⏸';
             playPauseBtn.classList.add('playing');
             isPlaying = true;
-            userInteracted = true;
+            audioUnlocked = true;
         }).catch(e => {
-            // Si falla autoplay con sonido, intenta muteado
-            bgMusic.muted = true;
-            bgMusic.play().then(() => {
-                playIcon.textContent = '⏸';
-                playPauseBtn.classList.add('playing');
-                isPlaying = true;
-                trackName.textContent = '🔇 Click para activar sonido';
-            }).catch(err => {
-                trackName.textContent = playlist[currentTrack].name;
-                playIcon.textContent = '▶';
-            });
+            // Si falla, reintenta cada 500ms hasta que el navegador permita
+            setTimeout(forcePlay, 500);
         });
     }
 
@@ -646,48 +666,33 @@
             isPlaying = false;
         } else {
             bgMusic.muted = false;
-            playMusic();
+            forcePlay();
         }
     }
 
     function nextTrack() {
         currentTrack = (currentTrack + 1) % playlist.length;
         loadTrack(currentTrack);
-        if (userInteracted) {
-            bgMusic.muted = false;
-            bgMusic.play();
-            playIcon.textContent = '⏸';
-            playPauseBtn.classList.add('playing');
-            isPlaying = true;
-        }
+        bgMusic.play();
+        playIcon.textContent = '⏸';
+        playPauseBtn.classList.add('playing');
+        isPlaying = true;
+        audioUnlocked = true;
     }
 
     function prevTrack() {
         currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
         loadTrack(currentTrack);
-        if (userInteracted) {
-            bgMusic.muted = false;
-            bgMusic.play();
-            playIcon.textContent = '⏸';
-            playPauseBtn.classList.add('playing');
-            isPlaying = true;
-        }
+        bgMusic.play();
+        playIcon.textContent = '⏸';
+        playPauseBtn.classList.add('playing');
+        isPlaying = true;
+        audioUnlocked = true;
     }
 
-    playPauseBtn.addEventListener('click', () => {
-        userInteracted = true;
-        togglePlay();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        userInteracted = true;
-        nextTrack();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        userInteracted = true;
-        prevTrack();
-    });
+    playPauseBtn.addEventListener('click', togglePlay);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
 
     bgMusic.addEventListener('ended', nextTrack);
     bgMusic.addEventListener('error', () => {
@@ -695,23 +700,38 @@
         nextTrack();
     });
 
-    // ACTIVAR SONIDO EN PRIMERA INTERACCIÓN
-    ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(evt => {
-        document.addEventListener(evt, function enableAudio() {
-            if (!userInteracted && isPlaying) {
-                bgMusic.muted = false;
-                userInteracted = true;
-                trackName.textContent = playlist[currentTrack].name;
-            }
-        }, { once: true });
+    // DESBLOQUEO AGRESIVO DE AUDIO - CUALQUIER INTERACCIÓN
+    const unlockAudio = () => {
+        if (!audioUnlocked) {
+            bgMusic.muted = false;
+            bgMusic.play().then(() => {
+                audioUnlocked = true;
+                playIcon.textContent = '⏸';
+                playPauseBtn.classList.add('playing');
+                isPlaying = true;
+            }).catch(e => {});
+        }
+    };
+
+    ['click', 'touchstart', 'keydown', 'scroll', 'mousemove', 'wheel'].forEach(evt => {
+        document.addEventListener(evt, unlockAudio, { once: false });
     });
 
-    // INICIAR AL CARGAR LA PÁGINA
-    document.addEventListener('DOMContentLoaded', function() {
+    // INICIAR AL CARGAR LA PÁGINA - INTENTO AGRESIVO
+    window.addEventListener('load', function() {
         loadTrack(currentTrack);
-        // Intenta reproducir con sonido directo
-        playMusic();
+        // Intenta reproducir inmediatamente
+        setTimeout(() => {
+            forcePlay();
+        }, 100);
     });
+
+    // REINTENTA CADA SEGUNDO SI NO ESTÁ SONANDO
+    setInterval(() => {
+        if (!isPlaying && bgMusic.paused) {
+            forcePlay();
+        }
+    }, 1000);
     </script>
 </body>
 </html> 
