@@ -1,65 +1,356 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | carlos13ra</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body { font-family: sans-serif; background: #111; color: #fff; display: grid; place-items: center; height: 100vh; margin: 0; }
-    .box { background: #1a1a1a; padding: 30px; border-radius: 12px; width: 90%; max-width: 350px; }
-    input { width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 6px; background: #333; color: #fff; box-sizing: border-box; }
-    button { width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 6px; background: #FACC15; color: #000; font-weight: bold; cursor: pointer; }
-    .link { color: #FACC15; cursor: pointer; text-align: center; margin-top: 15px; font-size: 14px; }
-    h2 { text-align: center; margin-top: 0; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticate | GOJOBOT-MD™</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/qBtSZGFr/favicon.jpg">
+
+    <style>
+        :root {
+            --cyan: #00f5ff;
+            --cyan-glow: rgba(0, 245, 255, 0.4);
+            --purple: #b300ff;
+            --purple-glow: rgba(179, 0, 255, 0.3);
+            --bg-void: #050510;
+            --bg-glass: rgba(10, 10, 30, 0.6);
+            --text: #e0f7ff;
+            --text-dim: #8892b0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--bg-void);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, var(--cyan-glow) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, var(--purple-glow) 0%, transparent 50%),
+                linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0.98));
+            z-index: -1;
+        }
+    .auth-container {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            background-image: linear-gradient(var(--bg-glass), var(--bg-glass)),
+                              linear-gradient(90deg, var(--cyan), var(--purple));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            border-radius: 20px;
+            padding: 2.5rem;
+            width: 90%;
+            max-width: 420px;
+            box-shadow: 0 0 60px rgba(0, 245, 255, 0.2);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+    .brand {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    .subtitle {
+            text-align: center;
+            color: var(--text-dim);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    .input-wrapper {
+            position: relative;
+        }
+    .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--cyan-glow);
+        }
+        input {
+            width: 100%;
+            padding: 14px 14px 14px 45px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--cyan-glow);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            transition: all 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+    .checkbox-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.9rem;
+        }
+    .checkbox-row label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 500;
+        }
+        input[type="checkbox"] {
+            width: auto;
+            accent-color: var(--cyan);
+        }
+    .forgot {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    .initialize-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            border: none;
+            border-radius: 10px;
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    .initialize-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px var(--purple-glow);
+        }
+    .initialize-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    .footer-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+    .footer-text a {
+            color: var(--cyan);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    .secure-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #00ff88;
+        }
+    .error {
+            color: #ff0050;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+    .success {
+            color: #00ff88;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+    .toggle-form {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    .toggle-form button {
+            background: none;
+            border: none;
+            color: var(--cyan);
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-  <div class="box">
-    <h2 id="titulo">Iniciar Sesión</h2>
-    <input type="email" id="email" placeholder="Correo" />
-    <input type="password" id="password" placeholder="Contraseña" />
-    <button id="btn-principal">Entrar</button>
-    <div class="link" id="toggle">¿No tienes cuenta? Regístrate</div>
-  </div>
+    <div class="auth-container">
+        <h1><span class="brand">MANGUITO</span> AI</h1>
+        <p class="subtitle" id="formTitle">Authenticate</p>
 
-  <script>
-    const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        <!-- FORMULARIO LOGIN/REGISTRO -->
+        <form id="authForm">
+            <div class="form-group">
+                <label>EMAIL</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">✉</span>
+                    <input type="email" id="email" placeholder="name@example.com" required>
+                </div>
+            <div class="form-group">
+                <label>PASSWORD</label>
+                <div class="input-wrapper">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="password" placeholder="••••••••" required minlength="6">
+                </div>
+            </div>
 
-    let esLogin = true;
-    const titulo = document.getElementById('titulo');
-    const btn = document.getElementById('btn-principal');
-    const toggle = document.getElementById('toggle');
+            <div class="checkbox-row" id="rememberRow">
+                <label>
+                    <input type="checkbox" id="remember">
+                    Remember me
+                </label>
+                <a href="#" class="forgot" id="forgotLink">Forgot password?</a>
+            </div>
 
-    toggle.onclick = () => {
-      esLogin = !esLogin;
-      titulo.textContent = esLogin ? 'Iniciar Sesión' : 'Registrarse';
-      btn.textContent = esLogin ? 'Entrar' : 'Crear cuenta';
-      toggle.textContent = esLogin ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Inicia sesión';
-    };
+            <button type="submit" class="initialize-btn" id="submitBtn">INITIALIZE →</button>
+            <div id="authMsg"></div>
+        </form>
 
-    btn.onclick = async () => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      if (!email || !password) return alert('Completa todo bro');
+        <p class="toggle-form">
+            <span id="toggleText">Don't have an account?</span>
+            <button type="button" id="toggleBtn">Sign Up</button>
+        </p>
 
-      if (esLogin) {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) return alert('Error: ' + error.message);
-        window.location.href = 'perfil.html';
-      } else {
-        const { error } = await supabase.auth.signUp({ email, password });
-        if (error) return alert('Error: ' + error.message);
-        alert('Cuenta creada. Revisa tu correo para confirmar y luego inicia sesión.');
-      }
-    };
+        <p class="footer-text">
+            Need help? <a href="https://wa.me/595987467408?text=SOLICITO%20ACCESO%20DASHBOARD" target="_blank">Contact admin</a>
+        </p>
+        <div class="secure-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            Powered by Supabase Auth
+        </div>
+    </div>
 
-    // Si ya está logueado, mandar a perfil
-    supabase.auth.onAuthStateChange((event, session) => {
-      if (session) window.location.href = 'perfil.html';
-    });
-  </script>
+    <script>
+        // === SUPABASE CONFIG ===
+        const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const authForm = document.getElementById('authForm');
+        const authMsg = document.getElementById('authMsg');
+        const submitBtn = document.getElementById('submitBtn');
+        const toggleBtn = document.getElementById('toggleBtn');
+        const toggleText = document.getElementById('toggleText');
+        const formTitle = document.getElementById('formTitle');
+        const forgotLink = document.getElementById('forgotLink');
+        const rememberRow = document.getElementById('rememberRow');
+
+        let isLogin = true;
+
+        // SI YA ESTÁ LOGUEADO, IR AL INDEX
+        supabase.auth.getSession().then(({ data: { session } }) => {
+            if (session) window.location.href = '/';
+        });
+
+        // TOGGLE LOGIN/SIGNUP
+        toggleBtn.addEventListener('click', () => {
+            isLogin = !isLogin;
+            if (isLogin) {
+                formTitle.textContent = 'Authenticate';
+                submitBtn.textContent = 'INITIALIZE →';
+                toggleText.textContent = "Don't have an account?";
+                toggleBtn.textContent = 'Sign Up';
+                rememberRow.style.display = 'flex';
+            } else {
+                formTitle.textContent = 'Create Account';
+                submitBtn.textContent = 'SIGN UP →';
+                toggleText.textContent = 'Already have an account?';
+                toggleBtn.textContent = 'Login';
+                rememberRow.style.display = 'none';
+            }
+            authMsg.innerHTML = '';
+        });
+
+        // LOGIN / SIGNUP
+        authForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'LOADING...';
+            authMsg.innerHTML = '';
+
+            if (isLogin) {
+                // LOGIN
+                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                if (error) {
+                    authMsg.innerHTML = `<p class="error">${error.message}</p>`;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'INITIALIZE →';
+                    return;
+                }
+                authMsg.innerHTML = '<p class="success">¡Acceso autorizado!</p>';
+                setTimeout(() => window.location.href = '/', 800);
+            } else {
+                // SIGNUP
+                const { data, error } = await supabase.auth.signUp({ email, password });
+                if (error) {
+                    authMsg.innerHTML = `<p class="error">${error.message}</p>`;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'SIGN UP →';
+                    return;
+                }
+                authMsg.innerHTML = '<p class="success">¡Cuenta creada! Revisa tu correo para confirmar.</p>';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'SIGN UP →';
+            }
+        });
+
+        // FORGOT PASSWORD
+        forgotLink.addEventListener('click', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            if (!email) {
+                authMsg.innerHTML = '<p class="error">Ingresa tu email primero</p>';
+                return;
+            }
+            const { error } = await supabase.auth.resetPasswordForEmail(email);
+            if (error) {
+                authMsg.innerHTML = `<p class="error">${error.message}</p>`;
+            } else {
+                authMsg.innerHTML = '<p class="success">Link de recuperación enviado</p>';
+            }
+        });
+    </script>
 </body>
-</html>
+</html> 
