@@ -329,7 +329,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🥭 VOC DASHBOARD</div>
+        <div class="logo">🥭 DASHBOARD</div>
         <a href="/index.html" class="back-btn">← VOLVER AL MENÚ</a>
     </nav>
 
@@ -348,12 +348,12 @@
 
     <div class="container">
         <div class="glass-panel">
-            <h1 id="welcomeUser">BIENVENIDO AL VOC</h1>
+            <h1 id="welcomeUser">BIENVENIDO A LA MAGIA DE MANGUITO PROGRAMS™</h1>
             <p>Panel de control de GOJOBOT-MD™. Aquí tienes toda la info, comandos y tutoriales del VOC.</p>
         </div>
 
         <div class="glass-panel">
-            <h2>📱 INFO DEL VOC</h2>
+            <h2>📱 INFO DEL BOT</h2>
             <p><strong>GOJOBOT-MD™</strong> es el bot de WhatsApp Multi-Dispositivo creado por Manguito Programs™. Versión actual: <code>v3.5.2 RTC</code></p>
             
             <div class="voc-gallery">
@@ -369,7 +369,7 @@
         </div>
 
         <div class="glass-panel">
-            <h2>🤖 COMANDOS DEL VOC</h2>
+            <h2>🤖 COMANDOS DEL BOT</h2>
             <p>Lista completa de comandos activos. Cópialos y úsalos en tu grupo:</p>
 
             <div class="category-badge">📋 PRINCIPALES</div>
@@ -518,7 +518,7 @@
                 3. El bot entrará automáticamente si el owner lo permite
             </div>
 
-            <div class="tutorial-box">
+            <div class="tutorial-bot">
                 <strong>¿Cómo crear stickers?</strong><br>
                 1. Envía una imagen/video al chat<br>
                 2. Responde a esa imagen con <code>.s</code> o <code>.sticker</code><br>
@@ -566,7 +566,7 @@
     const session = localStorage.getItem('manguito_session');
     const welcomeEl = document.getElementById('welcomeUser');
     if (welcomeEl && session) {
-        welcomeEl.textContent = `BIENVENIDO AL VOC, ${session.toUpperCase()}`;
+        welcomeEl.textContent = `BIENVENIDO AL BOT, ${session.toUpperCase()}`;
     }
 
     // REPRODUCTOR PERSISTENTE + AUTO-PLAY
