@@ -506,7 +506,7 @@
                 width="100%"
                 height="315"
                 style="max-width: 560px; border-radius: 12px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);"
-                src="https://www.youtube.com/embed/i0drU8ePFRI?si=z1IafQusVCNizbgM"
+                src="https://youtu.be/2ZgUW95M3oI?si=vZUJPSNqnDYduajS"
                 title="MusicFlow Studio"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -515,14 +515,14 @@
             </iframe>
 
             <p style="margin-top: 1.2rem; font-size: 1.1rem; color: var(--text); font-weight: 700;">
-                Dale play y siente el flow 🥭⚡
+                Dale play y siente el Flow Deja tu like y sucribete para más lanzamientos uwuu🥭⚡
             </p>
 
             <div class="links" style="justify-content: center; margin: 1.2rem 0 0; gap: 1rem;">
-                <a href="https://youtu.be/i0drU8ePFRI?si=z1IafQusVCNizbgM" target="_blank" rel="noopener" style="background: rgba(255, 0, 0, 0.2); border-color: #ff0000; font-size: 1rem; padding: 14px 28px;">
+                <a href="https://youtu.be/2ZgUW95M3oI?si=vZUJPSNqnDYduajS" target="_blank" rel="noopener" style="background: rgba(255, 0, 0, 0.2); border-color: #ff0000; font-size: 1rem; padding: 14px 28px;">
                     ▶️ VER EN YOUTUBE
                 </a>
-                <a href="https://www.youtube.com/@MusicFlowStudio" target="_blank" rel="noopener" style="background: rgba(179, 0, 255, 0.2); border-color: var(--purple); font-size: 1rem; padding: 14px 28px;">
+                <a href="https://www.youtube.com/@musicflowstudiomfs2022" target="_blank" rel="noopener" style="background: rgba(179, 0, 255, 0.2); border-color: var(--purple); font-size: 1rem; padding: 14px 28px;">
                     🔔 SUSCRÍBETE
                 </a>
             </div>
@@ -788,4 +788,46 @@
             saveState();
         }
 
-        musicChannel.onmessage = (e) => { 
+                musicChannel.onmessage = (e) => {
+            if (e.data.action === 'sync') {
+                if (e.data.track!== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing &&!isPlaying) {
+                    audio.currentTime = e.data.time;
+                    playAudio();
+                } else if (!e.data.playing && isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+            if (e.data.action === 'track') {
+                loadTrack(e.data.track);
+                if (e.data.playing) playAudio();
+            }
+        };
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+        audio.addEventListener('timeupdate', () => {
+            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+        });
+
+        window.addEventListener('load', () => {
+            loadTrack(currentTrack);
+            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+            const timeDiff = (Date.now() - lastUpdate) / 1000;
+            if (isPlaying || hasInteracted) {
+                audio.currentTime = lastTime + timeDiff;
+                setTimeout(() => playAudio(true), 100);
+            } else {
+                audio.currentTime = lastTime;
+                updateUI();
+            }
+        });
+
+        window.addEventListener('beforeunload', saveState);
+    </script>
+</body>
+</html>
