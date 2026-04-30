@@ -16,7 +16,7 @@
             --purple: #b300ff;
             --purple-glow: rgba(179, 0, 255, 0.3);
             --bg-void: #050510;
-            --bg-glass: rgba(10, 30, 0.6);
+            --bg-glass: rgba(10, 10, 30, 0.6);
             --text: #e0f7ff;
             --text-dim: #8892b0;
         }
@@ -38,10 +38,10 @@
             background:
                 radial-gradient(circle at 20% 50%, var(--cyan-glow) 0%, transparent 50%),
                 radial-gradient(circle at 80% 50%, var(--purple-glow) 0%, transparent 50%),
-                linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 16, 0.98));
+                linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0.98));
             z-index: -1;
         }
-      .auth-container {
+     .auth-container {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
             border: 2px solid transparent;
@@ -62,12 +62,12 @@
             margin-bottom: 0.5rem;
             font-weight: 900;
         }
-      .brand {
+     .brand {
             background: linear-gradient(90deg, var(--cyan), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-      .subtitle {
+     .subtitle {
             text-align: center;
             color: var(--text-dim);
             margin-bottom: 2rem;
@@ -75,7 +75,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-     .form-group {
+    .form-group {
             margin-bottom: 1.2rem;
         }
         label {
@@ -87,10 +87,10 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-      .input-wrapper {
+     .input-wrapper {
             position: relative;
         }
-      .input-icon {
+     .input-icon {
             position: absolute;
             left: 14px;
             top: 50%;
@@ -100,7 +100,7 @@
         input {
             width: 100%;
             padding: 14px 14px 14px 45px;
-            background: rgba(0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.4);
             border: 1px solid var(--cyan-glow);
             border-radius: 10px;
             color: var(--text);
@@ -113,14 +113,14 @@
             border-color: var(--cyan);
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-      .checkbox-row {
+     .checkbox-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin: 1rem 0 1.5rem;
             font-size: 0.9rem;
         }
-      .checkbox-row label {
+     .checkbox-row label {
             display: flex;
             align-items: center;
             gap: 8px;
@@ -134,12 +134,12 @@
             width: auto;
             accent-color: var(--cyan);
         }
-      .forgot {
+     .forgot {
             color: var(--cyan);
             text-decoration: none;
             font-weight: 700;
         }
-      .initialize-btn {
+     .initialize-btn {
             width: 100%;
             padding: 16px;
             background: linear-gradient(90deg, var(--cyan), var(--purple));
@@ -154,22 +154,22 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-      .initialize-btn:hover {
+     .initialize-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px var(--purple-glow);
         }
-      .footer-text {
+     .footer-text {
             text-align: center;
             margin-top: 1.5rem;
             font-size: 0.85rem;
             color: var(--text-dim);
         }
-      .footer-text a {
+     .footer-text a {
             color: var(--cyan);
             text-decoration: none;
             font-weight: 700;
         }
-      .secure-badge {
+     .secure-badge {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -178,14 +178,14 @@
             font-size: 0.8rem;
             color: #00ff88;
         }
-      .error {
+     .error {
             color: #ff0050;
             text-align: center;
             margin-top: 1rem;
             font-weight: 700;
             font-size: 0.9rem;
         }
-      .success {
+     .success {
             color: #00ff88;
             text-align: center;
             margin-top: 1rem;
@@ -279,7 +279,8 @@
             localStorage.setItem('manguito_session', found.user);
             if (remember) localStorage.setItem('manguito_remember', 'true');
 
-            setTimeout(() => window.location.href = '/dashboard.html', 1000);
+            // CAMBIO CLAVE: AHORA VA AL LOADER
+            setTimeout(() => window.location.href = '/loader.html', 1000);
         });
     </script>
 </body>
