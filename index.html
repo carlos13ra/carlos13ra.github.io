@@ -735,6 +735,18 @@ if (session && session !== 'null') {
     dashBtn.textContent = 'INICIAR SESIÓN';
 }
 
+        const dashBtnInline = document.getElementById('dashBtnInline');
+const logoutBtnInline = document.getElementById('logoutBtnInline');
+
+if (session && session !== 'null') {
+    dashBtnInline.textContent = 'ENTRAR A DASHBOARD';
+    dashBtnInline.href = '/dashboard.html';
+    logoutBtnInline.style.display = 'inline-block';
+} else {
+    dashBtnInline.textContent = 'INICIAR SESIÓN';
+    dashBtnInline.href = '/login.html';
+    logoutBtnInline.style.display = 'none';
+}
 function logout() {
     localStorage.removeItem('manguito_session');
     window.location.href = '/login.html';
