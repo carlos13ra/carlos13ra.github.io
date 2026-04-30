@@ -829,4 +829,76 @@
         }
 
         function prevTrack() {
-            currentTrack = 
+                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+        saveState();
+    }
+
+    // SINCRONIZACIÓN ENTRE PÁGINAS
+    musicChannel.onmessage = (e) => {
+        if (e.data.action === 'sync') {
+            if (e.data.track!== currentTrack) loadTrack(e.data.track);
+            if (e.data.playing &&!isPlaying) {
+                audio.currentTime = e.data.time;
+                playAudio();
+            } else if (!e.data.playing && isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                updateUI();
+            }
+        }
+        if (e.data.action === 'track') {
+            loadTrack(e.data.track);
+            if (e.data.playing) playAudio();
+        }
+    };
+
+    // EVENTOS
+    playBtn.addEventListener('click', playPause);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
+    audio.addEventListener('ended', nextTrack);
+    audio.addEventListener('timeupdate', () => {
+        if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+    });
+
+    // AUTO-PLAY AL CARGAR LA PÁGINA
+    window.addEventListener('load', () => {
+        loadTrack(currentTrack);
+
+        // Calcular tiempo transcurrido desde última página
+        const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+        const timeDiff = (Date.now() - lastUpdate) / 1000;
+
+        // Si estaba sonando O si ya interactuó antes, intenta autoplay
+        if (isPlaying || hasInteracted) {
+            audio.currentTime = lastTime + timeDiff;
+            // Intentar autoplay SIEMPRE al entrar
+            setTimeout(() => {
+                playAudio(true);
+            }, 100);
+        } else {
+            audio.currentTime = lastTime;
+            updateUI();
+        }
+    });
+
+    // GUARDAR ANTES DE SALIR
+    window.addEventListener('beforeunload', saveState);
+
+    // CSS para el toast
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(100px); }
+            10% { opacity: 1; transform: translateX(0); }
+            90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(100px); }
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+</body>
+</html>
