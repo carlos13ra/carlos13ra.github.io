@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | GOJOBOT-MD™</title>
+    <title>Dashboard VOC | GOJOBOT-MD™</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -159,17 +159,6 @@
             font-size: 0.85rem;
             border-left: 3px solid var(--purple);
         }
-       .tutorial-box {
-            background: rgba(179, 0, 255, 0.05);
-            border-left: 3px solid var(--purple);
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-        }
-       .tutorial-box strong {
-            color: var(--purple);
-            font-family: 'Orbitron', sans-serif;
-        }
        .category-badge {
             display: inline-block;
             background: linear-gradient(135deg, var(--purple), var(--cyan));
@@ -192,12 +181,23 @@
             color: var(--cyan);
             font-family: 'Orbitron', sans-serif;
         }
-        .whatsapp-link {
+       .tutorial-box {
+            background: rgba(179, 0, 255, 0.05);
+            border-left: 3px solid var(--purple);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+       .tutorial-box strong {
+            color: var(--purple);
+            font-family: 'Orbitron', sans-serif;
+        }
+       .whatsapp-link {
             color: #25D366;
             font-weight: 700;
         }
 
-        /* REPRODUCTOR FLOTANTE NEÓN - MISMO QUE INDEX */
+        /* REPRODUCTOR FLOTANTE NEÓN - TUS 3 ROLAS */
        .music-player {
             position: fixed;
             bottom: 20px;
@@ -302,7 +302,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">🥭DASHBOARD</div>
+        <div class="logo">🥭 VOC DASHBOARD</div>
         <a href="/index.html" class="back-btn">← VOLVER AL MENÚ</a>
     </nav>
 
@@ -321,13 +321,12 @@
 
     <div class="container">
         <div class="glass-panel">
-            <h1 id="welcomeUser">BIENVENIDO A LA MAGIA</h1>
+            <h1 id="welcomeUser">BIENVENIDO AL VOC</h1>
             <p>Panel de control de GOJOBOT-MD™. Aquí tienes toda la info, comandos y tutoriales del VOC.</p>
         </div>
 
-        <!-- INFO DEL VOC CON FOTOS -->
         <div class="glass-panel">
-            <h2>📱 INFO DEL BOT</h2>
+            <h2>📱 INFO DEL VOC</h2>
             <p><strong>GOJOBOT-MD™</strong> es el bot de WhatsApp Multi-Dispositivo creado por Manguito Programs™. Versión actual: <code>v3.5.2 RTC</code></p>
             
             <div class="voc-gallery">
@@ -342,9 +341,8 @@
             <p><strong>Creador:</strong> Carlos Ramírez - Manguito Programs™</p>
         </div>
 
-        <!-- COMANDOS DEL VOC -->
         <div class="glass-panel">
-            <h2>🤖 COMANDOS DEL BOT</h2>
+            <h2>🤖 COMANDOS DEL VOC</h2>
             <p>Lista completa de comandos activos. Cópialos y úsalos en tu grupo:</p>
 
             <div class="category-badge">📋 PRINCIPALES</div>
@@ -461,16 +459,4 @@
             <div class="cmd-grid">
                 <div class="cmd-card"><div class="cmd-name">.ai / .gpt</div><div class="cmd-desc">Habla con IA</div><div class="cmd-example">Ejemplo: .ai que es nodejs</div></div>
                 <div class="cmd-card"><div class="cmd-name">.dalle</div><div class="cmd-desc">Genera imágenes con IA</div><div class="cmd-example">Ejemplo: .dalle un gato astronauta</div></div>
-                <div class="cmd-card"><div class="cmd-name">.qr</div><div class="cmd-desc">Genera código QR</div><div class="cmd-example">Ejemplo: .qr hola mundo</div></div>
-                <div class="cmd-card"><div class="cmd-name">.translate / .tr</div><div class="cmd-desc">Traduce texto</div><div class="cmd-example">Ejemplo: .tr es Hello</div></div>
-                <div class="cmd-card"><div class="cmd-name">.calc</div><div class="cmd-desc">Calculadora</div><div class="cmd-example">Ejemplo: .calc 5+5*2</div></div>
-                <div class="cmd-card"><div class="cmd-name">.ss / .ssweb</div><div class="cmd-desc">Screenshot de web</div><div class="cmd-example">Ejemplo: .ss https://google.com</div></div>
-                <div class="cmd-card"><div class="cmd-name">.clima</div><div class="cmd-desc">Ver clima de ciudad</div><div class="cmd-example">Ejemplo: .clima Lima</div></div>
-                <div class="cmd-card"><div class="cmd-name">.google</div><div class="cmd-desc">Busca en Google</div><div class="cmd-example">Ejemplo: .google node js</div></div>
-                <div class="cmd-card"><div class="cmd-name">.wiki</div><div class="cmd-desc">Busca en Wikipedia</div><div class="cmd-example">Ejemplo: .wiki Perú</div></div>
-            </div>
-
-            <div class="category-badge">👑 OWNER</div>
-            <div class="cmd-grid">
-                <div class="cmd-card"><div class="cmd-name">.join</div><div class="cmd-desc">Unir bot a grupo</div><div class="cmd-example">Ejemplo: .join https://chat.whatsapp.com/...</div></div>
-                <div class="cmd-card"><div class="cmd-name">.leave</div><div class 
+                <div class="cmd-card"><div class="cmd-name">.qr</div><div class="cmd-desc">Genera código QR</div><div class="cmd-example 
