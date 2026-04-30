@@ -718,14 +718,25 @@
     </div>
 
     <script>
-        // MOSTRAR USUARIO EN NAVBAR
-        const session = localStorage.getItem('manguito_session');
-        document.getElementById('navUser').textContent = `Hola, ${session}`;
+        // MOSTRAR USUARIO Y CAMBIAR BOTÓN SEGÚN SESIÓN
+const session = localStorage.getItem('manguito_session');
+const navUser = document.getElementById('navUser');
+const dashBtn = document.getElementById('dashBtn');
 
-        function logout() {
-            localStorage.removeItem('manguito_session');
-            window.location.href = '/login.html';
-        }
+if (session && session !== 'null') {
+    navUser.textContent = `Hola, ${session}`;
+    dashBtn.href = '/dashboard.html';
+    dashBtn.textContent = 'ENTRAR A DASHBOARD';
+} else {
+    navUser.style.display = 'none';
+    dashBtn.href = '/login.html';
+    dashBtn.textContent = 'INICIAR SESIÓN';
+}
+
+function logout() {
+    localStorage.removeItem('manguito_session');
+    window.location.href = '/login.html';
+}
 
         // REPRODUCTOR PERSISTENTE + AUTO-PLAY
         const audio = document.getElementById('bgMusic');
