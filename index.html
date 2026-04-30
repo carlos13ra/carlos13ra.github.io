@@ -54,7 +54,7 @@
         }
 
         /* NAVBAR SIMPLE - SOLO USUARIO Y SALIR */
-      .top-navbar {
+     .top-navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -65,7 +65,7 @@
             z-index: 1000;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
         }
-      .nav-container {
+     .nav-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 1rem 2rem;
@@ -73,7 +73,7 @@
             justify-content: space-between;
             align-items: center;
         }
-      .nav-logo {
+     .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.3rem;
@@ -81,12 +81,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-      .nav-buttons {
+     .nav-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-      .nav-btn {
+     .nav-btn {
             padding: 10px 20px;
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid var(--cyan);
@@ -100,25 +100,25 @@
             text-transform: uppercase;
             cursor: pointer;
         }
-      .nav-btn:hover {
+     .nav-btn:hover {
             background: var(--cyan);
             color: #000;
-            box-shadow: 0 0 20px var(--cyan-glow);
+            box-shadow: 0 20px var(--cyan-glow);
         }
-      .nav-user {
+     .nav-user {
             color: var(--cyan);
             font-weight: 700;
         }
 
         /* BOTÓN DASHBOARD AL LADO DEL TÍTULO */
-      .title-dash-container {
+     .title-dash-container {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
-      .dash-btn-inline {
+     .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             border: none;
@@ -132,7 +132,7 @@
             box-shadow: 0 0 30px var(--purple-glow);
             display: inline-block;
         }
-      .dash-btn-inline:hover {
+     .dash-btn-inline:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
@@ -190,7 +190,7 @@
             50% { background-position: 100% 100%; transform: translateZ(50px); }
         }
 
-      .scanlines {
+     .scanlines {
             position: fixed;
             top: 0;
             left: 0;
@@ -212,14 +212,14 @@
             100% { transform: translateY(10px); }
         }
 
-      .container {
+     .container {
             padding: 3rem 2rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
 
-      .glass-panel {
+     .glass-panel {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--cyan-glow);
@@ -229,16 +229,16 @@
             box-shadow:
                 0 0 40px var(--cyan-glow),
                 inset 0 0 20px rgba(0, 245, 255, 0.05),
-                0 20px 60px rgba(0, 0, 0, 0.5);
+                0 20px 60px rgba(0, 0, 0.5);
             animation: pulse-glow 4s ease-in-out infinite;
         }
 
         @keyframes pulse-glow {
             0%, 100% { box-shadow: 0 0 40px var(--cyan-glow), inset 0 0 20px rgba(0, 245, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.5); }
-            50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0, 0.6); }
+            50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0.6); }
         }
 
-      .banner {
+     .banner {
             width: 100%;
             max-height: 280px;
             object-fit: cover;
@@ -248,10 +248,10 @@
             box-shadow:
                 0 0 40px var(--cyan-glow),
                 0 0 80px var(--purple-glow),
-                0 20px 40px rgba(0, 0, 0, 0.6);
+                0 20px 40px rgba(0, 0, 0.6);
             transition: all 0.4s ease;
         }
-      .banner:hover {
+     .banner:hover {
             transform: scale(1.02) rotateX(2deg) rotateY(-2deg);
             box-shadow:
                 0 0 60px var(--cyan-glow),
@@ -324,10 +324,10 @@
 
         a:hover {
             color: #fff;
-            text-shadow: 0 0 15px var(--cyan);
+            text-shadow: 0 15px var(--cyan);
         }
 
-      .badge {
+     .badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             padding: 10px 18px;
@@ -348,14 +348,14 @@
             50% { transform: translateY(-5px); }
         }
 
-      .links {
+     .links {
             margin: 2rem 0;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-      .links a {
+     .links a {
             background: rgba(0, 245, 255, 0.1);
             padding: 14px 24px;
             border-radius: 12px;
@@ -369,7 +369,7 @@
             overflow: hidden;
         }
 
-      .links a::before {
+     .links a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -380,9 +380,9 @@
             transition: left 0.5s;
         }
 
-      .links a:hover::before { left: 100%; }
+     .links a:hover::before { left: 100%; }
 
-      .links a:hover {
+     .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-3px);
@@ -390,18 +390,18 @@
             text-shadow: none;
         }
 
-      .whatsapp-btn {
+     .whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-      .whatsapp-btn:hover {
+     .whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
         }
 
-      .tiktok-btn {
+     .tiktok-btn {
             background: rgba(0, 0, 0, 0.3)!important;
             border-color: #ff0050!important;
             display: flex;
@@ -409,13 +409,13 @@
             gap: 10px;
         }
 
-      .tiktok-btn:hover {
+     .tiktok-btn:hover {
             background: #ff0050!important;
             color: #fff!important;
             box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
         }
 
-      .tiktok-avatar {
+     .tiktok-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -430,7 +430,7 @@
             50% { box-shadow: 0 0 35px rgba(255, 0, 80, 0.9); }
         }
 
-      .tiktok-highlight {
+     .tiktok-highlight {
             background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
             border: 2px solid #ff0050;
             text-align: center;
@@ -478,7 +478,7 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-      .footer {
+     .footer {
             font-size: 0.9rem;
             color: var(--text-dim);
             text-align: center;
@@ -486,10 +486,10 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-      .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+     .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
         /* REPRODUCTOR CON TUS 3 ROLAS */
-      .music-player {
+     .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -514,7 +514,7 @@
             50% { transform: translateY(-5px); }
         }
 
-      .music-btn {
+     .music-btn {
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -530,20 +530,20 @@
             transition: all 0.3s ease;
         }
 
-      .music-btn:hover {
+     .music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-      .play-btn-music {
+     .play-btn-music {
             width: 42px;
             height: 42px;
             font-size: 1rem;
         }
 
-      .play-btn-music.playing {
+     .play-btn-music.playing {
             animation: music-spin 4s linear infinite;
         }
 
@@ -552,12 +552,12 @@
             to { transform: rotate(360deg); }
         }
 
-      .track-info {
+     .track-info {
             font-family: 'Orbitron', sans-serif;
             max-width: 100px;
         }
 
-      .track-name {
+     .track-name {
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--cyan);
@@ -575,25 +575,25 @@
         }
 
         @media (max-width: 600px) {
-         .container { padding: 2rem 1rem; }
-         .glass-panel { padding: 1.5rem; }
-         .links { flex-direction: column; }
-         .links a { width: 100%; justify-content: center; }
+        .container { padding: 2rem 1rem; }
+        .glass-panel { padding: 1.5rem; }
+        .links { flex-direction: column; }
+        .links a { width: 100%; justify-content: center; }
             body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-         .music-player {
+        .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-         .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-         .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-         .track-info { max-width: 70px; }
-         .track-name { font-size: 0.55rem; }
-         .tiktok-avatar { width: 50px; height: 50px; }
-         .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-         .nav-buttons { flex-wrap: wrap; justify-content: center; }
-         .title-dash-container { flex-direction: column; align-items: flex-start; }
+        .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+        .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+        .track-info { max-width: 70px; }
+        .track-name { font-size: 0.55rem; }
+        .tiktok-avatar { width: 50px; height: 50px; }
+        .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
+        .nav-buttons { flex-wrap: wrap; justify-content: center; }
+        .title-dash-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -725,7 +725,7 @@
             window.location.href = '/login.html';
         }
 
-        // REPRODUCTOR CON TUS 3 CANCIONES
+        // REPRODUCTOR PERSISTENTE + AUTO-PLAY
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -739,45 +739,94 @@
             { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }
         ];
 
-        let currentTrack = 0;
-        let isPlaying = false;
+        const musicChannel = new BroadcastChannel('manguito_music');
+        let currentTrack = parseInt(localStorage.getItem('manguito_track')) || 0;
+        let isPlaying = localStorage.getItem('manguito_playing') === 'true';
+        let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
+        let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
+
+        // MARCAR QUE EL USER YA INTERACTUÓ 1 VEZ
+        document.addEventListener('click', () => {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                localStorage.setItem('manguito_interacted', 'true');
+            }
+        }, { once: true });
+
+        function saveState() {
+            localStorage.setItem('manguito_track', currentTrack);
+            localStorage.setItem('manguito_playing', isPlaying);
+            localStorage.setItem('manguito_time', audio.currentTime);
+            localStorage.setItem('manguito_last_update', Date.now());
+        }
 
         function loadTrack(index) {
+            currentTrack = index;
             audio.src = playlist[index].url;
             trackName.textContent = playlist[index].name;
+        }
+
+        function updateUI() {
+            if (isPlaying) {
+                playIcon.textContent = '⏸';
+                playBtn.classList.add('playing');
+            } else {
+                playIcon.textContent = '▶';
+                playBtn.classList.remove('playing');
+            }
+        }
+
+        function playAudio(force = false) {
+            const playPromise = audio.play();
+            if (playPromise!== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updateUI();
+                    saveState();
+                }).catch(() => {
+                    // Si falla autoplay, marcar para que suene al primer click
+                    isPlaying = false;
+                    updateUI();
+                    if (force &&!hasInteracted) {
+                        showAutoplayToast();
+                    }
+                });
+            }
+        }
+
+        function showAutoplayToast() {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed; top: 90px; right: 20px; z-index: 10000;
+                background: rgba(0, 245, 255, 0.2); backdrop-filter: blur(20px);
+                border: 2px solid var(--cyan); border-radius: 12px; padding: 12px 18px;
+                font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan);
+                box-shadow: 0 0 30px var(--cyan-glow); animation: fadeInOut 3s forwards;
+            `;
+            toast.textContent = '▶ TOCA CUALQUIER LADO PARA ACTIVAR MÚSICA';
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
         }
 
         function playPause() {
             if (isPlaying) {
                 audio.pause();
-                playIcon.textContent = '▶';
-                playBtn.classList.remove('playing');
+                isPlaying = false;
             } else {
-                audio.play().catch(e => console.log('Autoplay bloqueado:', e));
-                playIcon.textContent = '⏸';
-                playBtn.classList.add('playing');
+                playAudio(true);
             }
-            isPlaying =!isPlaying;
+            updateUI();
+            saveState();
+            musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
         }
 
         function nextTrack() {
             currentTrack = (currentTrack + 1) % playlist.length;
             loadTrack(currentTrack);
-            if (isPlaying) audio.play().catch(e => console.log('Error:', e));
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
         }
 
         function prevTrack() {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) audio.play().catch(e => console.log('Error:', e));
-        }
-
-        playBtn.addEventListener('click', playPause);
-        nextBtn.addEventListener('click', nextTrack);
-        prevBtn.addEventListener('click', prevTrack);
-        audio.addEventListener('ended', nextTrack);
-
-        loadTrack(0);
-    </script>
-</body>
-</html> 
+            currentTrack = 
