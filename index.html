@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <script>
-        // SOLO LA PRIMERA VEZ MANDA A LOGIN, SI YA ESTÁ LOGUEADO SE QUEDA AQUÍ
-        if (!localStorage.getItem('manguito_session')) {
-            window.location.href = '/login.html';
-        }
+    // Solo bloquea dashboard, no la home
+    if (window.location.pathname.includes('dashboard') &&!localStorage.getItem('manguito_session')) {
+        window.location.href = '/login.html';
+    }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
