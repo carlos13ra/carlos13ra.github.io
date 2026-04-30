@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authenticate | GOJOBOT-MD™</title>
+    <title>Authenticate | MANGUITO AI</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
@@ -37,7 +37,7 @@
                 linear-gradient(rgba(5, 5, 16, 0.95), rgba(5, 5, 16, 0.98));
             z-index: -1;
         }
-    .auth-container {
+        .auth-container {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
             border: 2px solid transparent;
@@ -58,12 +58,12 @@
             margin-bottom: 0.5rem;
             font-weight: 900;
         }
-    .brand {
+        .brand {
             background: linear-gradient(90deg, var(--cyan), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    .subtitle {
+        .subtitle {
             text-align: center;
             color: var(--text-dim);
             margin-bottom: 2rem;
@@ -71,7 +71,7 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
-    .form-group {
+        .form-group {
             margin-bottom: 1.2rem;
         }
         label {
@@ -83,10 +83,10 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-    .input-wrapper {
+        .input-wrapper {
             position: relative;
         }
-    .input-icon {
+        .input-icon {
             position: absolute;
             left: 14px;
             top: 50%;
@@ -109,7 +109,7 @@
             border-color: var(--cyan);
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-    .initialize-btn {
+        .initialize-btn {
             width: 100%;
             padding: 16px;
             background: linear-gradient(90deg, var(--cyan), var(--purple));
@@ -124,15 +124,15 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-    .initialize-btn:hover:not(:disabled) {
+        .initialize-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px var(--purple-glow);
         }
-    .initialize-btn:disabled {
+        .initialize-btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-    .error {
+        .error {
             color: #ff0050;
             text-align: center;
             margin-top: 1rem;
@@ -140,19 +140,19 @@
             font-size: 0.9rem;
             word-break: break-word;
         }
-    .success {
+        .success {
             color: #00ff88;
             text-align: center;
             margin-top: 1rem;
             font-weight: 700;
             font-size: 0.9rem;
         }
-    .toggle-form {
+        .toggle-form {
             text-align: center;
             margin-top: 1rem;
             font-size: 0.9rem;
         }
-    .toggle-form button {
+        .toggle-form button {
             background: none;
             border: none;
             color: var(--cyan);
@@ -160,7 +160,7 @@
             cursor: pointer;
             text-decoration: underline;
         }
-    .debug {
+        .debug {
             background: rgba(0,0,0,0.5);
             padding: 10px;
             margin-top: 1rem;
@@ -183,6 +183,7 @@
                     <span class="input-icon">✉</span>
                     <input type="email" id="email" placeholder="name@example.com" required>
                 </div>
+            </div>
             <div class="form-group">
                 <label>PASSWORD</label>
                 <div class="input-wrapper">
@@ -193,7 +194,7 @@
 
             <button type="submit" class="initialize-btn" id="submitBtn">INITIALIZE →</button>
             <div id="authMsg"></div>
-            <div id="debugMsg" class="debug" style="display:none;"></div>
+            <div id="debugMsg" class="debug"></div>
         </form>
 
         <p class="toggle-form">
@@ -203,15 +204,11 @@
     </div>
 
     <script>
-        // VERIFICAR QUE SUPABASE CARGÓ
-        if (!window.supabase) {
-            document.getElementById('authMsg').innerHTML = '<p class="error">Error: Supabase no cargó. Revisa tu internet.</p>';
-        }
-
+        // === CONFIGURACION SUPABASE ===
+        // OJO: Usa la ANON KEY de Project Settings > API, NO la publishable
         const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
-        const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+        const SUPABASE_KEY = 'PON_AQUI_TU_ANON_KEY_DE_PROJECT_SETTINGS_API';
+        
         const authForm = document.getElementById('authForm');
         const authMsg = document.getElementById('authMsg');
         const debugMsg = document.getElementById('debugMsg');
@@ -221,28 +218,40 @@
         const formTitle = document.getElementById('formTitle');
 
         let isLogin = true;
+        let supabase;
 
         function showDebug(msg) {
-            debugMsg.style.display = 'block';
             debugMsg.textContent = 'DEBUG: ' + msg;
             console.log('DEBUG:', msg);
         }
 
-        showDebug('Supabase iniciado: ' + SUPABASE_URL);
+        // INICIAR SUPABASE
+        try {
+            if (!window.supabase) {
+                throw new Error('Libreria de Supabase no cargó. Revisa tu internet.');
+            }
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            showDebug('Supabase iniciado OK');
+        } catch (e) {
+            showDebug('ERROR CRITICO: ' + e.message);
+            authMsg.innerHTML = '<p class="error">Error cargando Supabase: ' + e.message + '</p>';
+        }
 
         // SI YA ESTÁ LOGUEADO, IR AL DASHBOARD
-        supabase.auth.getSession().then(({ data: { session }, error }) => {
-            if (error) {
-                showDebug('Error getSession: ' + error.message);
-                return;
-            }
-            if (session) {
-                showDebug('Ya hay sesión, redirigiendo...');
-                window.location.href = '/dashboard.html';
-            } else {
-                showDebug('Sin sesión activa');
-            }
-        });
+        if (supabase) {
+            supabase.auth.getSession().then(({ data: { session }, error }) => {
+                if (error) {
+                    showDebug('Error getSession: ' + error.message);
+                    return;
+                }
+                if (session) {
+                    showDebug('Ya hay sesión, redirigiendo...');
+                    window.location.href = '/dashboard.html';
+                } else {
+                    showDebug('Sin sesión activa. Listo para login');
+                }
+            });
+        }
 
         // TOGGLE LOGIN/SIGNUP
         toggleBtn.addEventListener('click', () => {
@@ -252,19 +261,22 @@
             toggleText.textContent = isLogin ? "Don't have an account?" : 'Already have an account?';
             toggleBtn.textContent = isLogin ? 'Sign Up' : 'Login';
             authMsg.innerHTML = '';
-            debugMsg.style.display = 'none';
         });
 
         // LOGIN / SIGNUP
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            if (!supabase) {
+                authMsg.innerHTML = '<p class="error">Supabase no inició. Recarga la página.</p>';
+                return;
+            }
+
             const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'LOADING...';
             authMsg.innerHTML = '';
-            debugMsg.style.display = 'none';
 
             try {
                 showDebug('Intentando ' + (isLogin ? 'login' : 'signup') + ' con: ' + email);
@@ -276,40 +288,31 @@
                     authMsg.innerHTML = '<p class="success">¡Acceso autorizado! Redirigiendo...</p>';
                     setTimeout(() => window.location.href = '/dashboard.html', 1000);
                 } else {
-                    const { data, error } = await supabase.auth.signUp({ 
-                        email, 
-                        password,
-                        options: {
-                            emailRedirectTo: window.location.origin + '/dashboard.html'
-                        }
-                    });
+                    const { data, error } = await supabase.auth.signUp({ email, password });
                     if (error) throw error;
                     
-                    showDebug('Signup respuesta: ' + JSON.stringify(data));
+                    showDebug('Signup OK. User creado: ' + data.user?.id);
                     
                     if (data.user && data.user.identities && data.user.identities.length === 0) {
                         throw new Error('Este email ya está registrado. Usa Login.');
                     }
                     
                     authMsg.innerHTML = '<p class="success">¡Cuenta creada! Iniciando sesión...</p>';
-                    showDebug('Intentando auto-login...');
                     
                     // Auto login después de signup
-                    setTimeout(async () => {
-                        const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
-                        if (loginError) {
-                            showDebug('Auto-login falló: ' + loginError.message);
-                            authMsg.innerHTML = '<p class="error">Cuenta creada. Ahora haz Login manual</p>';
-                            isLogin = true;
-                            formTitle.textContent = 'Authenticate';
-                            submitBtn.textContent = 'INITIALIZE →';
-                            toggleText.textContent = "Don't have an account?";
-                            toggleBtn.textContent = 'Sign Up';
-                        } else {
-                            showDebug('Auto-login exitoso');
-                            window.location.href = '/dashboard.html';
-                        }
-                    }, 1500);
+                    const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+                    if (loginError) {
+                        showDebug('Auto-login falló: ' + loginError.message);
+                        authMsg.innerHTML = '<p class="error">Cuenta creada. Ahora haz Login manual</p>';
+                        isLogin = true;
+                        formTitle.textContent = 'Authenticate';
+                        submitBtn.textContent = 'INITIALIZE →';
+                        toggleText.textContent = "Don't have an account?";
+                        toggleBtn.textContent = 'Sign Up';
+                    } else {
+                        showDebug('Auto-login exitoso. Redirigiendo...');
+                        setTimeout(() => window.location.href = '/dashboard.html', 1000);
+                    }
                 }
             } catch (error) {
                 console.error('ERROR COMPLETO:', error);
@@ -317,8 +320,8 @@
                 if (msg.includes('Invalid login credentials')) msg = 'Email o contraseña incorrectos';
                 if (msg.includes('Email not confirmed')) msg = 'DESACTIVA "Confirm email" en Supabase → Auth → Providers';
                 if (msg.includes('User already registered')) msg = 'Este email ya existe. Usa Login';
-                if (msg.includes('Failed to fetch')) msg = 'No hay conexión con Supabase. Revisa tu internet o la URL';
-                if (msg.includes('network')) msg = 'Error de red. Revisa tu conexión';
+                if (msg.includes('Failed to fetch')) msg = 'No hay conexión con Supabase. Revisa URL/KEY o si el proyecto está pausado';
+                if (msg.includes('Invalid API key')) msg = 'API Key incorrecta. Usa la ANON KEY de Project Settings > API';
                 
                 authMsg.innerHTML = `<p class="error">${msg}</p>`;
                 showDebug('ERROR: ' + error.message);
