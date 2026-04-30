@@ -493,3 +493,242 @@
                 <div class="cmd-card"><div class="cmd-name">.calc</div><div class="cmd-desc">Calculadora</div><div class="cmd-example">Ejemplo: .calc 5+5*2</div></div>
                 <div class="cmd-card"><div class="cmd-name">.ss / .ssweb</div><div class="cmd-desc">Screenshot de web</div><div class="cmd-example">Ejemplo: .ss https://google.com</div></div>
                 <div class="cmd-card"><div class="cmd-name">.clima</div><div class="cmd-desc">Ver clima de ciudad</div><div class="cmd-example"> 
+                <div class="cmd-card"><div class="cmd-name">.google</div><div class="cmd-desc">Busca en Google</div><div class="cmd-example">Ejemplo:.google node js</div></div>
+                <div class="cmd-card"><div class="cmd-name">.wiki</div><div class="cmd-desc">Busca en Wikipedia</div><div class="cmd-example">Ejemplo:.wiki Perú</div></div>
+            </div>
+
+            <div class="category-badge">👑 OWNER</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.join</div><div class="cmd-desc">Unir bot a grupo</div><div class="cmd-example">Ejemplo:.join https://chat.whatsapp.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.leave</div><div class="cmd-desc">Sacar bot del grupo</div><div class="cmd-example">Ejemplo:.leave</div></div>
+                <div class="cmd-card"><div class="cmd-name">.bc /.broadcast</div><div class="cmd-desc">Mensaje a todos los chats</div><div class="cmd-example">Ejemplo:.bc hola a todos</div></div>
+                <div class="cmd-card"><div class="cmd-name">.update</div><div class="cmd-desc">Actualiza el bot desde GitHub</div><div class="cmd-example">Ejemplo:.update</div></div>
+                <div class="cmd-card"><div class="cmd-name">.restart</div><div class="cmd-desc">Reinicia el bot</div><div class="cmd-example">Ejemplo:.restart</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setprefix</div><div class="cmd-desc">Cambia el prefijo del bot</div><div class="cmd-example">Ejemplo:.setprefix!</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setname</div><div class="cmd-desc">Cambia nombre del bot</div><div class="cmd-example">Ejemplo:.setname GOJOBOT</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setppbot</div><div class="cmd-desc">Cambia foto de perfil del bot</div><div class="cmd-example">Ejemplo: responde a imagen con.setppbot</div></div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📚 TUTORIALES</h2>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo agregar el bot a mi grupo?</strong><br>
+                1. Habla al privado con el bot<br>
+                2. Usa <code>.join [link de tu grupo]</code><br>
+                3. El bot entrará automáticamente si el owner lo permite
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo crear stickers?</strong><br>
+                1. Envía una imagen/video al chat<br>
+                2. Responde a esa imagen con <code>.s</code> o <code>.sticker</code><br>
+                3. Listo, el bot te devuelve el sticker<br>
+                Tip: Usa <code>.wm Texto|Autor</code> para personalizar la marca de agua
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo ganar coins?</strong><br>
+                1. <code>.daily</code> - Recompensa diaria gratis<br>
+                2. <code>.work</code> - Trabaja cada 10 min<br>
+                3. <code>.mine</code> - Mina recursos<br>
+                4. <code>.crime</code> - Roba pero con riesgo de multa<br>
+                5. <code>.gamble cantidad</code> - Apuesta tus coins
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo jugar RPG?</strong><br>
+                1. <code>.adventure</code> - Gana XP y loot<br>
+                2. <code>.profile</code> - Ve tus stats<br>
+                3. <code>.levelup</code> - Sube de nivel cuando tengas XP suficiente<br>
+                4. <code>.hunt</code> - Caza monstruos por items<br>
+                5. <code>.duel @user</code> - Pelea contra otros jugadores
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📞 CONTACTO Y SOPORTE</h2>
+            <p><strong>Creador:</strong> Carlos Ramírez - Manguito Programs™</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/595987467408" class="whatsapp-link">+595 987 467408</a></p>
+            <p><strong>Grupo Oficial:</strong> <a href="https://chat.whatsapp.com/HTyC9hiUqmL7Sb1vDfoWt2" class="whatsapp-link">Unirse al grupo</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/carlos13ra" class="whatsapp-link">github.com/carlos13ra</a></p>
+            <p><strong>TikTok:</strong> <a href="https://tiktok.com/@lrbat4" class="whatsapp-link">@lrbat4</a></p>
+        </div>
+
+        <hr>
+        <footer class="footer">
+            <p>© 2026 MANGUITO PROGRAMS™ // ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <script>
+        // === SUPABASE LOGIN ===
+        const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            const welcomeEl = document.getElementById('welcomeUser');
+            const emailEl = document.getElementById('userEmail');
+
+            if (!user) {
+                // No logueado → Pa' login
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // Cargar perfil
+            const { data: perfil } = await supabase.from('profiles').select('*').eq('id', user.id).single();
+
+            if (!perfil) {
+                // Sin perfil → Pa' perfil.html
+                window.location.href = 'perfil.html';
+                return;
+            }
+
+            // Mostrar datos
+            welcomeEl.textContent = `BIENVENIDO, ${perfil.apodo.toUpperCase()}`;
+            emailEl.textContent = user.email;
+        }
+
+        checkUser();
+
+        // === REPRODUCTOR PERSISTENTE ===
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const trackName = document.getElementById('trackName');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const playlist = [
+            { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
+            { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
+            { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }
+        ];
+
+        const musicChannel = new BroadcastChannel('manguito_music');
+        let currentTrack = parseInt(localStorage.getItem('manguito_track')) || 0;
+        let isPlaying = localStorage.getItem('manguito_playing') === 'true';
+        let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
+        let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
+
+        document.addEventListener('click', () => {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                localStorage.setItem('manguito_interacted', 'true');
+            }
+        }, { once: true });
+
+        function saveState() {
+            localStorage.setItem('manguito_track', currentTrack);
+            localStorage.setItem('manguito_playing', isPlaying);
+            localStorage.setItem('manguito_time', audio.currentTime);
+            localStorage.setItem('manguito_last_update', Date.now());
+        }
+
+        function loadTrack(index) {
+            currentTrack = index;
+            audio.src = playlist[index].url;
+            trackName.textContent = playlist[index].name;
+        }
+
+        function updateUI() {
+            if (isPlaying) {
+                playIcon.textContent = '⏸';
+                playBtn.classList.add('playing');
+            } else {
+                playIcon.textContent = '▶';
+                playBtn.classList.remove('playing');
+            }
+        }
+
+        function playAudio(force = false) {
+            const playPromise = audio.play();
+            if (playPromise!== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updateUI();
+                    saveState();
+                }).catch(() => {
+                    isPlaying = false;
+                    updateUI();
+                });
+            }
+        }
+
+        function playPause() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+            } else {
+                playAudio(true);
+            }
+            updateUI();
+            saveState();
+            musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        musicChannel.onmessage = (e) => {
+            if (e.data.action === 'sync') {
+                if (e.data.track!== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing &&!isPlaying) {
+                    audio.currentTime = e.data.time;
+                    playAudio();
+                } else if (!e.data.playing && isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+            if (e.data.action === 'track') {
+                loadTrack(e.data.track);
+                if (e.data.playing) playAudio();
+            }
+        };
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+        audio.addEventListener('timeupdate', () => {
+            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+        });
+
+        window.addEventListener('load', () => {
+            loadTrack(currentTrack);
+            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+            const timeDiff = (Date.now() - lastUpdate) / 1000;
+            if (isPlaying || hasInteracted) {
+                audio.currentTime = lastTime + timeDiff;
+                setTimeout(() => {
+                    playAudio(true);
+                }, 100);
+            } else {
+                audio.currentTime = lastTime;
+                updateUI();
+            }
+        });
+
+        window.addEventListener('beforeunload', saveState);
+    </script>
+</body>
+        </html>
