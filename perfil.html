@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Perfil | carlos13ra</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { font-family: sans-serif; background: #111; color: #fff; display: grid; place-items: center; height: 100vh; margin: 0; }
+    .box { background: #1a1a1a; padding: 30px; border-radius: 12px; width: 90%; max-width: 350px; }
+    input { width: 100%; padding: 12px; margin: 8px 0; border: none; border-radius: 6px; background: #333; color: #fff; box-sizing: border-box; }
+    button { width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 6px; background: #FACC15; color: #000; font-weight: bold; cursor: pointer; }
+    .logout { background: #ef4444; color: #fff; margin-top: 20px; }
+    h2 { text-align: center; margin-top: 0; }
+    label { font-size: 14px; color: #aaa; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Mi Perfil 🥭</h2>
+    <label>Apodo</label>
+    <input type="text" id="apodo" placeholder="Tu apodo" />
+    <label>Edad</label>
+    <input type="number" id="edad" placeholder="Tu edad" />
+    <button id="guardar">Guardar Perfil</button>
+    <button class="logout" id="logout">Cerrar Sesión</button>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    let userId = null;
+
+    // Cargar datos al entrar
+    supabase.auth.getUser().then(async ({ data: { user } }) => {
+      if (!user) return window.location.href = 'login.html';
+      userId = user.id;
+      
+      const { data } = await supabase.from('profiles').select('*').eq('id', userId).single();
+      if (data) {
+        document.getElementById('apodo').value = data.apodo || '';
+        document.getElementById('edad').value = data.edad || '';
+      }
+    });
+
+    // Guardar
+    document.getElementById('guardar').onclick = async () => {
+      const apodo = document.getElementById('apodo').value;
+      const edad = document.getElementById('edad').value;
+      
+      const { error } = await supabase.from('profiles').upsert({ 
+        id: userId, 
+        apodo: apodo, 
+        edad: edad ? parseInt(edad) : null 
+      });
+      
+      if (error) return alert('Error: ' + error.message);
+      alert('Perfil guardado 🥭');
+    };
+
+    // Logout
+    document.getElementById('logout').onclick = async () => {
+      await supabase.auth.signOut();
+      window.location.href = 'login.html';
+    };
+  </script>
+</body>
+</html> 
