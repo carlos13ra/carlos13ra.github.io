@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authenticate | GOJOBOT-MD™</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/qBtSZGFr/favicon.jpg">
-
     <style>
         :root {
             --cyan: #00f5ff;
@@ -30,7 +26,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
         }
         body::before {
             content: '';
@@ -114,32 +109,6 @@
             border-color: var(--cyan);
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-    .checkbox-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 1rem 0 1.5rem;
-            font-size: 0.9rem;
-        }
-    .checkbox-row label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 0;
-            cursor: pointer;
-            text-transform: none;
-            letter-spacing: 0;
-            font-weight: 500;
-        }
-        input[type="checkbox"] {
-            width: auto;
-            accent-color: var(--cyan);
-        }
-    .forgot {
-            color: var(--cyan);
-            text-decoration: none;
-            font-weight: 700;
-        }
     .initialize-btn {
             width: 100%;
             padding: 16px;
@@ -163,32 +132,13 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
-    .footer-text {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.85rem;
-            color: var(--text-dim);
-        }
-    .footer-text a {
-            color: var(--cyan);
-            text-decoration: none;
-            font-weight: 700;
-        }
-    .secure-badge {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 1rem;
-            font-size: 0.8rem;
-            color: #00ff88;
-        }
     .error {
             color: #ff0050;
             text-align: center;
             margin-top: 1rem;
             font-weight: 700;
             font-size: 0.9rem;
+            word-break: break-word;
         }
     .success {
             color: #00ff88;
@@ -209,6 +159,15 @@
             font-weight: 700;
             cursor: pointer;
             text-decoration: underline;
+        }
+    .debug {
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            margin-top: 1rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: #ffed4e;
+            word-break: break-all;
         }
     </style>
 </head>
@@ -232,72 +191,68 @@
                 </div>
             </div>
 
-            <div class="checkbox-row" id="rememberRow">
-                <label>
-                    <input type="checkbox" id="remember">
-                    Remember me
-                </label>
-                <a href="#" class="forgot" id="forgotLink">Forgot password?</a>
-            </div>
-
             <button type="submit" class="initialize-btn" id="submitBtn">INITIALIZE →</button>
             <div id="authMsg"></div>
+            <div id="debugMsg" class="debug" style="display:none;"></div>
         </form>
 
         <p class="toggle-form">
             <span id="toggleText">Don't have an account?</span>
             <button type="button" id="toggleBtn">Sign Up</button>
         </p>
-
-        <p class="footer-text">
-            Need help? <a href="https://wa.me/595987467408?text=SOLICITO%20ACCESO%20DASHBOARD" target="_blank">Contact admin</a>
-        </p>
-        <div class="secure-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-            Powered by Supabase Auth
-        </div>
     </div>
 
     <script>
+        // VERIFICAR QUE SUPABASE CARGÓ
+        if (!window.supabase) {
+            document.getElementById('authMsg').innerHTML = '<p class="error">Error: Supabase no cargó. Revisa tu internet.</p>';
+        }
+
         const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         const authForm = document.getElementById('authForm');
         const authMsg = document.getElementById('authMsg');
+        const debugMsg = document.getElementById('debugMsg');
         const submitBtn = document.getElementById('submitBtn');
         const toggleBtn = document.getElementById('toggleBtn');
         const toggleText = document.getElementById('toggleText');
         const formTitle = document.getElementById('formTitle');
-        const forgotLink = document.getElementById('forgotLink');
-        const rememberRow = document.getElementById('rememberRow');
 
         let isLogin = true;
 
+        function showDebug(msg) {
+            debugMsg.style.display = 'block';
+            debugMsg.textContent = 'DEBUG: ' + msg;
+            console.log('DEBUG:', msg);
+        }
+
+        showDebug('Supabase iniciado: ' + SUPABASE_URL);
+
         // SI YA ESTÁ LOGUEADO, IR AL DASHBOARD
-        supabase.auth.getSession().then(({ data: { session } }) => {
+        supabase.auth.getSession().then(({ data: { session }, error }) => {
+            if (error) {
+                showDebug('Error getSession: ' + error.message);
+                return;
+            }
             if (session) {
+                showDebug('Ya hay sesión, redirigiendo...');
                 window.location.href = '/dashboard.html';
+            } else {
+                showDebug('Sin sesión activa');
             }
         });
 
         // TOGGLE LOGIN/SIGNUP
         toggleBtn.addEventListener('click', () => {
             isLogin = !isLogin;
-            if (isLogin) {
-                formTitle.textContent = 'Authenticate';
-                submitBtn.textContent = 'INITIALIZE →';
-                toggleText.textContent = "Don't have an account?";
-                toggleBtn.textContent = 'Sign Up';
-                rememberRow.style.display = 'flex';
-            } else {
-                formTitle.textContent = 'Create Account';
-                submitBtn.textContent = 'SIGN UP →';
-                toggleText.textContent = 'Already have an account?';
-                toggleBtn.textContent = 'Login';
-                rememberRow.style.display = 'none';
-            }
+            formTitle.textContent = isLogin ? 'Authenticate' : 'Create Account';
+            submitBtn.textContent = isLogin ? 'INITIALIZE →' : 'SIGN UP →';
+            toggleText.textContent = isLogin ? "Don't have an account?" : 'Already have an account?';
+            toggleBtn.textContent = isLogin ? 'Sign Up' : 'Login';
             authMsg.innerHTML = '';
+            debugMsg.style.display = 'none';
         });
 
         // LOGIN / SIGNUP
@@ -309,13 +264,17 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'LOADING...';
             authMsg.innerHTML = '';
+            debugMsg.style.display = 'none';
 
             try {
+                showDebug('Intentando ' + (isLogin ? 'login' : 'signup') + ' con: ' + email);
+                
                 if (isLogin) {
                     const { data, error } = await supabase.auth.signInWithPassword({ email, password });
                     if (error) throw error;
-                    authMsg.innerHTML = '<p class="success">¡Acceso autorizado!</p>';
-                    setTimeout(() => window.location.href = '/dashboard.html', 500);
+                    showDebug('Login exitoso. User ID: ' + data.user.id);
+                    authMsg.innerHTML = '<p class="success">¡Acceso autorizado! Redirigiendo...</p>';
+                    setTimeout(() => window.location.href = '/dashboard.html', 1000);
                 } else {
                     const { data, error } = await supabase.auth.signUp({ 
                         email, 
@@ -326,48 +285,48 @@
                     });
                     if (error) throw error;
                     
+                    showDebug('Signup respuesta: ' + JSON.stringify(data));
+                    
                     if (data.user && data.user.identities && data.user.identities.length === 0) {
                         throw new Error('Este email ya está registrado. Usa Login.');
                     }
                     
                     authMsg.innerHTML = '<p class="success">¡Cuenta creada! Iniciando sesión...</p>';
+                    showDebug('Intentando auto-login...');
+                    
                     // Auto login después de signup
                     setTimeout(async () => {
                         const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
-                        if (!loginError) window.location.href = '/dashboard.html';
-                        else authMsg.innerHTML = '<p class="success">Cuenta creada. Ahora haz Login</p>';
-                    }, 1000);
+                        if (loginError) {
+                            showDebug('Auto-login falló: ' + loginError.message);
+                            authMsg.innerHTML = '<p class="error">Cuenta creada. Ahora haz Login manual</p>';
+                            isLogin = true;
+                            formTitle.textContent = 'Authenticate';
+                            submitBtn.textContent = 'INITIALIZE →';
+                            toggleText.textContent = "Don't have an account?";
+                            toggleBtn.textContent = 'Sign Up';
+                        } else {
+                            showDebug('Auto-login exitoso');
+                            window.location.href = '/dashboard.html';
+                        }
+                    }, 1500);
                 }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('ERROR COMPLETO:', error);
                 let msg = error.message;
                 if (msg.includes('Invalid login credentials')) msg = 'Email o contraseña incorrectos';
-                if (msg.includes('Email not confirmed')) msg = 'Desactiva "Confirm email" en Supabase';
+                if (msg.includes('Email not confirmed')) msg = 'DESACTIVA "Confirm email" en Supabase → Auth → Providers';
                 if (msg.includes('User already registered')) msg = 'Este email ya existe. Usa Login';
+                if (msg.includes('Failed to fetch')) msg = 'No hay conexión con Supabase. Revisa tu internet o la URL';
+                if (msg.includes('network')) msg = 'Error de red. Revisa tu conexión';
+                
                 authMsg.innerHTML = `<p class="error">${msg}</p>`;
+                showDebug('ERROR: ' + error.message);
             }
             
             submitBtn.disabled = false;
             submitBtn.textContent = isLogin ? 'INITIALIZE →' : 'SIGN UP →';
         });
-
-        // FORGOT PASSWORD
-        forgotLink.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value.trim();
-            if (!email) {
-                authMsg.innerHTML = '<p class="error">Ingresa tu email primero</p>';
-                return;
-            }
-            const { error } = await supabase.auth.resetPasswordForEmail(email, {
-                redirectTo: window.location.origin + '/login.html'
-            });
-            if (error) {
-                authMsg.innerHTML = `<p class="error">${error.message}</p>`;
-            } else {
-                authMsg.innerHTML = '<p class="success">Link enviado a tu correo</p>';
-            }
-        });
     </script>
 </body>
-    </html> 
+</html> 
