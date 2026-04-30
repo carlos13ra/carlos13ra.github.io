@@ -472,4 +472,125 @@
             <div class="cmd-grid">
                 <div class="cmd-card"><div class="cmd-name">.join</div><div class="cmd-desc">Unir bot a grupo</div><div class="cmd-example">Ejemplo: .join https://chat.whatsapp.com/...</div></div>
                 <div class="cmd-card"><div class="cmd-name">.leave</div><div class="cmd-desc">Sacar bot del grupo</div><div class="cmd-example">Ejemplo: .leave</div></div>
-                <div class="cmd-card"><div class="cmd-name">.block / .unblock</div><div class="cmd-desc">Bloquear/desbloquear usuario</div 
+                                <div class="cmd-card"><div class="cmd-name">.bc /.broadcast</div><div class="cmd-desc">Mensaje a todos los chats</div><div class="cmd-example">Ejemplo:.bc hola a todos</div></div>
+                <div class="cmd-card"><div class="cmd-name">.update</div><div class="cmd-desc">Actualiza el bot desde GitHub</div><div class="cmd-example">Ejemplo:.update</div></div>
+                <div class="cmd-card"><div class="cmd-name">.restart</div><div class="cmd-desc">Reinicia el bot</div><div class="cmd-example">Ejemplo:.restart</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setprefix</div><div class="cmd-desc">Cambia el prefijo del bot</div><div class="cmd-example">Ejemplo:.setprefix!</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setname</div><div class="cmd-desc">Cambia nombre del bot</div><div class="cmd-example">Ejemplo:.setname GOJOBOT</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setppbot</div><div class="cmd-desc">Cambia foto de perfil del bot</div><div class="cmd-example">Ejemplo: responde a imagen con.setppbot</div></div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📚 TUTORIALES</h2>
+            
+            <div class="tutorial-box">
+                <strong>¿Cómo agregar el bot a mi grupo?</strong><br>
+                1. Habla al privado con el bot<br>
+                2. Usa <code>.join [link de tu grupo]</code><br>
+                3. El bot entrará automáticamente si el owner lo permite
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo crear stickers?</strong><br>
+                1. Envía una imagen/video al chat<br>
+                2. Responde a esa imagen con <code>.s</code> o <code>.sticker</code><br>
+                3. Listo, el bot te devuelve el sticker<br>
+                Tip: Usa <code>.wm Texto|Autor</code> para personalizar la marca de agua
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo ganar coins?</strong><br>
+                1. <code>.daily</code> - Recompensa diaria gratis<br>
+                2. <code>.work</code> - Trabaja cada 10 min<br>
+                3. <code>.mine</code> - Mina recursos<br>
+                4. <code>.crime</code> - Roba pero con riesgo de multa<br>
+                5. <code>.gamble cantidad</code> - Apuesta tus coins
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo jugar RPG?</strong><br>
+                1. <code>.adventure</code> - Gana XP y loot<br>
+                2. <code>.profile</code> - Ve tus stats<br>
+                3. <code>.levelup</code> - Sube de nivel cuando tengas XP suficiente<br>
+                4. <code>.hunt</code> - Caza monstruos por items<br>
+                5. <code>.duel @user</code> - Pelea contra otros jugadores
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📞 CONTACTO Y SOPORTE</h2>
+            <p><strong>Creador:</strong> Carlos Ramírez - Manguito Programs™</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/51938290189" class="whatsapp-link">+51 938 290 189</a></p>
+            <p><strong>Grupo Oficial:</strong> <a href="https://chat.whatsapp.com/GojoBotMD" class="whatsapp-link">Unirse al VOC</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/manguito" class="whatsapp-link">github.com/manguito</a></p>
+            <p><strong>TikTok:</strong> <a href="https://tiktok.com/@gojobotmd" class="whatsapp-link">@gojobotmd</a></p>
+        </div>
+
+        <hr>
+        <footer class="footer">
+            <p>© 2026 MANGUITO PROGRAMS™ // ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <script>
+        // MOSTRAR USUARIO EN NAVBAR
+        const session = localStorage.getItem('manguito_session');
+        document.getElementById('welcomeUser').textContent = `BIENVENIDO AL VOC, ${session?.toUpperCase()}`;
+
+        // REPRODUCTOR CON TUS 3 CANCIONES
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const trackName = document.getElementById('trackName');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const playlist = [
+            { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
+            { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
+            { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }
+        ];
+
+        let currentTrack = 0;
+        let isPlaying = false;
+
+        function loadTrack(index) {
+            audio.src = playlist[index].url;
+            trackName.textContent = playlist[index].name;
+        }
+
+        function playPause() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.textContent = '▶';
+                playBtn.classList.remove('playing');
+            } else {
+                audio.play().catch(e => console.log('Autoplay bloqueado:', e));
+                playIcon.textContent = '⏸';
+                playBtn.classList.add('playing');
+            }
+            isPlaying =!isPlaying;
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) audio.play().catch(e => console.log('Error:', e));
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) audio.play().catch(e => console.log('Error:', e));
+        }
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+
+        loadTrack(0);
+    </script>
+</body>
+</html>
