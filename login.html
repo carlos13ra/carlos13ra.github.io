@@ -155,7 +155,7 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-    .initialize-btn:hover {
+    .initialize-btn:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 10px 40px var(--purple-glow);
         }
@@ -217,7 +217,6 @@
         <h1><span class="brand">MANGUITO</span> AI</h1>
         <p class="subtitle" id="formTitle">Authenticate</p>
 
-        <!-- FORMULARIO LOGIN/REGISTRO -->
         <form id="authForm">
             <div class="form-group">
                 <label>EMAIL</label>
@@ -260,7 +259,6 @@
     </div>
 
     <script>
-        // === SUPABASE CONFIG ===
         const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
         const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -276,9 +274,11 @@
 
         let isLogin = true;
 
-        // SI YA ESTÁ LOGUEADO, IR AL INDEX
+        // SI YA ESTÁ LOGUEADO, IR AL DASHBOARD
         supabase.auth.getSession().then(({ data: { session } }) => {
-            if (session) window.location.href = '/';
+            if (session) {
+                window.location.href = '/dashboard.html';
+            }
         });
 
         // TOGGLE LOGIN/SIGNUP
@@ -303,54 +303,71 @@
         // LOGIN / SIGNUP
         authForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             
             submitBtn.disabled = true;
             submitBtn.textContent = 'LOADING...';
             authMsg.innerHTML = '';
 
-            if (isLogin) {
-                // LOGIN
-                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-                if (error) {
-                    authMsg.innerHTML = `<p class="error">${error.message}</p>`;
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'INITIALIZE →';
-                    return;
+            try {
+                if (isLogin) {
+                    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+                    if (error) throw error;
+                    authMsg.innerHTML = '<p class="success">¡Acceso autorizado!</p>';
+                    setTimeout(() => window.location.href = '/dashboard.html', 500);
+                } else {
+                    const { data, error } = await supabase.auth.signUp({ 
+                        email, 
+                        password,
+                        options: {
+                            emailRedirectTo: window.location.origin + '/dashboard.html'
+                        }
+                    });
+                    if (error) throw error;
+                    
+                    if (data.user && data.user.identities && data.user.identities.length === 0) {
+                        throw new Error('Este email ya está registrado. Usa Login.');
+                    }
+                    
+                    authMsg.innerHTML = '<p class="success">¡Cuenta creada! Iniciando sesión...</p>';
+                    // Auto login después de signup
+                    setTimeout(async () => {
+                        const { error: loginError } = await supabase.auth.signInWithPassword({ email, password });
+                        if (!loginError) window.location.href = '/dashboard.html';
+                        else authMsg.innerHTML = '<p class="success">Cuenta creada. Ahora haz Login</p>';
+                    }, 1000);
                 }
-                authMsg.innerHTML = '<p class="success">¡Acceso autorizado!</p>';
-                setTimeout(() => window.location.href = '/', 800);
-            } else {
-                // SIGNUP
-                const { data, error } = await supabase.auth.signUp({ email, password });
-                if (error) {
-                    authMsg.innerHTML = `<p class="error">${error.message}</p>`;
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'SIGN UP →';
-                    return;
-                }
-                authMsg.innerHTML = '<p class="success">¡Cuenta creada! Revisa tu correo para confirmar.</p>';
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'SIGN UP →';
+            } catch (error) {
+                console.error('Error:', error);
+                let msg = error.message;
+                if (msg.includes('Invalid login credentials')) msg = 'Email o contraseña incorrectos';
+                if (msg.includes('Email not confirmed')) msg = 'Desactiva "Confirm email" en Supabase';
+                if (msg.includes('User already registered')) msg = 'Este email ya existe. Usa Login';
+                authMsg.innerHTML = `<p class="error">${msg}</p>`;
             }
+            
+            submitBtn.disabled = false;
+            submitBtn.textContent = isLogin ? 'INITIALIZE →' : 'SIGN UP →';
         });
 
         // FORGOT PASSWORD
         forgotLink.addEventListener('click', async (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             if (!email) {
                 authMsg.innerHTML = '<p class="error">Ingresa tu email primero</p>';
                 return;
             }
-            const { error } = await supabase.auth.resetPasswordForEmail(email);
+            const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                redirectTo: window.location.origin + '/login.html'
+            });
             if (error) {
                 authMsg.innerHTML = `<p class="error">${error.message}</p>`;
             } else {
-                authMsg.innerHTML = '<p class="success">Link de recuperación enviado</p>';
+                authMsg.innerHTML = '<p class="success">Link enviado a tu correo</p>';
             }
         });
     </script>
 </body>
-</html> 
+    </html> 
