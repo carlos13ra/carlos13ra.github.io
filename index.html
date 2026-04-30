@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="e86WkdfjQ6V1N-Z4eBZ9OC5UebOvXL_z5HIyNn2PYIA" />
-    <script>
-    // Solo bloquea dashboard, no la home
-    if (window.location.pathname.includes('dashboard') &&!localStorage.getItem('manguito_session')) {
-        window.location.href = '/login.html';
-    }
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
     <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Fundado por Carlos Ramírez desde Trujillo, Perú.">
@@ -57,7 +52,7 @@
         }
 
         /* NAVBAR SIMPLE - SOLO USUARIO Y SALIR */
-     .top-navbar {
+    .top-navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -68,7 +63,7 @@
             z-index: 1000;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
         }
-     .nav-container {
+    .nav-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 1rem 2rem;
@@ -76,7 +71,7 @@
             justify-content: space-between;
             align-items: center;
         }
-     .nav-logo {
+    .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.3rem;
@@ -84,12 +79,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-     .nav-buttons {
+    .nav-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-     .nav-btn {
+    .nav-btn {
             padding: 10px 20px;
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid var(--cyan);
@@ -103,25 +98,25 @@
             text-transform: uppercase;
             cursor: pointer;
         }
-     .nav-btn:hover {
+    .nav-btn:hover {
             background: var(--cyan);
             color: #000;
             box-shadow: 0 20px var(--cyan-glow);
         }
-     .nav-user {
+    .nav-user {
             color: var(--cyan);
             font-weight: 700;
         }
 
         /* BOTÓN DASHBOARD AL LADO DEL TÍTULO */
-     .title-dash-container {
+    .title-dash-container {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
-     .dash-btn-inline {
+    .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             border: none;
@@ -135,7 +130,7 @@
             box-shadow: 0 0 30px var(--purple-glow);
             display: inline-block;
         }
-     .dash-btn-inline:hover {
+    .dash-btn-inline:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
@@ -193,7 +188,7 @@
             50% { background-position: 100% 100%; transform: translateZ(50px); }
         }
 
-     .scanlines {
+    .scanlines {
             position: fixed;
             top: 0;
             left: 0;
@@ -215,14 +210,14 @@
             100% { transform: translateY(10px); }
         }
 
-     .container {
+    .container {
             padding: 3rem 2rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
 
-     .glass-panel {
+    .glass-panel {
             background: var(--bg-glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--cyan-glow);
@@ -241,7 +236,7 @@
             50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0.6); }
         }
 
-     .banner {
+    .banner {
             width: 100%;
             max-height: 280px;
             object-fit: cover;
@@ -254,7 +249,7 @@
                 0 20px 40px rgba(0, 0, 0.6);
             transition: all 0.4s ease;
         }
-     .banner:hover {
+    .banner:hover {
             transform: scale(1.02) rotateX(2deg) rotateY(-2deg);
             box-shadow:
                 0 0 60px var(--cyan-glow),
@@ -330,7 +325,7 @@
             text-shadow: 0 15px var(--cyan);
         }
 
-     .badge {
+    .badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             padding: 10px 18px;
@@ -351,14 +346,14 @@
             50% { transform: translateY(-5px); }
         }
 
-     .links {
+    .links {
             margin: 2rem 0;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-     .links a {
+    .links a {
             background: rgba(0, 245, 255, 0.1);
             padding: 14px 24px;
             border-radius: 12px;
@@ -372,7 +367,7 @@
             overflow: hidden;
         }
 
-     .links a::before {
+    .links a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -383,9 +378,9 @@
             transition: left 0.5s;
         }
 
-     .links a:hover::before { left: 100%; }
+    .links a:hover::before { left: 100%; }
 
-     .links a:hover {
+    .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-3px);
@@ -393,18 +388,18 @@
             text-shadow: none;
         }
 
-     .whatsapp-btn {
+    .whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-     .whatsapp-btn:hover {
+    .whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
         }
 
-     .tiktok-btn {
+    .tiktok-btn {
             background: rgba(0, 0, 0, 0.3)!important;
             border-color: #ff0050!important;
             display: flex;
@@ -412,13 +407,13 @@
             gap: 10px;
         }
 
-     .tiktok-btn:hover {
+    .tiktok-btn:hover {
             background: #ff0050!important;
             color: #fff!important;
             box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
         }
 
-     .tiktok-avatar {
+    .tiktok-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -433,7 +428,7 @@
             50% { box-shadow: 0 0 35px rgba(255, 0, 80, 0.9); }
         }
 
-     .tiktok-highlight {
+    .tiktok-highlight {
             background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
             border: 2px solid #ff0050;
             text-align: center;
@@ -481,7 +476,7 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-     .footer {
+    .footer {
             font-size: 0.9rem;
             color: var(--text-dim);
             text-align: center;
@@ -489,10 +484,10 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-     .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+    .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
         /* REPRODUCTOR CON TUS 3 ROLAS */
-     .music-player {
+    .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -517,7 +512,7 @@
             50% { transform: translateY(-5px); }
         }
 
-     .music-btn {
+    .music-btn {
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -533,20 +528,20 @@
             transition: all 0.3s ease;
         }
 
-     .music-btn:hover {
+    .music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-     .play-btn-music {
+    .play-btn-music {
             width: 42px;
             height: 42px;
             font-size: 1rem;
         }
 
-     .play-btn-music.playing {
+    .play-btn-music.playing {
             animation: music-spin 4s linear infinite;
         }
 
@@ -555,12 +550,12 @@
             to { transform: rotate(360deg); }
         }
 
-     .track-info {
+    .track-info {
             font-family: 'Orbitron', sans-serif;
             max-width: 100px;
         }
 
-     .track-name {
+    .track-name {
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--cyan);
@@ -578,36 +573,37 @@
         }
 
         @media (max-width: 600px) {
-        .container { padding: 2rem 1rem; }
-        .glass-panel { padding: 1.5rem; }
-        .links { flex-direction: column; }
-        .links a { width: 100%; justify-content: center; }
+       .container { padding: 2rem 1rem; }
+       .glass-panel { padding: 1.5rem; }
+       .links { flex-direction: column; }
+       .links a { width: 100%; justify-content: center; }
             body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-        .music-player {
+       .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-        .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-        .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-        .track-info { max-width: 70px; }
-        .track-name { font-size: 0.55rem; }
-        .tiktok-avatar { width: 50px; height: 50px; }
-        .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-        .nav-buttons { flex-wrap: wrap; justify-content: center; }
-        .title-dash-container { flex-direction: column; align-items: flex-start; }
+       .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+       .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+       .track-info { max-width: 70px; }
+       .track-name { font-size: 0.55rem; }
+       .tiktok-avatar { width: 50px; height: 50px; }
+       .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
+       .nav-buttons { flex-wrap: wrap; justify-content: center; }
+       .title-dash-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR SIMPLE -->
+    <!-- NAVBAR CON SUPABASE -->
     <nav class="top-navbar">
         <div class="nav-container">
             <div class="nav-logo">🥭 MANGUITO PROGRAMS™</div>
             <div class="nav-buttons">
-                <span class="nav-user" id="navUser"></span>
-                <a href="/login.html" class="nav-btn" id="dashBtn" style="padding: 14px 32px; font-size: 1.1rem; background: linear-gradient(135deg, var(--purple), var(--cyan)); color: #000; border: none; box-shadow: 0 0 30px var(--purple-glow); font-weight: 900;">INICIAR SESIÓN</a>
+                <span class="nav-user" id="navUser">Cargando...</span>
+                <button class="nav-btn" id="logoutBtn" onclick="logoutSupabase()" style="display:none;">CERRAR SESIÓN</button>
+                <a href="/login.html" class="nav-btn" id="loginBtn" style="padding: 14px 32px; font-size: 1.1rem; background: linear-gradient(135deg, var(--purple), var(--cyan)); color: #000; border: none; box-shadow: 0 0 30px var(--purple-glow); font-weight: 900;">INICIAR SESIÓN</a>
             </div>
         </div>
     </nav>
@@ -643,6 +639,7 @@
                         Bobby Flow⚡
                     </p>
                 </div>
+            </div>
             <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.5rem;">
                 ⚡ DALE FOLLOW PARA APOYAR A UN THERIANS🐶 QUE QUIERE SER INFLUENCER⚡<br>
                 Todo para ver frases y videos de humor
@@ -719,27 +716,43 @@
     </div>
 
     <script>
-        // MOSTRAR USUARIO Y CAMBIAR BOTÓN SEGÚN SESIÓN
-const session = localStorage.getItem('manguito_session');
-const navUser = document.getElementById('navUser');
-const dashBtn = document.getElementById('dashBtn');
+        // === SUPABASE LOGIN ===
+        const SUPABASE_URL = 'https://wwasafrtvbkrffqajaja.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_OOL8GwS9u6zEtNTQRDxApw_EV3zSvzl';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-if (session && session !== 'null') {
-    navUser.textContent = `Hola, ${session}`;
-    dashBtn.href = '/dashboard.html';
-    dashBtn.textContent = 'ENTRAR A DASHBOARD';
-} else {
-    navUser.style.display = 'none';
-    dashBtn.href = '/login.html';
-    dashBtn.textContent = 'INICIAR SESIÓN';
-}
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            const navUser = document.getElementById('navUser');
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
 
-function logout() {
-    localStorage.removeItem('manguito_session');
-    window.location.href = '/login.html';
-}
+            if (!user) {
+                // No logueado → Mostrar botón login
+                navUser.style.display = 'none';
+                loginBtn.style.display = 'block';
+                logoutBtn.style.display = 'none';
+                return;
+            }
 
-        // REPRODUCTOR PERSISTENTE + AUTO-PLAY
+            // Sí logueado → Buscar apodo
+            const { data: perfil } = await supabase.from('profiles').select('apodo').eq('id', user.id).single();
+            const nombre = perfil?.apodo || user.email.split('@')[0];
+
+            navUser.textContent = `Hola, ${nombre}`;
+            navUser.style.display = 'block';
+            loginBtn.style.display = 'none';
+            logoutBtn.style.display = 'block';
+        }
+
+        async function logoutSupabase() {
+            await supabase.auth.signOut();
+            window.location.href = '/login.html';
+        }
+
+        checkUser();
+
+        // === REPRODUCTOR PERSISTENTE ===
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -759,7 +772,6 @@ function logout() {
         let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
         let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
 
-        // MARCAR QUE EL USER YA INTERACTUÓ 1 VEZ
         document.addEventListener('click', () => {
             if (!hasInteracted) {
                 hasInteracted = true;
@@ -798,28 +810,10 @@ function logout() {
                     updateUI();
                     saveState();
                 }).catch(() => {
-                    // Si falla autoplay, marcar para que suene al primer click
                     isPlaying = false;
                     updateUI();
-                    if (force &&!hasInteracted) {
-                        showAutoplayToast();
-                    }
                 });
             }
-        }
-
-        function showAutoplayToast() {
-            const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed; top: 90px; right: 20px; z-index: 10000;
-                background: rgba(0, 245, 255, 0.2); backdrop-filter: blur(20px);
-                border: 2px solid var(--cyan); border-radius: 12px; padding: 12px 18px;
-                font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan);
-                box-shadow: 0 0 30px var(--cyan-glow); animation: fadeInOut 3s forwards;
-            `;
-            toast.textContent = '▶ TOCA CUALQUIER LADO PARA ACTIVAR MÚSICA';
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
         }
 
         function playPause() {
@@ -834,85 +828,4 @@ function logout() {
             musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
         }
 
-        function nextTrack() {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playAudio();
-            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-            saveState();
-        }
-
-        function prevTrack() {
-                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-        loadTrack(currentTrack);
-        if (isPlaying) playAudio();
-        musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-        saveState();
-    }
-
-    // SINCRONIZACIÓN ENTRE PÁGINAS
-    musicChannel.onmessage = (e) => {
-        if (e.data.action === 'sync') {
-            if (e.data.track!== currentTrack) loadTrack(e.data.track);
-            if (e.data.playing &&!isPlaying) {
-                audio.currentTime = e.data.time;
-                playAudio();
-            } else if (!e.data.playing && isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                updateUI();
-            }
-        }
-        if (e.data.action === 'track') {
-            loadTrack(e.data.track);
-            if (e.data.playing) playAudio();
-        }
-    };
-
-    // EVENTOS
-    playBtn.addEventListener('click', playPause);
-    nextBtn.addEventListener('click', nextTrack);
-    prevBtn.addEventListener('click', prevTrack);
-    audio.addEventListener('ended', nextTrack);
-    audio.addEventListener('timeupdate', () => {
-        if (Math.floor(audio.currentTime) % 2 === 0) saveState();
-    });
-
-    // AUTO-PLAY AL CARGAR LA PÁGINA
-    window.addEventListener('load', () => {
-        loadTrack(currentTrack);
-
-        // Calcular tiempo transcurrido desde última página
-        const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
-        const timeDiff = (Date.now() - lastUpdate) / 1000;
-
-        // Si estaba sonando O si ya interactuó antes, intenta autoplay
-        if (isPlaying || hasInteracted) {
-            audio.currentTime = lastTime + timeDiff;
-            // Intentar autoplay SIEMPRE al entrar
-            setTimeout(() => {
-                playAudio(true);
-            }, 100);
-        } else {
-            audio.currentTime = lastTime;
-            updateUI();
-        }
-    });
-
-    // GUARDAR ANTES DE SALIR
-    window.addEventListener('beforeunload', saveState);
-
-    // CSS para el toast
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(100px); }
-            10% { opacity: 1; transform: translateX(0); }
-            90% { opacity: 1; transform: translateX(0); }
-            100% { opacity: 0; transform: translateX(100px); }
-        }
-    `;
-    document.head.appendChild(style);
-</script>
-</body>
-</html>
+        function 
