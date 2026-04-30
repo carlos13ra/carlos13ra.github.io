@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="e86WkdfjQ6V1N-Z4eBZ9OC5UebOvXL_z5HIyNn2PYIA" />
     <script>
-    // Solo bloquea dashboard, no la home
     if (window.location.pathname.includes('dashboard') &&!localStorage.getItem('manguito_session')) {
         window.location.href = '/login.html';
     }
@@ -12,9 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
     <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Fundado por Carlos Ramírez desde Trujillo, Perú.">
-
     <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://manguitoprograms.vercel.app/">
+    <link rel="canonical" href="https://manguitoprograms.vercel.app/">
     <meta property="og:title" content="Manguito Programs™ - GOJOBOT-MD | Carlos Ramirez ">
     <meta property="og:description" content="GOJOBOT-MD: Creado por la compañía Manguito Programs™. Node.js + Baileys + Docker.">
     <meta property="og:image" content="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp">
@@ -22,7 +20,6 @@
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://i.postimg.cc/qBtSZGFr/favicon.jpg">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
@@ -56,19 +53,21 @@
             padding-top: 80px;
         }
 
-        /* NAVBAR SIMPLE - SOLO USUARIO Y SALIR */
-     .top-navbar {
+        /* NAVBAR OPTIMIZADA */
+       .top-navbar {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(5, 5, 16, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 16, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--cyan);
             z-index: 1000;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            will-change: transform;
         }
-     .nav-container {
+       .nav-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 1rem 2rem;
@@ -76,7 +75,7 @@
             justify-content: space-between;
             align-items: center;
         }
-     .nav-logo {
+       .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.3rem;
@@ -84,12 +83,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-     .nav-buttons {
+       .nav-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-     .nav-btn {
+       .nav-btn {
             padding: 10px 20px;
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid var(--cyan);
@@ -103,25 +102,25 @@
             text-transform: uppercase;
             cursor: pointer;
         }
-     .nav-btn:hover {
+       .nav-btn:hover {
             background: var(--cyan);
             color: #000;
-            box-shadow: 0 20px var(--cyan-glow);
+            box-shadow: 0 0 20px var(--cyan-glow);
         }
-     .nav-user {
+       .nav-user {
             color: var(--cyan);
             font-weight: 700;
         }
 
-        /* BOTÓN DASHBOARD AL LADO DEL TÍTULO */
-     .title-dash-container {
+        /* BOTONES TÍTULO */
+       .title-dash-container {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
-     .dash-btn-inline {
+       .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             border: none;
@@ -134,13 +133,14 @@
             transition: all 0.3s;
             box-shadow: 0 0 30px var(--purple-glow);
             display: inline-block;
+            will-change: transform;
         }
-     .dash-btn-inline:hover {
+       .dash-btn-inline:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
 
-        /* FONDO 3D */
+        /* FONDO OPTIMIZADO - SIN 3D PESADO */
         body::before {
             content: '';
             position: fixed;
@@ -149,117 +149,58 @@
             width: 100%;
             height: 100%;
             background:
-                linear-gradient(90deg, transparent 49%, var(--cyan-glow) 50%, transparent 51%),
-                linear-gradient(0deg, transparent 49%, var(--purple-glow) 50%, transparent 51%),
-                linear-gradient(rgba(5, 5, 16, 0.85), rgba(5, 5, 16, 0.92)),
-                url('https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp ');
-            background-size: 100px 100px, 100px 100px, cover;
-            background-position: center;
-            animation: grid-move 20s linear infinite;
+                linear-gradient(90deg, transparent 49.5%, var(--cyan-glow) 50%, transparent 50.5%),
+                linear-gradient(0deg, transparent 49.5%, var(--purple-glow) 50%, transparent 50.5%),
+                linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.95)),
+                url('https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp') center/cover;
+            background-size: 80px 80px, 80px 80px, cover;
             z-index: -2;
-            transform: perspective(1000px) rotateX(60deg) scale(2);
-            transform-origin: center bottom;
-        }
-
-        @keyframes grid-move {
-            0% { background-position: 0 0, 0 0, center, center; }
-            100% { background-position: 100px 100px, 100px 100px, center; }
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(2px 2px at 20% 30%, var(--cyan), transparent),
-                radial-gradient(2px 2px at 60% 70%, var(--purple), transparent),
-                radial-gradient(1px 1px at 50% 50%, #fff, transparent),
-                radial-gradient(1px 1px at 80% 10%, var(--cyan), transparent),
-                radial-gradient(2px 2px at 90% 60%, var(--purple), transparent),
-                radial-gradient(1px 1px at 33% 80%, #fff, transparent);
-            background-size: 200% 200%;
-            background-position: 0% 0%;
-            animation: particles-float 15s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
             opacity: 0.6;
         }
 
-        @keyframes particles-float {
-            0%, 100% { background-position: 0% 0%; transform: translateZ(0); }
-            50% { background-position: 100% 100%; transform: translateZ(50px); }
-        }
-
-     .scanlines {
+        /* PARTÍCULAS OPTIMIZADAS CON CANVAS */
+        #particles-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 0, 0, 0.15) 0px,
-                transparent 1px,
-                transparent 3px
-            );
+            z-index: -1;
             pointer-events: none;
-            z-index: 1;
-            animation: scan 8s linear infinite;
+            opacity: 0.5;
         }
 
-        @keyframes scan {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(10px); }
-        }
-
-     .container {
+       .container {
             padding: 3rem 2rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
 
-     .glass-panel {
+       .glass-panel {
             background: var(--bg-glass);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             border: 1px solid var(--cyan-glow);
             border-radius: 20px;
             padding: 2rem;
             margin: 2rem 0;
-            box-shadow:
-                0 0 40px var(--cyan-glow),
-                inset 0 0 20px rgba(0, 245, 255, 0.05),
-                0 20px 60px rgba(0, 0, 0.5);
-            animation: pulse-glow 4s ease-in-out infinite;
+            box-shadow: 0 0 40px var(--cyan-glow), 0 20px 60px rgba(0, 0, 0, 0.5);
+            will-change: transform;
         }
 
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 40px var(--cyan-glow), inset 0 0 20px rgba(0, 245, 255, 0.05), 0 20px 60px rgba(0, 0, 0, 0.5); }
-            50% { box-shadow: 0 0 60px var(--cyan-glow), inset 0 0 30px rgba(0, 245, 255, 0.1), 0 30px 80px rgba(0, 0, 0.6); }
-        }
-
-     .banner {
+       .banner {
             width: 100%;
             max-height: 280px;
             object-fit: cover;
             border-radius: 20px;
             margin-bottom: 2rem;
             border: 2px solid var(--cyan);
-            box-shadow:
-                0 0 40px var(--cyan-glow),
-                0 0 80px var(--purple-glow),
-                0 20px 40px rgba(0, 0, 0.6);
-            transition: all 0.4s ease;
+            box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);
+            transition: transform 0.4s ease;
         }
-     .banner:hover {
-            transform: scale(1.02) rotateX(2deg) rotateY(-2deg);
-            box-shadow:
-                0 0 60px var(--cyan-glow),
-                0 0 100px var(--purple-glow),
-                0 30px 60px rgba(0, 0, 0, 0.8);
+       .banner:hover {
+            transform: scale(1.02);
         }
 
         h1 {
@@ -298,13 +239,7 @@
             position: absolute;
             left: -0.5rem;
             color: var(--purple);
-            animation: blink 1.5s infinite;
             text-shadow: 0 0 15px var(--purple-glow);
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(0.8); }
         }
 
         h3 {
@@ -313,7 +248,7 @@
             margin: 2rem 0 1rem;
             font-size: 1.3rem;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         p { margin-bottom: 1rem; font-size: 1.1rem; }
@@ -327,10 +262,10 @@
 
         a:hover {
             color: #fff;
-            text-shadow: 0 15px var(--cyan);
+            text-shadow: 0 0 15px var(--cyan);
         }
 
-     .badge {
+       .badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             padding: 10px 18px;
@@ -343,22 +278,16 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             box-shadow: 0 0 20px var(--purple-glow);
-            animation: badge-float 3s ease-in-out infinite;
         }
 
-        @keyframes badge-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-     .links {
+       .links {
             margin: 2rem 0;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-     .links a {
+       .links a {
             background: rgba(0, 245, 255, 0.1);
             padding: 14px 24px;
             border-radius: 12px;
@@ -372,20 +301,7 @@
             overflow: hidden;
         }
 
-     .links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, var(--cyan-glow), transparent);
-            transition: left 0.5s;
-        }
-
-     .links a:hover::before { left: 100%; }
-
-     .links a:hover {
+       .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-3px);
@@ -393,18 +309,18 @@
             text-shadow: none;
         }
 
-     .whatsapp-btn {
+       .whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-     .whatsapp-btn:hover {
+       .whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
         }
 
-     .tiktok-btn {
+       .tiktok-btn {
             background: rgba(0, 0, 0, 0.3)!important;
             border-color: #ff0050!important;
             display: flex;
@@ -412,37 +328,25 @@
             gap: 10px;
         }
 
-     .tiktok-btn:hover {
+       .tiktok-btn:hover {
             background: #ff0050!important;
             color: #fff!important;
             box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
         }
 
-     .tiktok-avatar {
+       .tiktok-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
             border: 3px solid #ff0050;
             object-fit: cover;
             box-shadow: 0 0 20px rgba(255, 0, 80, 0.6);
-            animation: avatar-pulse 2s ease-in-out infinite;
         }
 
-        @keyframes avatar-pulse {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 80, 0.6); }
-            50% { box-shadow: 0 0 35px rgba(255, 0, 80, 0.9); }
-        }
-
-     .tiktok-highlight {
+       .tiktok-highlight {
             background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
             border: 2px solid #ff0050;
             text-align: center;
-            animation: tiktok-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes tiktok-glow {
-            0%, 100% { box-shadow: 0 0 30px rgba(255, 0, 80, 0.4); }
-            50% { box-shadow: 0 0 50px rgba(255, 0, 80, 0.7); }
         }
 
         ul { margin: 2rem 0 2rem 1.5rem; list-style: none; }
@@ -457,13 +361,7 @@
             position: absolute;
             left: 0;
             color: var(--cyan);
-            animation: spin 4s linear infinite;
             text-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
         }
 
         strong {
@@ -481,7 +379,7 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-     .footer {
+       .footer {
             font-size: 0.9rem;
             color: var(--text-dim);
             text-align: center;
@@ -489,10 +387,10 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-     .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+       .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
-        /* REPRODUCTOR CON TUS 3 ROLAS */
-     .music-player {
+        /* REPRODUCTOR OPTIMIZADO */
+       .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -500,24 +398,16 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            background: rgba(10, 10, 30, 0.7);
-            backdrop-filter: blur(25px);
+            background: rgba(10, 10, 30, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border: 2px solid var(--cyan);
             border-radius: 35px;
             padding: 6px 12px 6px;
-            box-shadow:
-                0 0 25px var(--cyan-glow),
-                0 0 50px var(--purple-glow),
-                inset 0 0 12px rgba(0, 245, 255, 0.1);
-            animation: music-float 3s ease-in-out infinite;
+            box-shadow: 0 0 25px var(--cyan-glow), 0 0 50px var(--purple-glow);
         }
 
-        @keyframes music-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-     .music-btn {
+       .music-btn {
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -533,34 +423,25 @@
             transition: all 0.3s ease;
         }
 
-     .music-btn:hover {
+       .music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-     .play-btn-music {
+       .play-btn-music {
             width: 42px;
             height: 42px;
             font-size: 1rem;
         }
 
-     .play-btn-music.playing {
-            animation: music-spin 4s linear infinite;
-        }
-
-        @keyframes music-spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-     .track-info {
+       .track-info {
             font-family: 'Orbitron', sans-serif;
             max-width: 100px;
         }
 
-     .track-name {
+       .track-name {
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--cyan);
@@ -569,39 +450,31 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            animation: track-glow 2s ease-in-out infinite;
-        }
-
-        @keyframes track-glow {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
         }
 
         @media (max-width: 600px) {
-        .container { padding: 2rem 1rem; }
-        .glass-panel { padding: 1.5rem; }
-        .links { flex-direction: column; }
-        .links a { width: 100%; justify-content: center; }
-            body::before { transform: perspective(500px) rotateX(60deg) scale(2); }
-        .music-player {
+           .container { padding: 2rem 1rem; }
+           .glass-panel { padding: 1.5rem; backdrop-filter: blur(4px); }
+           .links { flex-direction: column; }
+           .links a { width: 100%; justify-content: center; }
+           .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-        .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-        .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-        .track-info { max-width: 70px; }
-        .track-name { font-size: 0.55rem; }
-        .tiktok-avatar { width: 50px; height: 50px; }
-        .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-        .nav-buttons { flex-wrap: wrap; justify-content: center; }
-        .title-dash-container { flex-direction: column; align-items: flex-start; }
+           .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+           .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+           .track-info { max-width: 70px; }
+           .track-name { font-size: 0.55rem; }
+           .tiktok-avatar { width: 50px; height: 50px; }
+           .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
+           .nav-buttons { flex-wrap: wrap; justify-content: center; }
+           .title-dash-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- NAVBAR SIMPLE -->
     <nav class="top-navbar">
         <div class="nav-container">
             <div class="nav-logo">🥭 MANGUITO PROGRAMS™</div>
@@ -612,9 +485,8 @@
         </div>
     </nav>
 
-    <div class="scanlines"></div>
+    <canvas id="particles-canvas"></canvas>
 
-    <!-- REPRODUCTOR CON TUS 3 CANCIONES -->
     <div class="music-player">
         <div class="music-btn" id="prevBtn">⏮</div>
         <div class="music-btn play-btn-music" id="playPauseBtn">
@@ -630,7 +502,6 @@
     <div class="container">
         <img src="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp" alt="Manguito Programs™ Banner" class="banner" loading="eager">
 
-        <!-- SECCIÓN TIKTOK -->
         <div class="glass-panel tiktok-highlight">
             <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
             <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
@@ -643,6 +514,7 @@
                         Bobby Flow⚡
                     </p>
                 </div>
+            </div>
             <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.5rem;">
                 ⚡ DALE FOLLOW PARA APOYAR A UN THERIANS🐶 QUE QUIERE SER INFLUENCER⚡<br>
                 Todo para ver frases y videos de humor
@@ -657,11 +529,11 @@
 
         <div class="glass-panel">
             <header>
-                <<div class="title-dash-container">
-    <h1 style="margin: 0;">🥭 MANGUITO PROGRAMS™</h1>
-    <a href="/dashboard.html" class="dash-btn-inline" id="dashBtnInline">DASHBOARD</a>
-    <button onclick="logout()" class="dash-btn-inline" id="logoutBtnInline" style="background: linear-gradient(135deg, #ff0050, #ff3300); display: none;">CERRAR SESIÓN</button>
-</div>
+                <div class="title-dash-container">
+                    <h1 style="margin: 0;">🥭 MANGUITO PROGRAMS™</h1>
+                    <a href="/dashboard.html" class="dash-btn-inline" id="dashBtnInline">DASHBOARD</a>
+                    <button onclick="logout()" class="dash-btn-inline" id="logoutBtnInline" style="background: linear-gradient(135deg, #ff0050, #ff3300); display: none;">CERRAR SESIÓN</button>
+                </div>
                 <p><strong>SISTEMA DE DESARROLLO AUTÓNOMO</strong></p>
                 <p>Iniciativa independiente desde Trujillo, Perú. Construyendo el futuro del software.</p>
                 <div class="badge">❤️SOMOS TODOS JUNTOS CON GOJOBOT-MD❤️</div>
@@ -673,13 +545,11 @@
                 <h2>PROYECTO DESTACADO</h2>
                 <h3>GOJOBOT-MD <span class="badge hn-badge">TRENDING EN HN</span></h3>
                 <p>Bot de WhatsApp Multi-Dispositivo de nueva generación. Arquitectura cuántica. Diseñado porque los sistemas legacy fallan en multi-device.</p>
-
                 <div class="links">
                     <a href="https://github.com/carlos13ra/GOJOBOT-MD" target="_blank" rel="noopener">⭐ GITHUB</a>
                     <a href="https://news.ycombinator.com/item?id=47932657" target="_blank" rel="noopener">🏆 HACKER NEWS</a>
                     <a href="https://dev.to/carlos13ra/gojobot-md-the-official-open-source-whatsapp-bot-by-manguito-programs-2ecl" target="_blank" rel="noopener">📝 DEV.TO</a>
                 </div>
-
                 <ul>
                     <li><strong>CORE:</strong> Node.js + Baileys Protocol</li>
                     <li><strong>ARQUITECTURA:</strong> Sistema modular de plugins hot-swap</li>
@@ -720,39 +590,92 @@
     </div>
 
     <script>
-        // MOSTRAR USUARIO Y CAMBIAR BOTÓN SEGÚN SESIÓN
-const session = localStorage.getItem('manguito_session');
-const navUser = document.getElementById('navUser');
-const dashBtn = document.getElementById('dashBtn');
-
-if (session && session !== 'null') {
-    navUser.textContent = `Hola, ${session}`;
-    dashBtn.href = '/dashboard.html';
-    dashBtn.textContent = 'ENTRAR A DASHBOARD';
-} else {
-    navUser.style.display = 'none';
-    dashBtn.href = '/login.html';
-    dashBtn.textContent = 'INICIAR SESIÓN';
-}
-
+        // SESIÓN
+        const session = localStorage.getItem('manguito_session');
+        const navUser = document.getElementById('navUser');
+        const dashBtn = document.getElementById('dashBtn');
         const dashBtnInline = document.getElementById('dashBtnInline');
-const logoutBtnInline = document.getElementById('logoutBtnInline');
+        const logoutBtnInline = document.getElementById('logoutBtnInline');
 
-if (session && session !== 'null') {
-    dashBtnInline.textContent = 'ENTRAR A DASHBOARD';
-    dashBtnInline.href = '/dashboard.html';
-    logoutBtnInline.style.display = 'inline-block';
-} else {
-    dashBtnInline.textContent = 'INICIAR SESIÓN';
-    dashBtnInline.href = '/login.html';
-    logoutBtnInline.style.display = 'none';
-}
-function logout() {
-    localStorage.removeItem('manguito_session');
-    window.location.href = '/login.html';
-}
+        if (session && session!== 'null') {
+            navUser.textContent = `Hola, ${session}`;
+            dashBtn.href = '/dashboard.html';
+            dashBtn.textContent = 'ENTRAR A DASHBOARD';
+            dashBtnInline.textContent = 'ENTRAR A DASHBOARD';
+            dashBtnInline.href = '/dashboard.html';
+            logoutBtnInline.style.display = 'inline-block';
+        } else {
+            navUser.style.display = 'none';
+            dashBtn.href = '/login.html';
+            dashBtn.textContent = 'INICIAR SESIÓN';
+            dashBtnInline.textContent = 'INICIAR SESIÓN';
+            dashBtnInline.href = '/login.html';
+            logoutBtnInline.style.display = 'none';
+        }
 
-        // REPRODUCTOR PERSISTENTE + AUTO-PLAY
+        function logout() {
+            localStorage.removeItem('manguito_session');
+            window.location.href = '/login.html';
+        }
+
+        // PARTÍCULAS OPTIMIZADAS CON CANVAS
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.color = Math.random() > 0.5? '#00f5ff' : '#b300ff';
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = window.innerWidth < 768? 40 : 80;
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        // REPRODUCTOR PERSISTENTE
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -772,7 +695,6 @@ function logout() {
         let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
         let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
 
-        // MARCAR QUE EL USER YA INTERACTUÓ 1 VEZ
         document.addEventListener('click', () => {
             if (!hasInteracted) {
                 hasInteracted = true;
@@ -794,13 +716,7 @@ function logout() {
         }
 
         function updateUI() {
-            if (isPlaying) {
-                playIcon.textContent = '⏸';
-                playBtn.classList.add('playing');
-            } else {
-                playIcon.textContent = '▶';
-                playBtn.classList.remove('playing');
-            }
+            playIcon.textContent = isPlaying? '⏸' : '▶';
         }
 
         function playAudio(force = false) {
@@ -811,28 +727,10 @@ function logout() {
                     updateUI();
                     saveState();
                 }).catch(() => {
-                    // Si falla autoplay, marcar para que suene al primer click
                     isPlaying = false;
                     updateUI();
-                    if (force &&!hasInteracted) {
-                        showAutoplayToast();
-                    }
                 });
             }
-        }
-
-        function showAutoplayToast() {
-            const toast = document.createElement('div');
-            toast.style.cssText = `
-                position: fixed; top: 90px; right: 20px; z-index: 10000;
-                background: rgba(0, 245, 255, 0.2); backdrop-filter: blur(20px);
-                border: 2px solid var(--cyan); border-radius: 12px; padding: 12px 18px;
-                font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan);
-                box-shadow: 0 0 30px var(--cyan-glow); animation: fadeInOut 3s forwards;
-            `;
-            toast.textContent = '▶ TOCA CUALQUIER LADO PARA ACTIVAR MÚSICA';
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
         }
 
         function playPause() {
@@ -856,76 +754,53 @@ function logout() {
         }
 
         function prevTrack() {
-                    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-        loadTrack(currentTrack);
-        if (isPlaying) playAudio();
-        musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-        saveState();
-    }
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
 
-    // SINCRONIZACIÓN ENTRE PÁGINAS
-    musicChannel.onmessage = (e) => {
-        if (e.data.action === 'sync') {
-            if (e.data.track!== currentTrack) loadTrack(e.data.track);
-            if (e.data.playing &&!isPlaying) {
-                audio.currentTime = e.data.time;
-                playAudio();
-            } else if (!e.data.playing && isPlaying) {
-                audio.pause();
-                isPlaying = false;
+        musicChannel.onmessage = (e) => {
+            if (e.data.action === 'sync') {
+                if (e.data.track!== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing &&!isPlaying) {
+                    audio.currentTime = e.data.time;
+                    playAudio();
+                } else if (!e.data.playing && isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+            if (e.data.action === 'track') {
+                loadTrack(e.data.track);
+                if (e.data.playing) playAudio();
+            }
+        };
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+        audio.addEventListener('timeupdate', () => {
+            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+        });
+
+        window.addEventListener('load', () => {
+            loadTrack(currentTrack);
+            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+            const timeDiff = (Date.now() - lastUpdate) / 1000;
+            if (isPlaying || hasInteracted) {
+                audio.currentTime = lastTime + timeDiff;
+                setTimeout(() => playAudio(true), 100);
+            } else {
+                audio.currentTime = lastTime;
                 updateUI();
             }
-        }
-        if (e.data.action === 'track') {
-            loadTrack(e.data.track);
-            if (e.data.playing) playAudio();
-        }
-    };
+        });
 
-    // EVENTOS
-    playBtn.addEventListener('click', playPause);
-    nextBtn.addEventListener('click', nextTrack);
-    prevBtn.addEventListener('click', prevTrack);
-    audio.addEventListener('ended', nextTrack);
-    audio.addEventListener('timeupdate', () => {
-        if (Math.floor(audio.currentTime) % 2 === 0) saveState();
-    });
-
-    // AUTO-PLAY AL CARGAR LA PÁGINA
-    window.addEventListener('load', () => {
-        loadTrack(currentTrack);
-
-        // Calcular tiempo transcurrido desde última página
-        const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
-        const timeDiff = (Date.now() - lastUpdate) / 1000;
-
-        // Si estaba sonando O si ya interactuó antes, intenta autoplay
-        if (isPlaying || hasInteracted) {
-            audio.currentTime = lastTime + timeDiff;
-            // Intentar autoplay SIEMPRE al entrar
-            setTimeout(() => {
-                playAudio(true);
-            }, 100);
-        } else {
-            audio.currentTime = lastTime;
-            updateUI();
-        }
-    });
-
-    // GUARDAR ANTES DE SALIR
-    window.addEventListener('beforeunload', saveState);
-
-    // CSS para el toast
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(100px); }
-            10% { opacity: 1; transform: translateX(0); }
-            90% { opacity: 1; transform: translateX(0); }
-            100% { opacity: 0; transform: translateX(100px); }
-        }
-    `;
-    document.head.appendChild(style);
-</script>
+        window.addEventListener('beforeunload', saveState);
+    </script>
 </body>
-</html>
+</html> 
