@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | GOJOBOT-MD™</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cyan: #00f5ff;
+            --cyan-glow: rgba(0, 245, 255, 0.4);
+            --purple: #b300ff;
+            --purple-glow: rgba(179, 0, 255, 0.3);
+            --gold: #ffd700;
+            --bg-void: #050510;
+            --bg-glass: rgba(10, 10, 30, 0.6);
+            --text: #e0f7ff;
+            --text-dim: #8892b0;
+        }
+        html, body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+* { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+} 
+        body {
+        font-family: 'Rajdhani', sans-serif;
+        background: var(--bg-void);
+        color: var(--text);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        }
+        body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; 
+        width: 100%; height: 100%;
+        background: linear-gradient(rgba(5, 5, 16, 0.9), rgba(5, 5, 16, 0.9)),
+                    url('https://i.postimg.cc/4NZgK2Pg/file-00000000828c71fb9a3f270c0e7e5f4a.png ');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        }
+       .navbar {
+        background: rgba(5, 5, 16, 0.9);
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid var(--cyan);
+        padding: 0.8rem 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        }
+       .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+       .back-btn {
+            padding: 8px 16px;
+            background: rgba(0, 245, 255, 0.1);
+            border: 1px solid var(--cyan);
+            border-radius: 8px;
+            color: var(--cyan);
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+       .back-btn:hover {
+            background: var(--cyan);
+            color: #000;
+            box-shadow: 0 0 20px var(--cyan-glow);
+        }
+       .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 6rem 1rem 2rem;
+        box-sizing: border-box;
+    }
+       .glass-panel {
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--cyan-glow);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 0 40px var(--cyan-glow);
+        }
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 2.5rem;
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan);
+            margin: 2rem 0 1rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--cyan-glow);
+        }
+        h2::before {
+            content: '▸';
+            margin-right: 0.5rem;
+            color: var(--purple);
+        }
+       .voc-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+       .voc-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid var(--cyan);
+            box-shadow: 0 0 20px var(--cyan-glow);
+            transition: all 0.3s;
+        }
+       .voc-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px var(--cyan-glow);
+        }
+       .cmd-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+       .cmd-card {
+            background: rgba(0, 245, 255, 0.05);
+            border: 1px solid var(--cyan-glow);
+            border-radius: 12px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+       .cmd-card:hover {
+            background: rgba(0, 245, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--cyan-glow);
+        }
+       .cmd-name {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--cyan);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+       .cmd-desc {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+        }
+       .cmd-example {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 8px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--purple);
+            font-size: 0.85rem;
+            border-left: 3px solid var(--purple);
+        }
+       .category-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--purple), var(--cyan));
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            margin: 2rem 0 1rem 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+       .gold-badge {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--cyan);
+            font-family: 'Orbitron', sans-serif;
+        }
+       .tutorial-box {
+            background: rgba(179, 0, 255, 0.05);
+            border-left: 3px solid var(--purple);
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+       .tutorial-box strong {
+            color: var(--purple);
+            font-family: 'Orbitron', sans-serif;
+        }
+       .whatsapp-link {
+            color: #25D366;
+            font-weight: 700;
+        }
+
+        /* REPRODUCTOR FLOTANTE - ARREGLADO PARA MÓVIL */
+.music-player {
+    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    left: auto;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(25px);
+    border: 2px solid var(--cyan);
+    border-radius: 35px;
+    padding: 6px 12px 6px;
+    box-shadow:
+        0 0 25px var(--cyan-glow),
+        0 0 50px var(--purple-glow),
+        inset 0 0 12px rgba(0, 245, 255, 0.1);
+    animation: music-float 3s ease-in-out infinite;
+    max-width: calc(100vw - 20px);
+}
+
+        @keyframes music-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+       .music-btn {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(0, 245, 255, 0.15);
+            border: 2px solid var(--cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--cyan);
+            cursor: pointer;
+            box-shadow: 0 0 12px var(--cyan-glow);
+            transition: all 0.3s ease;
+        }
+
+       .music-btn:hover {
+            background: var(--cyan);
+            color: #000;
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--cyan-glow);
+        }
+
+       .play-btn-music {
+            width: 42px;
+            height: 42px;
+            font-size: 1rem;
+        }
+
+       .play-btn-music.playing {
+            animation: music-spin 4s linear infinite;
+        }
+
+        @keyframes music-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+       .track-info {
+            font-family: 'Orbitron', sans-serif;
+            max-width: 100px;
+        }
+
+       .track-name {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--cyan);
+            text-shadow: 0 0 10px var(--cyan-glow);
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            animation: track-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes track-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @media (max-width: 600px) {
+           .container { 
+            padding: 5rem 0.5rem 2rem; 
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+           }
+           .glass-panel { padding: 1.5rem; }
+            h1 { font-size: 2rem; }
+           .music-player {
+        bottom: 10px;
+        right: max(6px, env(safe-area-inset-right));
+        padding: 4px 6px 4px;
+        gap: 3px;
+        transform: scale(0.8);
+        transform-origin: bottom right;
+    }
+   .music-btn { width: 28px; height: 28px; font-size: 0.65rem; }
+   .play-btn-music { width: 34px; height: 34px; font-size: 0.8rem; }
+   .track-info { max-width: 50px; }
+   .track-name { font-size: 0.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🥭 DASHBOARD</div>
+        <a href="/index.html" class="back-btn">← VOLVER AL MENU</a>
+    </nav>
+
+    <!-- REPRODUCTOR FLOTANTE CON TUS 3 ROLAS -->
+    <div class="music-player">
+        <div class="music-btn" id="prevBtn">⏮</div>
+        <div class="music-btn play-btn-music" id="playPauseBtn">
+            <span id="playIcon">▶</span>
+        </div>
+        <div class="music-btn" id="nextBtn">⏭</div>
+        <div class="track-info">
+            <div class="track-name" id="trackName">Cargando...</div>
+        </div>
+        <audio id="bgMusic" preload="auto"></audio>
+    </div>
+
+    <div class="container">
+        <div class="glass-panel">
+            <h1 id="welcomeUser">BIENVENIDO A LA MAGIA</h1>
+            <p>Panel de control de GOJOBOT-MD. Aquí tienes toda la info, comandos y tutoriales del Bot.</p>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📱 INFO DEL BOT</h2>
+            <p><strong>GOJOBOT-MD™</strong> es el bot de WhatsApp Multi-Dispositivo creado por Manguito Programs™. Versión actual: <code>v3.5.2 RTC</code></p>
+            
+            <div class="voc-gallery">
+                <img src="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp" alt="VOC Menu Principal" class="voc-img">
+                <img src="https://i.postimg.cc/4NZgK2Pg/file-00000000828c71fb9a3f270c0e7e5f4a.png" alt="VOC Perfil" class="voc-img">
+                <img src="https://i.postimg.cc/FzZLxS09/fondo.jpg" alt="VOC Configuración" class="voc-img">
+            </div>
+
+            <p><strong>Estado:</strong> <span style="color: #00ff88;">● Online 24/7</span></p>
+            <p><strong>Servidor:</strong> Node.js + Baileys Protocol</p>
+            <p><strong>Prefijo:</strong> <code>.</code> o <code>!</code></p>
+            <p><strong>Creador:</strong> Carlos Ramírez - Manguito Programs™</p>
+        </div>
+
+        <div class="glass-panel">
+            <h2>🤖 COMANDOS DEL BOT</h2>
+            <p>Lista completa de comandos activos. Cópialos y úsalos en tu grupo:</p>
+
+            <div class="category-badge">📋 PRINCIPALES</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.menu</div><div class="cmd-desc">Muestra todos los comandos disponibles</div><div class="cmd-example">Ejemplo: .menu</div></div>
+                <div class="cmd-card"><div class="cmd-name">.help</div><div class="cmd-desc">Muestra ayuda sobre el bot</div><div class="cmd-example">Ejemplo: .help</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ping</div><div class="cmd-desc">Velocidad de respuesta del bot</div><div class="cmd-example">Ejemplo: .ping</div></div>
+                <div class="cmd-card"><div class="cmd-name">.owner</div><div class="cmd-desc">Contacto del creador</div><div class="cmd-example">Ejemplo: .owner</div></div>
+            </div>
+
+            <div class="category-badge">⬇️ DESCARGAS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.play / .play2</div><div class="cmd-desc">Descarga música de YouTube en mp3</div><div class="cmd-example">Ejemplo: .play bad bunny monaco</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ytmp4 / .ytv</div><div class="cmd-desc">Descarga videos de YouTube</div><div class="cmd-example">Ejemplo: .ytmp4 https://youtube.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tiktok / .tt</div><div class="cmd-desc">Descarga videos de TikTok sin marca</div><div class="cmd-example">Ejemplo: .tiktok https://vt.tiktok.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.instagram / .ig</div><div class="cmd-desc">Descarga fotos/videos de Instagram</div><div class="cmd-example">Ejemplo: .ig https://instagram.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.facebook / .fb</div><div class="cmd-desc">Descarga videos de Facebook</div><div class="cmd-example">Ejemplo: .fb https://fb.watch/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.twitter / .x</div><div class="cmd-desc">Descarga videos de Twitter/X</div><div class="cmd-example">Ejemplo: .x https://x.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mediafire</div><div class="cmd-desc">Descarga archivos de Mediafire</div><div class="cmd-example">Ejemplo: .mediafire https://mediafire.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.apk</div><div class="cmd-desc">Descarga APKs de apps</div><div class="cmd-example">Ejemplo: .apk whatsapp</div></div>
+            </div>
+
+            <div class="category-badge">🎨 STICKERS Y MEDIA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.sticker / .s</div><div class="cmd-desc">Convierte imagen/video a sticker</div><div class="cmd-example">Ejemplo: responde a imagen con .s</div></div>
+                <div class="cmd-card"><div class="cmd-name">.toimg</div><div class="cmd-desc">Convierte sticker a imagen</div><div class="cmd-example">Ejemplo: responde a sticker con .toimg</div></div>
+                <div class="cmd-card"><div class="cmd-name">.togif</div><div class="cmd-desc">Convierte video a GIF</div><div class="cmd-example">Ejemplo: responde a video con .togif</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tomp3</div><div class="cmd-desc">Extrae audio de video</div><div class="cmd-example">Ejemplo: responde a video con .tomp3</div></div>
+                <div class="cmd-card"><div class="cmd-name">.wm</div><div class="cmd-desc">Cambia marca de agua de sticker</div><div class="cmd-example">Ejemplo: .wm Manguito|Programs</div></div>
+                <div class="cmd-card"><div class="cmd-name">.attp</div><div class="cmd-desc">Sticker de texto animado</div><div class="cmd-example">Ejemplo: .attp hola</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ttp</div><div class="cmd-desc">Sticker de texto</div><div class="cmd-example">Ejemplo: .ttp hola mundo</div></div>
+            </div>
+
+            <div class="category-badge">🛡️ GRUPOS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.kick / .ban</div><div class="cmd-desc">Expulsa usuario del grupo</div><div class="cmd-example">Ejemplo: .kick @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.promote</div><div class="cmd-desc">Dar admin a usuario</div><div class="cmd-example">Ejemplo: .promote @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.demote</div><div class="cmd-desc">Quitar admin a usuario</div><div class="cmd-example">Ejemplo: .demote @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.tagall / .invocar</div><div class="cmd-desc">Menciona a todos los miembros</div><div class="cmd-example">Ejemplo: .tagall reunión</div></div>
+                <div class="cmd-card"><div class="cmd-name">.hidetag</div><div class="cmd-desc">Menciona a todos sin mostrar</div><div class="cmd-example">Ejemplo: .hidetag mensaje</div></div>
+                <div class="cmd-card"><div class="cmd-name">.link</div><div class="cmd-desc">Obtiene link del grupo</div><div class="cmd-example">Ejemplo: .link</div></div>
+                <div class="cmd-card"><div class="cmd-name">.resetlink</div><div class="cmd-desc">Resetea link del grupo</div><div class="cmd-example">Ejemplo: .resetlink</div></div>
+                <div class="cmd-card"><div class="cmd-name">.group open/close</div><div class="cmd-desc">Abre o cierra el grupo</div><div class="cmd-example">Ejemplo: .group close</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setwelcome</div><div class="cmd-desc">Configura mensaje de bienvenida</div><div class="cmd-example">Ejemplo: .setwelcome Hola @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setbye</div><div class="cmd-desc">Configura mensaje de despedida</div><div class="cmd-example">Ejemplo: .setbye Adiós @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.antilink</div><div class="cmd-desc">Activa/desactiva anti-link</div><div class="cmd-example">Ejemplo: .antilink on</div></div>
+                <div class="cmd-card"><div class="cmd-name">.anti-delete</div><div class="cmd-desc">Anti-eliminación de mensajes</div><div class="cmd-example">Ejemplo: .anti-delete on</div></div>
+            </div>
+
+            <div class="category-badge">🎮 JUEGOS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.tictactoe / .ttt</div><div class="cmd-desc">Juego 3 en raya</div><div class="cmd-example">Ejemplo: .ttt @usuario</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ppt</div><div class="cmd-desc">Piedra papel o tijera</div><div class="cmd-example">Ejemplo: .ppt piedra</div></div>
+                <div class="cmd-card"><div class="cmd-name">.slot</div><div class="cmd-desc">Máquina tragamonedas</div><div class="cmd-example">Ejemplo: .slot 100</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ruleta</div><div class="cmd-desc">Ruleta rusa</div><div class="cmd-example">Ejemplo: .ruleta</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ahorcado</div><div class="cmd-desc">Juego del ahorcado</div><div class="cmd-example">Ejemplo: .ahorcado</div></div>
+                <div class="cmd-card"><div class="cmd-name">.sopa</div><div class="cmd-desc">Sopa de letras</div><div class="cmd-example">Ejemplo: .sopa</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mates</div><div class="cmd-desc">Problemas matemáticos</div><div class="cmd-example">Ejemplo: .mates</div></div>
+                <div class="cmd-card"><div class="cmd-name">.pregunta</div><div class="cmd-desc">Preguntas trivia</div><div class="cmd-example">Ejemplo: .pregunta</div></div>
+            </div>
+
+            <div class="category-badge gold-badge">💎 ECONOMÍA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.balance / .bal</div><div class="cmd-desc">Ver tu balance de coins</div><div class="cmd-example">Ejemplo: .bal</div></div>
+                <div class="cmd-card"><div class="cmd-name">.daily</div><div class="cmd-desc">Reclama recompensa diaria</div><div class="cmd-example">Ejemplo: .daily</div></div>
+                <div class="cmd-card"><div class="cmd-name">.weekly</div><div class="cmd-desc">Recompensa semanal</div><div class="cmd-example">Ejemplo: .weekly</div></div>
+                <div class="cmd-card"><div class="cmd-name">.monthly</div><div class="cmd-desc">Recompensa mensual</div><div class="cmd-example">Ejemplo: .monthly</div></div>
+                <div class="cmd-card"><div class="cmd-name">.transfer / .pay</div><div class="cmd-desc">Transfiere coins a usuario</div><div class="cmd-example">Ejemplo: .transfer 100 @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.shop</div><div class="cmd-desc">Tienda del bot</div><div class="cmd-example">Ejemplo: .shop</div></div>
+                <div class="cmd-card"><div class="cmd-name">.buy</div><div class="cmd-desc">Comprar item de tienda</div><div class="cmd-example">Ejemplo: .buy premium</div></div>
+                <div class="cmd-card"><div class="cmd-name">.inventory / .inv</div><div class="cmd-desc">Ver tu inventario</div><div class="cmd-example">Ejemplo: .inv</div></div>
+                <div class="cmd-card"><div class="cmd-name">.work / .trabajar</div><div class="cmd-desc">Trabaja para ganar coins</div><div class="cmd-example">Ejemplo: .work</div></div>
+                <div class="cmd-card"><div class="cmd-name">.mine / .minar</div><div class="cmd-desc">Mina para obtener recursos</div><div class="cmd-example">Ejemplo: .mine</div></div>
+                <div class="cmd-card"><div class="cmd-name">.crime / .robar</div><div class="cmd-desc">Robar coins (con riesgo)</div><div class="cmd-example">Ejemplo: .crime</div></div>
+                <div class="cmd-card"><div class="cmd-name">.bank / .banco</div><div class="cmd-desc">Guarda coins en banco</div><div class="cmd-example">Ejemplo: .bank deposit 500</div></div>
+                <div class="cmd-card"><div class="cmd-name">.lb / .leaderboard</div><div class="cmd-desc">Top usuarios más ricos</div><div class="cmd-example">Ejemplo: .lb</div></div>
+                <div class="cmd-card"><div class="cmd-name">.deposit</div><div class="cmd-desc">Depositar al banco</div><div class="cmd-example">Ejemplo: .deposit 1000</div></div>
+                <div class="cmd-card"><div class="cmd-name">.withdraw</div><div class="cmd-desc">Retirar del banco</div><div class="cmd-example">Ejemplo: .withdraw 500</div></div>
+                <div class="cmd-card"><div class="cmd-name">.gamble / .apostar</div><div class="cmd-desc">Apuesta tus coins</div><div class="cmd-example">Ejemplo: .gamble 100</div></div>
+            </div>
+
+            <div class="category-badge gold-badge">⚔️ RPG</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.adventure / .adv</div><div class="cmd-desc">Ir de aventura y ganar XP</div><div class="cmd-example">Ejemplo: .adv</div></div>
+                <div class="cmd-card"><div class="cmd-name">.profile / .perfil</div><div class="cmd-desc">Ver tu perfil RPG</div><div class="cmd-example">Ejemplo: .perfil</div></div>
+                <div class="cmd-card"><div class="cmd-name">.levelup</div><div class="cmd-desc">Subir de nivel</div><div class="cmd-example">Ejemplo: .levelup</div></div>
+                <div class="cmd-card"><div class="cmd-name">.heal / .curar</div><div class="cmd-desc">Curar tu HP</div><div class="cmd-example">Ejemplo: .heal</div></div>
+                <div class="cmd-card"><div class="cmd-name">.duel / .pvp</div><div class="cmd-desc">Duelo contra otro usuario</div><div class="cmd-example">Ejemplo: .duel @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.train / .entrenar</div><div class="cmd-desc">Entrena para subir stats</div><div class="cmd-example">Ejemplo: .train</div></div>
+                <div class="cmd-card"><div class="cmd-name">.hunt / .cazar</div><div class="cmd-desc">Caza monstruos por loot</div><div class="cmd-example">Ejemplo: .hunt</div></div>
+                <div class="cmd-card"><div class="cmd-name">.dungeon</div><div class="cmd-desc">Entra a mazmorra</div><div class="cmd-example">Ejemplo: .dungeon</div></div>
+                <div class="cmd-card"><div class="cmd-name">.equip</div><div class="cmd-desc">Equipa items</div><div class="cmd-example">Ejemplo: .equip espada</div></div>
+                <div class="cmd-card"><div class="cmd-name">.use</div><div class="cmd-desc">Usar item del inventario</div><div class="cmd-example">Ejemplo: .use pocion</div></div>
+                <div class="cmd-card"><div class="cmd-name">.craft</div><div class="cmd-desc">Crear items</div><div class="cmd-example">Ejemplo: .craft espada</div></div>
+                <div class="cmd-card"><div class="cmd-name">.boss</div><div class="cmd-desc">Pelear contra boss</div><div class="cmd-example">Ejemplo: .boss</div></div>
+                <div class="cmd-card"><div class="cmd-name">.quest</div><div class="cmd-desc">Misiones diarias RPG</div><div class="cmd-example">Ejemplo: .quest</div></div>
+            </div>
+
+            <div class="category-badge gold-badge">🎰 GACHA</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.gacha</div><div class="cmd-desc">Tira gacha para personajes</div><div class="cmd-example">Ejemplo: .gacha 10</div></div>
+                <div class="cmd-card"><div class="cmd-name">.waifu</div><div class="cmd-desc">Invoca waifu aleatoria</div><div class="cmd-example">Ejemplo: .waifu</div></div>
+                <div class="cmd-card"><div class="cmd-name">.husbando</div><div class="cmd-desc">Invoca husbando aleatorio</div><div class="cmd-example">Ejemplo: .husbando</div></div>
+                <div class="cmd-card"><div class="cmd-name">.claim</div><div class="cmd-desc">Reclama personaje diario</div><div class="cmd-example">Ejemplo: .claim</div></div>
+                <div class="cmd-card"><div class="cmd-name">.harem</div><div class="cmd-desc">Ver tu colección de personajes</div><div class="cmd-example">Ejemplo: .harem</div></div>
+                <div class="cmd-card"><div class="cmd-name">.trade</div><div class="cmd-desc">Intercambia personajes</div><div class="cmd-example">Ejemplo: .trade @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.roll</div><div class="cmd-desc">Ruleta gacha premium</div><div class="cmd-example">Ejemplo: .roll</div></div>
+                <div class="cmd-card"><div class="cmd-name">.gift</div><div class="cmd-desc">Regala personaje a usuario</div><div class="cmd-example">Ejemplo: .gift @user</div></div>
+                <div class="cmd-card"><div class="cmd-name">.sell</div><div class="cmd-desc">Vende personaje por coins</div><div class="cmd-example">Ejemplo: .sell waifu123</div></div>
+                <div class="cmd-card"><div class="cmd-name">.info</div><div class="cmd-desc">Info de personaje</div><div class="cmd-example">Ejemplo: .info waifu123</div></div>
+            </div>
+
+            <div class="category-badge">🔧 HERRAMIENTAS</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.ai / .gpt</div><div class="cmd-desc">Habla con IA</div><div class="cmd-example">Ejemplo: .ai que es nodejs</div></div>
+                <div class="cmd-card"><div class="cmd-name">.dalle</div><div class="cmd-desc">Genera imágenes con IA</div><div class="cmd-example">Ejemplo: .dalle un gato astronauta</div></div>
+                <div class="cmd-card"><div class="cmd-name">.qr</div><div class="cmd-desc">Genera código QR</div><div class="cmd-example">Ejemplo: .qr hola mundo</div></div>
+                <div class="cmd-card"><div class="cmd-name">.translate / .tr</div><div class="cmd-desc">Traduce texto</div><div class="cmd-example">Ejemplo: .tr es Hello</div></div>
+                <div class="cmd-card"><div class="cmd-name">.calc</div><div class="cmd-desc">Calculadora</div><div class="cmd-example">Ejemplo: .calc 5+5*2</div></div>
+                <div class="cmd-card"><div class="cmd-name">.ss / .ssweb</div><div class="cmd-desc">Screenshot de web</div><div class="cmd-example">Ejemplo: .ss https://google.com</div></div>
+                <div class="cmd-card"><div class="cmd-name">.clima</div><div class="cmd-desc">Ver clima de ciudad</div><div class="cmd-example">Ejemplo: .clima Lima</div></div>
+                <div class="cmd-card"><div class="cmd-name">.google</div><div class="cmd-desc">Busca en Google</div><div class="cmd-example">Ejemplo: .google node js</div></div>
+                <div class="cmd-card"><div class="cmd-name">.wiki</div><div class="cmd-desc">Busca en Wikipedia</div><div class="cmd-example">Ejemplo: .wiki Perú</div></div>
+            </div>
+
+            <div class="category-badge">👑 OWNER</div>
+            <div class="cmd-grid">
+                <div class="cmd-card"><div class="cmd-name">.join</div><div class="cmd-desc">Unir bot a grupo</div><div class="cmd-example">Ejemplo: .join https://chat.whatsapp.com/...</div></div>
+                <div class="cmd-card"><div class="cmd-name">.leave</div><div class="cmd-desc">Sacar bot del grupo</div><div class="cmd-example">Ejemplo: .leave</div></div>
+                                <div class="cmd-card"><div class="cmd-name">.bc /.broadcast</div><div class="cmd-desc">Mensaje a todos los chats</div><div class="cmd-example">Ejemplo:.bc hola a todos</div></div>
+                <div class="cmd-card"><div class="cmd-name">.update</div><div class="cmd-desc">Actualiza el bot desde GitHub</div><div class="cmd-example">Ejemplo:.update</div></div>
+                <div class="cmd-card"><div class="cmd-name">.restart</div><div class="cmd-desc">Reinicia el bot</div><div class="cmd-example">Ejemplo:.restart</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setprefix</div><div class="cmd-desc">Cambia el prefijo del bot</div><div class="cmd-example">Ejemplo:.setprefix!</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setname</div><div class="cmd-desc">Cambia nombre del bot</div><div class="cmd-example">Ejemplo:.setname GOJOBOT</div></div>
+                <div class="cmd-card"><div class="cmd-name">.setppbot</div><div class="cmd-desc">Cambia foto de perfil del bot</div><div class="cmd-example">Ejemplo: responde a imagen con.setppbot</div></div>
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📚 TUTORIALES</h2>
+            
+            <div class="tutorial-box">
+                <strong>¿Cómo agregar el bot a mi grupo?</strong><br>
+                1. Habla al privado con el bot<br>
+                2. Usa <code>.join [link de tu grupo]</code><br>
+                3. El bot entrará automáticamente si el owner lo permite
+            </div>
+
+            <div class="tutorial-bot">
+                <strong>¿Cómo crear stickers?</strong><br>
+                1. Envía una imagen/video al chat<br>
+                2. Responde a esa imagen con <code>.s</code> o <code>.sticker</code><br>
+                3. Listo, el bot te devuelve el sticker<br>
+                Tip: Usa <code>.wm Texto|Autor</code> para personalizar la marca de agua
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo ganar coins?</strong><br>
+                1. <code>.daily</code> - Recompensa diaria gratis<br>
+                2. <code>.work</code> - Trabaja cada 10 min<br>
+                3. <code>.mine</code> - Mina recursos<br>
+                4. <code>.crime</code> - Roba pero con riesgo de multa<br>
+                5. <code>.gamble cantidad</code> - Apuesta tus coins
+            </div>
+
+            <div class="tutorial-box">
+                <strong>¿Cómo jugar RPG?</strong><br>
+                1. <code>.adventure</code> - Gana XP y loot<br>
+                2. <code>.profile</code> - Ve tus stats<br>
+                3. <code>.levelup</code> - Sube de nivel cuando tengas XP suficiente<br>
+                4. <code>.hunt</code> - Caza monstruos por items<br>
+                5. <code>.duel @user</code> - Pelea contra otros jugadores
+            </div>
+        </div>
+
+        <div class="glass-panel">
+            <h2>📞 CONTACTO Y SOPORTE</h2>
+            <p><strong>Creador:</strong> Carlos Ramírez - Manguito Programs™</p>
+            <p><strong>WhatsApp:</strong> <a href="https://wa.me/595987467408" class="whatsapp-link">Contacto De Sporte</a></p>
+            <p><strong>Grupo Oficial:</strong> <a href="https://chat.whatsapp.com/HTyC9hiUqmL7Sb1vDfoWt2" class="whatsapp-link">Unirse al Bot</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/carlos13ra" class="whatsapp-link">Perfil Oficial de GitHub</a></p>
+            <p><strong>TikTok:</strong> <a href="https://tiktok.com/@carlos.ramirez.fc13" class="whatsapp-link">C'arlos R'amirez F'c</a></p>
+        </div>
+
+        <hr>
+        <footer class="footer">
+            <p>© 2026 MANGUITO PROGRAMS™ // ALL RIGHTS RESERVED</p>
+        </footer>
+    </div>
+
+    <>
+    <script>
+    // MOSTRAR USUARIO EN NAVBAR
+    const session = localStorage.getItem('manguito_session');
+    const welcomeEl = document.getElementById('welcomeUser');
+    if (welcomeEl && session) {
+        welcomeEl.textContent = `BIENVENIDO AL BOT, ${session.toUpperCase()}`;
+    }
+
+    // REPRODUCTOR PERSISTENTE + AUTO-PLAY
+    const audio = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playPauseBtn');
+    const playIcon = document.getElementById('playIcon');
+    const trackName = document.getElementById('trackName');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    const playlist = [
+        { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
+        { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
+        { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }
+    ];
+
+    const musicChannel = new BroadcastChannel('manguito_music');
+    let currentTrack = parseInt(localStorage.getItem('manguito_track')) || 0;
+    let isPlaying = localStorage.getItem('manguito_playing') === 'true';
+    let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
+    let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
+
+    document.addEventListener('click', () => {
+        if (!hasInteracted) {
+            hasInteracted = true;
+            localStorage.setItem('manguito_interacted', 'true');
+        }
+    }, { once: true });
+
+    function saveState() {
+        localStorage.setItem('manguito_track', currentTrack);
+        localStorage.setItem('manguito_playing', isPlaying);
+        localStorage.setItem('manguito_time', audio.currentTime);
+        localStorage.setItem('manguito_last_update', Date.now());
+    }
+
+    function loadTrack(index) {
+        currentTrack = index;
+        audio.src = playlist[index].url;
+        trackName.textContent = playlist[index].name;
+    }
+
+    function updateUI() {
+        if (isPlaying) {
+            playIcon.textContent = '⏸';
+            playBtn.classList.add('playing');
+        } else {
+            playIcon.textContent = '▶';
+            playBtn.classList.remove('playing');
+        }
+    }
+
+    function playAudio(force = false) {
+        const playPromise = audio.play();
+        if (playPromise!== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                updateUI();
+                saveState();
+            }).catch(() => {
+                isPlaying = false;
+                updateUI();
+                if (force &&!hasInteracted) {
+                    showAutoplayToast();
+                }
+            });
+        }
+    }
+
+    function showAutoplayToast() {
+        const toast = document.createElement('div');
+        toast.style.cssText = `
+            position: fixed; top: 90px; right: 20px; z-index: 10000;
+            background: rgba(0, 245, 255, 0.2); backdrop-filter: blur(20px);
+            border: 2px solid var(--cyan); border-radius: 12px; padding: 12px 18px;
+            font-family: 'Orbitron'; font-size: 0.8rem; color: var(--cyan);
+            box-shadow: 0 0 30px var(--cyan-glow); animation: fadeInOut 3s forwards;
+        `;
+        toast.textContent = '▶ TOCA CUALQUIER LADO PARA ACTIVAR MÚSICA';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+
+    function playPause() {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+        } else {
+            playAudio(true);
+        }
+        updateUI();
+        saveState();
+        musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
+    }
+
+    function nextTrack() {
+        currentTrack = (currentTrack + 1) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+        saveState();
+    }
+
+    function prevTrack() {
+        currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+        loadTrack(currentTrack);
+        if (isPlaying) playAudio();
+        musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+        saveState();
+    }
+
+    musicChannel.onmessage = (e) => {
+        if (e.data.action === 'sync') {
+            if (e.data.track!== currentTrack) loadTrack(e.data.track);
+            if (e.data.playing &&!isPlaying) {
+                audio.currentTime = e.data.time;
+                playAudio();
+            } else if (!e.data.playing && isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                updateUI();
+            }
+        }
+        if (e.data.action === 'track') {
+            loadTrack(e.data.track);
+            if (e.data.playing) playAudio();
+        }
+    };
+
+    playBtn.addEventListener('click', playPause);
+    nextBtn.addEventListener('click', nextTrack);
+    prevBtn.addEventListener('click', prevTrack);
+    audio.addEventListener('ended', nextTrack);
+    audio.addEventListener('timeupdate', () => {
+        if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+    });
+
+    window.addEventListener('load', () => {
+        loadTrack(currentTrack);
+        const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+        const timeDiff = (Date.now() - lastUpdate) / 1000;
+        if (isPlaying || hasInteracted) {
+            audio.currentTime = lastTime + timeDiff;
+            setTimeout(() => {
+                playAudio(true);
+            }, 100);
+        } else {
+            audio.currentTime = lastTime;
+            updateUI();
+        }
+    });
+
+    window.addEventListener('beforeunload', saveState);
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(100px); }
+            10% { opacity: 1; transform: translateX(0); }
+            90% { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(100px); }
+        }
+    `;
+    document.head.appendChild(style);
+    </script>
+</body>
+</html>
