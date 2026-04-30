@@ -197,26 +197,28 @@
             font-weight: 700;
         }
 
-        /* REPRODUCTOR FLOTANTE - MISMO QUE TU INDEX.HTML */
-       .music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(10, 10, 30, 0.7);
-            backdrop-filter: blur(25px);
-            border: 2px solid var(--cyan);
-            border-radius: 35px;
-            padding: 6px 12px 6px;
-            box-shadow:
-                0 0 25px var(--cyan-glow),
-                0 0 50px var(--purple-glow),
-                inset 0 0 12px rgba(0, 245, 255, 0.1);
-            animation: music-float 3s ease-in-out infinite;
-        }
+        /* REPRODUCTOR FLOTANTE - ARREGLADO PARA MÓVIL */
+.music-player {
+    position: fixed;
+    bottom: 15px;
+    right: 10px;
+    left: auto;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(10, 10, 30, 0.95);
+    backdrop-filter: blur(25px);
+    border: 2px solid var(--cyan);
+    border-radius: 35px;
+    padding: 6px 12px 6px;
+    box-shadow:
+        0 0 25px var(--cyan-glow),
+        0 0 50px var(--purple-glow),
+        inset 0 0 12px rgba(0, 245, 255, 0.1);
+    animation: music-float 3s ease-in-out infinite;
+    max-width: calc(100vw - 20px);
+}
 
         @keyframes music-float {
             0%, 100% { transform: translateY(0); }
