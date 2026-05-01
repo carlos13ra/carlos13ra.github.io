@@ -8,8 +8,8 @@
         window.location.href = '/login.html';
     }
     </script>
-    <!-- VIEWPORT +3% PARA LLENAR BORDES -->
-    <meta name="viewport" content="width=1055, initial-scale=0.34, minimum-scale=0.3, maximum-scale=2.0, user-scalable=yes">
+    <!-- VIEWPORT +2% EXTRA = 1076px -->
+    <meta name="viewport" content="width=1076, initial-scale=0.33, minimum-scale=0.3, maximum-scale=2.0, user-scalable=yes">
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
     <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Fundado por Carlos Ramírez desde Trujillo, Perú.">
     <meta name="robots" content="index, follow">
@@ -44,21 +44,21 @@
         body {
             font-family: 'Rajdhani', sans-serif;
             font-weight: 500;
-            width: 1055px;
+            width: 1076px; /* 1055 * 1.02 */
             margin: 0 auto;
             color: var(--text);
             line-height: 1.8;
             background: var(--bg-void);
             position: relative;
-            padding-top: 82px;
+            padding-top: 84px; /* 82 * 1.02 */
             overflow-x: hidden;
         }
 
-      .top-navbar {
+     .top-navbar {
             position: fixed;
             top: 0;
             left: 0;
-            width: 1055px;
+            width: 1076px;
             background: rgba(5, 5, 16, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -66,30 +66,30 @@
             z-index: 1000;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
         }
-      .nav-container {
-            width: 1055px;
+     .nav-container {
+            width: 1076px;
             margin: 0 auto;
-            padding: 1.03rem 2.06rem;
+            padding: 1.05rem 2.1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-      .nav-logo {
+     .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 1.13rem;
+            font-size: 1.2rem; /* Más grande para leer */
             background: linear-gradient(90deg, var(--cyan), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             white-space: nowrap;
         }
-      .nav-buttons {
+     .nav-buttons {
             display: flex;
-            gap: 1.03rem;
+            gap: 1.05rem;
             align-items: center;
         }
-      .nav-btn {
-            padding: 10.3px 20.6px;
+     .nav-btn {
+            padding: 10.5px 21px;
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid var(--cyan);
             border-radius: 8px;
@@ -97,47 +97,47 @@
             text-decoration: none;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 0.77rem;
+            font-size: 0.85rem; /* Subido para leer mejor */
             transition: all 0.3s;
             text-transform: uppercase;
             cursor: pointer;
             white-space: nowrap;
         }
-      .nav-btn:hover {
+     .nav-btn:hover {
             background: var(--cyan);
             color: #000;
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-      .nav-user {
+     .nav-user {
             color: var(--cyan);
             font-weight: 700;
             white-space: nowrap;
-            font-size: 0.77rem;
+            font-size: 0.85rem;
         }
 
-      .title-dash-container {
+     .title-dash-container {
             display: flex;
             align-items: center;
-            gap: 1.55rem;
+            gap: 1.58rem;
             flex-wrap: nowrap;
-            margin-bottom: 1.03rem;
+            margin-bottom: 1.05rem;
         }
-      .dash-btn-inline {
+     .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             border: none;
-            padding: 12.4px 24.7px;
+            padding: 12.6px 25.2px;
             border-radius: 12px;
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 0.93rem;
+            font-size: 1rem; /* Más legible */
             text-decoration: none;
             transition: all 0.3s;
             box-shadow: 0 0 30px var(--purple-glow);
             display: inline-block;
             white-space: nowrap;
         }
-      .dash-btn-inline:hover {
+     .dash-btn-inline:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
@@ -170,23 +170,23 @@
             opacity: 0.5;
         }
 
-      .container {
-            padding: 3.09rem 2.06rem;
+     .container {
+            padding: 3.15rem 2.1rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
-            width: 1055px;
+            width: 1076px;
             margin: 0 auto;
         }
 
-      .glass-panel {
+     .glass-panel {
             background: linear-gradient(180deg, rgba(12, 12, 30, 0.92), rgba(8, 8, 22, 0.96));
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 2px solid var(--cyan);
             border-radius: 16px;
-            padding: 2.06rem;
-            margin: 1.85rem 0;
+            padding: 2.1rem;
+            margin: 1.89rem 0;
             box-shadow:
                 0 0 25px var(--cyan-glow),
                 0 0 50px var(--purple-glow),
@@ -196,7 +196,7 @@
             overflow: hidden;
         }
 
-      .glass-panel::after {
+     .glass-panel::after {
             content: '';
             position: absolute;
             top: 0;
@@ -214,24 +214,24 @@
             z-index: 1;
         }
 
-      .banner {
+     .banner {
             width: 100%;
-            max-height: 288px;
+            max-height: 294px; /* 288 * 1.02 */
             object-fit: cover;
             border-radius: 16px;
-            margin-bottom: 1.85rem;
+            margin-bottom: 1.89rem;
             border: 2px solid var(--cyan);
             box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);
             transition: transform 0.4s ease;
         }
-      .banner:hover {
+     .banner:hover {
             transform: scale(1.01);
         }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: 3.09rem;
+            font-size: 3.15rem; /* 3.09 * 1.02 */
             background: linear-gradient(90deg, var(--cyan), var(--purple), var(--cyan));
             background-size: 200% auto;
             -webkit-background-clip: text;
@@ -250,19 +250,19 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             color: var(--cyan);
-            margin: 2.06rem 0 1.55rem;
-            font-size: 1.65rem;
+            margin: 2.1rem 0 1.58rem;
+            font-size: 1.75rem; /* Más grande para leer */
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
-            padding-left: 1.03rem;
+            padding-left: 1.05rem;
             text-shadow: 0 0 20px var(--cyan-glow);
         }
 
         h2::before {
             content: '▸';
             position: absolute;
-            left: -0.52rem;
+            left: -0.53rem;
             color: var(--purple);
             text-shadow: 0 0 15px var(--purple-glow);
         }
@@ -270,13 +270,13 @@
         h3 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            margin: 1.55rem 0 1.03rem;
-            font-size: 1.24rem;
+            margin: 1.58rem 0 1.05rem;
+            font-size: 1.35rem; /* Más grande */
             font-weight: 700;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
-        p { margin-bottom: 1.03rem; font-size: 1.03rem; }
+        p { margin-bottom: 1.05rem; font-size: 1.1rem; } /* SUBIDO DE 1.03 A 1.1 */
 
         a {
             color: var(--cyan);
@@ -290,41 +290,41 @@
             text-shadow: 0 0 15px var(--cyan);
         }
 
-      .badge {
+     .badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
-            padding: 10.3px 18.5px;
+            padding: 10.5px 18.9px;
             border-radius: 50px;
             display: inline-block;
             font-weight: 700;
-            margin: 1.55rem 0;
-            font-size: 0.82rem;
+            margin: 1.58rem 0;
+            font-size: 0.9rem; /* Más legible */
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
             text-transform: uppercase;
             box-shadow: 0 0 20px var(--purple-glow);
         }
 
-      .links {
-            margin: 2.06rem 0;
+     .links {
+            margin: 2.1rem 0;
             display: flex;
-            gap: 1.03rem;
+            gap: 1.05rem;
             flex-wrap: wrap;
         }
 
-      .links a {
+     .links a {
             background: rgba(0, 245, 255, 0.08);
-            padding: 12.4px 22.7px;
+            padding: 12.6px 23.2px;
             border-radius: 12px;
             border: 1px solid var(--cyan);
             transition: all 0.3s ease;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.82rem;
+            font-size: 0.9rem; /* Más legible */
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-      .links a:hover {
+     .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-2px);
@@ -332,53 +332,53 @@
             text-shadow: none;
         }
 
-      .whatsapp-btn {
+     .whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-      .whatsapp-btn:hover {
+     .whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
         }
 
-      .tiktok-btn {
+     .tiktok-btn {
             background: rgba(0, 0, 0, 0.3)!important;
             border-color: #ff0050!important;
             display: flex;
             align-items: center;
-            gap: 10.3px;
+            gap: 10.5px;
         }
 
-      .tiktok-btn:hover {
+     .tiktok-btn:hover {
             background: #ff0050!important;
             color: #fff!important;
             box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
         }
 
-      .tiktok-avatar {
-            width: 51.5px;
-            height: 51.5px;
+     .tiktok-avatar {
+            width: 52.5px;
+            height: 52.5px;
             border-radius: 50%;
             border: 3px solid #ff0050;
             object-fit: cover;
             box-shadow: 0 0 20px rgba(255, 0, 80, 0.6);
         }
 
-      .tiktok-highlight {
+     .tiktok-highlight {
             background: linear-gradient(135deg, rgba(255, 0, 80, 0.15), rgba(0, 245, 255, 0.08));
             border: 2px solid #ff0050;
             text-align: center;
             box-shadow: 0 0 25px rgba(255, 0, 80, 0.3), 0 0 50px var(--purple-glow);
         }
 
-        ul { margin: 2.06rem 0 2.06rem 1.55rem; list-style: none; }
+        ul { margin: 2.1rem 0 2.1rem 1.58rem; list-style: none; }
         li {
-            margin: 1.03rem 0;
-            padding-left: 2.06rem;
+            margin: 1.05rem 0;
+            padding-left: 2.1rem;
             position: relative;
-            font-size: 1.03rem;
+            font-size: 1.1rem; /* SUBIDO PARA LEER MEJOR */
         }
         li::before {
             content: '◆';
@@ -399,73 +399,73 @@
             border: none;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-            margin: 4.12rem 0;
+            margin: 4.2rem 0;
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-      .footer {
-            font-size: 0.88rem;
+     .footer {
+            font-size: 0.95rem; /* Más legible */
             color: var(--text-dim);
             text-align: center;
             line-height: 2;
             font-family: 'Orbitron', sans-serif;
         }
 
-      .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+     .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
-      .music-player {
+     .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 9999;
             display: flex;
             align-items: center;
-            gap: 6.18px;
+            gap: 6.3px;
             background: rgba(10, 10, 30, 0.8);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 2px solid var(--cyan);
             border-radius: 35px;
-            padding: 6.18px 12.36px;
+            padding: 6.3px 12.6px;
             box-shadow: 0 0 25px var(--cyan-glow), 0 0 50px var(--purple-glow);
         }
 
-      .music-btn {
-            width: 32.96px;
-            height: 32.96px;
+     .music-btn {
+            width: 33.6px;
+            height: 33.6px;
             border-radius: 50%;
             background: rgba(0, 245, 255, 0.15);
             border: 2px solid var(--cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.82rem;
+            font-size: 0.85rem; /* Más legible */
             color: var(--cyan);
             cursor: pointer;
             box-shadow: 0 0 12px var(--cyan-glow);
             transition: all 0.3s ease;
         }
 
-      .music-btn:hover {
+     .music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-      .play-btn-music {
-            width: 39.14px;
-            height: 39.14px;
-            font-size: 0.93rem;
+     .play-btn-music {
+            width: 39.9px;
+            height: 39.9px;
+            font-size: 0.95rem;
         }
 
-      .track-info {
+     .track-info {
             font-family: 'Orbitron', sans-serif;
-            max-width: 92.7px;
+            max-width: 94.6px;
         }
 
-      .track-name {
-            font-size: 0.62rem;
+     .track-name {
+            font-size: 0.65rem; /* Más legible */
             font-weight: 700;
             color: var(--cyan);
             text-shadow: 0 0 10px var(--cyan-glow);
@@ -475,22 +475,23 @@
             text-overflow: ellipsis;
         }
 
-      .glass-panel iframe {
+     .glass-panel iframe {
             width: 100%!important;
-            max-width: 576.8px!important;
-            height: 324.45px!important;
+            max-width: 588.3px!important; /* 576.8 * 1.02 */
+            height: 330.9px!important; /* 324.45 * 1.02 */
             margin: 0 auto;
             display: block;
         }
     </style>
 </head>
+<!-- RESTO DEL HTML IGUAL QUE ANTES -->
 <body>
     <nav class="top-navbar">
         <div class="nav-container">
             <div class="nav-logo">🥭 MANGUITO PROGRAMS™</div>
             <div class="nav-buttons">
                 <span class="nav-user" id="navUser"></span>
-                <a href="/login.html" class="nav-btn" id="dashBtn" style="padding: 14.4px 32.96px; font-size: 1.13rem; background: linear-gradient(135deg, var(--purple), var(--cyan)); color: #000; border: none; box-shadow: 0 0 30px var(--purple-glow); font-weight: 900;">INICIAR SESIÓN</a>
+                <a href="/login.html" class="nav-btn" id="dashBtn" style="padding: 14.7px 33.6px; font-size: 1.15rem; background: linear-gradient(135deg, var(--purple), var(--cyan)); color: #000; border: none; box-shadow: 0 0 30px var(--purple-glow); font-weight: 900;">INICIAR SESIÓN</a>
             </div>
         </div>
     </nav>
@@ -514,13 +515,13 @@
 
         <!-- 🔥 ANUNCIO MUSICAL - MUSICFLOW STUDIO 🔥 -->
         <div class="glass-panel" style="border-color: var(--cyan); text-align: center; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 0, 255, 0.1));">
-            <p style="color: var(--cyan); font-size: 0.72rem; margin-bottom: 0.82rem; font-family: 'Orbitron'; letter-spacing: 3px;">MUSICFLOW STUDIO PRESENTA</p>
-            <h3 style="color: #fff; margin: 0 0 1.03rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.55rem;">🎵NUEVO LANZAMIENTO🎵</h3>
+            <p style="color: var(--cyan); font-size: 0.73rem; margin-bottom: 0.84rem; font-family: 'Orbitron'; letter-spacing: 3px;">MUSICFLOW STUDIO PRESENTA</p>
+            <h3 style="color: #fff; margin: 0 0 1.05rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.58rem;">🎵NUEVO LANZAMIENTO🎵</h3>
 
             <iframe
                 width="100%"
                 height="315"
-                style="max-width: 576.8px; border-radius: 12px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);"
+                style="max-width: 588.3px; border-radius: 12px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);"
                 src="https://www.youtube.com/embed/2ZgUW95M3oI"
                 title="MusicFlow Studio"
                 frameborder="0"
@@ -529,15 +530,15 @@
                 loading="lazy">
             </iframe>
 
-            <p style="margin-top: 1.24rem; font-size: 1.13rem; color: var(--text); font-weight: 700;">
+            <p style="margin-top: 1.26rem; font-size: 1.15rem; color: var(--text); font-weight: 700;">
                 Dale play y siente el Flow Deja tu like y suscríbete<br>para más lanzamientos uwuu 🥭⚡
             </p>
 
-            <div class="links" style="justify-content: center; margin: 1.24rem 0 0; gap: 1.03rem;">
-                <a href="https://youtu.be/2ZgUW95M3oI" target="_blank" rel="noopener" style="background: rgba(255, 0, 0, 0.2); border-color: #ff0000; font-size: 1.03rem; padding: 14.4px 28.8px;">
+            <div class="links" style="justify-content: center; margin: 1.26rem 0 0; gap: 1.05rem;">
+                <a href="https://youtu.be/2ZgUW95M3oI" target="_blank" rel="noopener" style="background: rgba(255, 0, 0, 0.2); border-color: #ff0000; font-size: 1.05rem; padding: 14.7px 29.4px;">
                     ▶️ VER EN YOUTUBE
                 </a>
-                <a href="https://www.youtube.com/@musicflowstudiomfs2022" target="_blank" rel="noopener" style="background: rgba(179, 0, 255, 0.2); border-color: var(--purple); font-size: 1.03rem; padding: 14.4px 28.8px;">
+                <a href="https://www.youtube.com/@musicflowstudiomfs2022" target="_blank" rel="noopener" style="background: rgba(179, 0, 255, 0.2); border-color: var(--purple); font-size: 1.05rem; padding: 14.7px 29.4px;">
                     🔔 SUSCRÍBETE
                 </a>
             </div>
@@ -546,24 +547,24 @@
 
         <div class="glass-panel tiktok-highlight">
             <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 1.55rem; flex-wrap: nowrap; margin: 1.55rem 0;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1.58rem; flex-wrap: nowrap; margin: 1.58rem 0;">
                 <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
                 <div>
-                    <p style="font-size: 1.44rem; margin: 0; font-weight: 900;">
+                    <p style="font-size: 1.47rem; margin: 0; font-weight: 900;">
                         <strong>ERICK LOPEZ💥 </strong>
                     </p>
-                    <p style="color: #ff0050; font-size: 1.13rem; margin: 0; font-weight: 700;">
+                    <p style="color: #ff0050; font-size: 1.15rem; margin: 0; font-weight: 700;">
                         Bobby Flow⚡
                     </p>
                 </div>
             </div>
-            <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.55rem;">
+            <p style="text-align: center; color: var(--cyan); font-weight: 700; margin-bottom: 1.58rem; font-size: 1.1rem;">
                 ⚡ DALE FOLLOW PARA APOYAR A UN THERIANS🐶 QUE QUIERE SER INFLUENCER⚡<br>
                 Todo para ver frases y videos de humor
             </p>
             <div class="links" style="justify-content: center;">
                 <a href="https://www.tiktok.com/@lrbat4" target="_blank" rel="noopener" class="tiktok-btn">
-                    <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="@lrbat4" class="tiktok-avatar" style="width: 28.8px; height: 28.8px; border: 2px solid #fff;">
+                    <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="@lrbat4" class="tiktok-avatar" style="width: 29.4px; height: 29.4px; border: 2px solid #fff;">
                     @lrbat4 EN TIKTOK
                 </a>
             </div>
@@ -757,7 +758,7 @@
             localStorage.setItem('manguito_last_update', Date.now());
         }
 
-        function loadTrack(index) {
+                function loadTrack(index) {
             currentTrack = index;
             audio.src = playlist[index].url;
             trackName.textContent = playlist[index].name;
@@ -781,7 +782,7 @@
             }
         }
 
-                function playPause() {
+        function playPause() {
             if (isPlaying) {
                 audio.pause();
                 isPlaying = false;
@@ -811,8 +812,8 @@
 
         musicChannel.onmessage = (e) => {
             if (e.data.action === 'sync') {
-                if (e.data.track !== currentTrack) loadTrack(e.data.track);
-                if (e.data.playing && !isPlaying) {
+                if (e.data.track!== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing &&!isPlaying) {
                     audio.currentTime = e.data.time;
                     playAudio();
                 } else if (!e.data.playing && isPlaying) {
