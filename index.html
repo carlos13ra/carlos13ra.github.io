@@ -780,6 +780,62 @@
             musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
         }
 
-        function nextTrack() {
+                function nextTrack() {
             currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack 
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        musicChannel.onmessage = (e) => {
+            if (e.data.action === 'sync') {
+                if (e.data.track !== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing && !isPlaying) {
+                    audio.currentTime = e.data.time;
+                    playAudio();
+                } else if (!e.data.playing && isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+            if (e.data.action === 'track') {
+                loadTrack(e.data.track);
+                if (e.data.playing) playAudio();
+            }
+        };
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+        audio.addEventListener('timeupdate', () => {
+            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+        });
+
+        window.addEventListener('load', () => {
+            loadTrack(currentTrack);
+            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+            const timeDiff = (Date.now() - lastUpdate) / 1000;
+            if (isPlaying || hasInteracted) {
+                audio.currentTime = lastTime + timeDiff;
+                setTimeout(() => playAudio(true), 100);
+            } else {
+                audio.currentTime = lastTime;
+                updateUI();
+            }
+        });
+
+        window.addEventListener('beforeunload', saveState);
+    </script>
+</body>
+</html>
