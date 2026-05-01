@@ -115,12 +115,18 @@
             font-size: 1rem; /* +11% */
         }
 
-    .title-dash-container {
+        .title-dash-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1.8rem;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             margin-bottom: 1.2rem;
+        }
+    .dash-buttons-column {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: flex-start;
         }
     .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
