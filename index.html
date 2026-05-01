@@ -8,7 +8,7 @@
         window.location.href = '/login.html';
     }
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>MANGUITO PROGRAMS™ | GOJOBOT-MD | Carlos Ramírez</title>
     <meta name="description" content="GOJOBOT-MD: Bot de WhatsApp Multi-Dispositivo de nueva generación por Manguito Programs™. Fundado por Carlos Ramírez desde Trujillo, Perú.">
     <meta name="robots" content="index, follow">
@@ -64,7 +64,6 @@
             border-bottom: 2px solid var(--cyan);
             z-index: 1000;
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-            will-change: transform;
         }
        .nav-container {
             max-width: 1000px;
@@ -131,7 +130,6 @@
             transition: all 0.3s;
             box-shadow: 0 0 30px var(--purple-glow);
             display: inline-block;
-            will-change: transform;
         }
        .dash-btn-inline:hover {
             transform: scale(1.05);
@@ -171,63 +169,28 @@
             position: relative;
             z-index: 2;
             min-height: 100vh;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* 🔥 ESTILO VENTANA COMPUTADORA CYBERPUNK 🔥 */
+        /* 🔥 ESTILO IDÉNTICO A TU CAPTURA 🔥 */
        .glass-panel {
-            background: linear-gradient(180deg, rgba(15, 15, 35, 0.95), rgba(5, 5, 20, 0.98));
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, rgba(12, 12, 30, 0.92), rgba(8, 8, 22, 0.96));
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 2px solid var(--cyan);
-            border-radius: 0;
-            padding: 0;
-            margin: 2rem 0;
-            box-shadow: 
-                0 0 30px var(--cyan-glow), 
-                0 0 60px var(--purple-glow),
-                inset 0 1px 0 rgba(0, 245, 255, 0.2),
-                0 20px 60px rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 1.8rem 0;
+            box-shadow:
+                0 0 25px var(--cyan-glow),
+                0 0 50px var(--purple-glow),
+                inset 0 0 15px rgba(0, 245, 255, 0.08),
+                0 15px 50px rgba(0, 0, 0, 0.6);
             position: relative;
             overflow: hidden;
-            will-change: transform;
-            clip-path: polygon(
-                0 8px, 8px 0, 
-                calc(100% - 8px) 0, 100% 8px,
-                100% calc(100% - 8px), calc(100% - 8px) 100%,
-                8px 100%, 0 calc(100% - 8px)
-            );
         }
 
-        /* BARRA SUPERIOR TIPO VENTANA */
-       .glass-panel::before {
-            content: attr(data-title);
-            display: block;
-            background: linear-gradient(90deg, rgba(0, 245, 255, 0.25), rgba(179, 0, 255, 0.25));
-            border-bottom: 2px solid var(--cyan);
-            padding: 8px 16px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.7rem;
-            font-weight: 700;
-            color: var(--cyan);
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--cyan-glow);
-        }
-
-        /* CONTENIDO INTERNO */
-       .glass-panel > * {
-            padding-left: 2rem;
-            padding-right: 2rem;
-            position: relative;
-            z-index: 2;
-        }
-       .glass-panel > *:first-child {
-            padding-top: 2rem;
-        }
-       .glass-panel > *:last-child {
-            padding-bottom: 2rem;
-        }
-
-        /* SCANLINES CRT */
        .glass-panel::after {
             content: '';
             position: absolute;
@@ -237,10 +200,10 @@
             height: 100%;
             background: repeating-linear-gradient(
                 0deg,
-                rgba(0, 245, 255, 0.03) 0px,
+                rgba(0, 245, 255, 0.015) 0px,
                 transparent 1px,
-                transparent 2px,
-                rgba(0, 245, 255, 0.03) 3px
+                transparent 4px,
+                rgba(0, 245, 255, 0.015) 5px
             );
             pointer-events: none;
             z-index: 1;
@@ -250,18 +213,14 @@
             width: 100%;
             max-height: 280px;
             object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.8rem;
             border: 2px solid var(--cyan);
             box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);
             transition: transform 0.4s ease;
-            clip-path: polygon(
-                0 8px, 8px 0, 
-                calc(100% - 8px) 0, 100% 8px,
-                100% calc(100% - 8px), calc(100% - 8px) 100%,
-                8px 100%, 0 calc(100% - 8px)
-            );
         }
        .banner:hover {
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         h1 {
@@ -286,7 +245,7 @@
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             color: var(--cyan);
-            margin: 3rem 0 1.5rem;
+            margin: 2rem 0 1.5rem;
             font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -306,10 +265,10 @@
         h3 {
             font-family: 'Orbitron', sans-serif;
             color: #fff;
-            margin: 2rem 0 1rem;
+            margin: 1.5rem 0 1rem;
             font-size: 1.3rem;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
 
         p { margin-bottom: 1rem; font-size: 1.1rem; }
@@ -349,24 +308,22 @@
         }
 
        .links a {
-            background: rgba(0, 245, 255, 0.1);
-            padding: 14px 24px;
+            background: rgba(0, 245, 255, 0.08);
+            padding: 12px 22px;
+            border-radius: 12px;
             border: 1px solid var(--cyan);
             transition: all 0.3s ease;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));
         }
 
        .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--cyan-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--cyan-glow);
             text-shadow: none;
         }
 
@@ -405,9 +362,10 @@
         }
 
        .tiktok-highlight {
-            background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
+            background: linear-gradient(135deg, rgba(255, 0, 80, 0.15), rgba(0, 245, 255, 0.08));
             border: 2px solid #ff0050;
             text-align: center;
+            box-shadow: 0 0 25px rgba(255, 0, 80, 0.3), 0 0 50px var(--purple-glow);
         }
 
         ul { margin: 2rem 0 2rem 1.5rem; list-style: none; }
@@ -511,28 +469,6 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-
-        @media (max-width: 600px) {
-           .container { padding: 2rem 1rem; }
-           .glass-panel { padding: 0; }
-           .glass-panel > * { padding-left: 1.5rem; padding-right: 1.5rem; }
-           .links { flex-direction: column; }
-           .links a { width: 100%; justify-content: center; }
-           .music-player {
-                bottom: 12px;
-                right: 12px;
-                padding: 5px 10px 5px;
-                gap: 5px;
-            }
-           .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-           .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-           .track-info { max-width: 70px; }
-           .track-name { font-size: 0.55rem; }
-           .tiktok-avatar { width: 50px; height: 50px; }
-           .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-           .nav-buttons { flex-wrap: wrap; justify-content: center; }
-           .title-dash-container { flex-direction: column; align-items: flex-start; }
-        }
     </style>
 </head>
 <body>
@@ -564,23 +500,21 @@
         <img src="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp" alt="Manguito Programs™ Banner" class="banner" loading="eager">
 
         <!-- 🔥 ANUNCIO MUSICAL - MUSICFLOW STUDIO 🔥 -->
-        <div class="glass-panel" data-title="● ● ● MUSIC_PLAYER.EXE" style="border-color: var(--cyan); text-align: center; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 0, 255, 0.1));">
+        <div class="glass-panel" style="border-color: var(--cyan); text-align: center; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 0, 255, 0.1));">
             <p style="color: var(--cyan); font-size: 0.7rem; margin-bottom: 0.8rem; font-family: 'Orbitron'; letter-spacing: 3px;">MUSICFLOW STUDIO PRESENTA</p>
-            <h3 style="color: #fff; margin: 0 0 1rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.5rem;">🎵 NUEVO LANZAMIENTO 🎵</h3>
+            <h3 style="color: #fff; margin: 0 0 1rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.5rem;">🎵NUEVO LANZAMIENTO🎵</h3>
 
-            <div style="padding: 0 2rem;">
-                <iframe
-                    width="100%"
-                    height="315"
-                    style="max-width: 560px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow); clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));"
-                    src="https://www.youtube.com/embed/2ZgUW95M3oI"
-                    title="MusicFlow Studio"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-            </div>
+            <iframe
+                width="100%"
+                height="315"
+                style="max-width: 560px; border-radius: 12px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);"
+                src="https://www.youtube.com/embed/2ZgUW95M3oI"
+                title="MusicFlow Studio"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                loading="lazy">
+            </iframe>
 
             <p style="margin-top: 1.2rem; font-size: 1.1rem; color: var(--text); font-weight: 700;">
                 Dale play y siente el Flow Deja tu like y suscríbete<br>para más lanzamientos uwuu 🥭⚡
@@ -597,7 +531,7 @@
         </div>
         <!-- 🔥 FIN ANUNCIO MUSICAL 🔥 -->
 
-        <div class="glass-panel tiktok-highlight" data-title="● ● ● TIKTOK_MODULE.EXE">
+        <div class="glass-panel tiktok-highlight">
             <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
             <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
                 <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
@@ -622,7 +556,7 @@
             </div>
         </div>
 
-        <div class="glass-panel" data-title="● ● ● SYSTEM_CORE.EXE">
+        <div class="glass-panel">
             <header>
                 <div class="title-dash-container">
                     <h1 style="margin: 0;">🥭 MANGUITO PROGRAMS™</h1>
@@ -635,7 +569,7 @@
             </header>
         </div>
 
-        <div class="glass-panel" data-title="● ● ● GOJOBOT_MD.EXE">
+        <div class="glass-panel">
             <section>
                 <h2>PROYECTO DESTACADO</h2>
                 <h3>GOJOBOT-MD <span class="badge hn-badge">TRENDING EN HN</span></h3>
@@ -655,7 +589,7 @@
             </section>
         </div>
 
-        <div class="glass-panel" data-title="● ● ● LICENSE_PROTOCOL.EXE" style="border-color: #ff3300; box-shadow: 0 0 40px rgba(255, 51, 0, 0.4);">
+        <div class="glass-panel" style="border-color: #ff3300; box-shadow: 0 0 40px rgba(255, 51, 0, 0.4);">
             <h3>⚠️ PROTOCOLO DE LICENCIA</h3>
             <p>GOJOBOT-MD es propiedad intelectual de Manguito Programs™. Queda terminantemente prohibido el uso comercial, modificación, distribución o ingeniería inversa sin autorización criptográfica verificada.</p>
             <div class="links">
@@ -663,7 +597,7 @@
             </div>
         </div>
 
-        <div class="glass-panel" data-title="● ● ● CONTACT_CHANNEL.EXE">
+        <div class="glass-panel">
             <h3>📡 CANAL DE COMUNICACIÓN</h3>
             <p>¿Soporte técnico, implementación o consultas? Establece conexión directa. Tiempo de respuesta: < 24h</p>
             <div class="links">
@@ -671,7 +605,7 @@
             </div>
         </div>
 
-        <div class="glass-panel" data-title="● ● ● ARCHITECT_INFO.EXE">
+        <div class="glass-panel">
             <h2>ARQUITECTO PRINCIPAL</h2>
             <p><strong>CARLOS RAMÍREZ [MANGUITO]</strong><br>
              Desarrollador de Software | Trujillo, Perú<br>
@@ -770,7 +704,7 @@
         initParticles();
         animateParticles();
 
-                // REPRODUCTOR PERSISTENTE
+        // REPRODUCTOR PERSISTENTE
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
@@ -848,60 +782,4 @@
 
         function nextTrack() {
             currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playAudio();
-            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-            saveState();
-        }
-
-        function prevTrack() {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playAudio();
-            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-            saveState();
-        }
-
-        musicChannel.onmessage = (e) => {
-            if (e.data.action === 'sync') {
-                if (e.data.track!== currentTrack) loadTrack(e.data.track);
-                if (e.data.playing &&!isPlaying) {
-                    audio.currentTime = e.data.time;
-                    playAudio();
-                } else if (!e.data.playing && isPlaying) {
-                    audio.pause();
-                    isPlaying = false;
-                    updateUI();
-                }
-            }
-            if (e.data.action === 'track') {
-                loadTrack(e.data.track);
-                if (e.data.playing) playAudio();
-            }
-        };
-
-        playBtn.addEventListener('click', playPause);
-        nextBtn.addEventListener('click', nextTrack);
-        prevBtn.addEventListener('click', prevTrack);
-        audio.addEventListener('ended', nextTrack);
-        audio.addEventListener('timeupdate', () => {
-            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
-        });
-
-        window.addEventListener('load', () => {
-            loadTrack(currentTrack);
-            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
-            const timeDiff = (Date.now() - lastUpdate) / 1000;
-            if (isPlaying || hasInteracted) {
-                audio.currentTime = lastTime + timeDiff;
-                setTimeout(() => playAudio(true), 100);
-            } else {
-                audio.currentTime = lastTime;
-                updateUI();
-            }
-        });
-
-        window.addEventListener('beforeunload', saveState);
-    </script>
-</body>
-</html>
+            loadTrack(currentTrack 
