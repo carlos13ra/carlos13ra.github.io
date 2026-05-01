@@ -53,7 +53,7 @@
             padding-top: 80px;
         }
 
-    .top-navbar {
+       .top-navbar {
             position: fixed;
             top: 0;
             left: 0;
@@ -66,7 +66,7 @@
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
             will-change: transform;
         }
-    .nav-container {
+       .nav-container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 1rem 2rem;
@@ -74,7 +74,7 @@
             justify-content: space-between;
             align-items: center;
         }
-    .nav-logo {
+       .nav-logo {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
             font-size: 1.3rem;
@@ -82,12 +82,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-    .nav-buttons {
+       .nav-buttons {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-    .nav-btn {
+       .nav-btn {
             padding: 10px 20px;
             background: rgba(0, 245, 255, 0.1);
             border: 1px solid var(--cyan);
@@ -101,24 +101,24 @@
             text-transform: uppercase;
             cursor: pointer;
         }
-    .nav-btn:hover {
+       .nav-btn:hover {
             background: var(--cyan);
             color: #000;
             box-shadow: 0 0 20px var(--cyan-glow);
         }
-    .nav-user {
+       .nav-user {
             color: var(--cyan);
             font-weight: 700;
         }
 
-    .title-dash-container {
+       .title-dash-container {
             display: flex;
             align-items: center;
             gap: 1.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
-    .dash-btn-inline {
+       .dash-btn-inline {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             border: none;
@@ -133,7 +133,7 @@
             display: inline-block;
             will-change: transform;
         }
-    .dash-btn-inline:hover {
+       .dash-btn-inline:hover {
             transform: scale(1.05);
             box-shadow: 0 0 40px var(--purple-glow), 0 0 60px var(--cyan-glow);
         }
@@ -166,36 +166,101 @@
             opacity: 0.5;
         }
 
-    .container {
+       .container {
             padding: 3rem 2rem;
             position: relative;
             z-index: 2;
             min-height: 100vh;
         }
 
-    .glass-panel {
-            background: var(--bg-glass);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
-            border: 1px solid var(--cyan-glow);
-            border-radius: 20px;
-            padding: 2rem;
+        /* 🔥 ESTILO VENTANA COMPUTADORA CYBERPUNK 🔥 */
+       .glass-panel {
+            background: linear-gradient(180deg, rgba(15, 15, 35, 0.95), rgba(5, 5, 20, 0.98));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 2px solid var(--cyan);
+            border-radius: 0;
+            padding: 0;
             margin: 2rem 0;
-            box-shadow: 0 0 40px var(--cyan-glow), 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 
+                0 0 30px var(--cyan-glow), 
+                0 0 60px var(--purple-glow),
+                inset 0 1px 0 rgba(0, 245, 255, 0.2),
+                0 20px 60px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
             will-change: transform;
+            clip-path: polygon(
+                0 8px, 8px 0, 
+                calc(100% - 8px) 0, 100% 8px,
+                100% calc(100% - 8px), calc(100% - 8px) 100%,
+                8px 100%, 0 calc(100% - 8px)
+            );
         }
 
-    .banner {
+        /* BARRA SUPERIOR TIPO VENTANA */
+       .glass-panel::before {
+            content: attr(data-title);
+            display: block;
+            background: linear-gradient(90deg, rgba(0, 245, 255, 0.25), rgba(179, 0, 255, 0.25));
+            border-bottom: 2px solid var(--cyan);
+            padding: 8px 16px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--cyan);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        /* CONTENIDO INTERNO */
+       .glass-panel > * {
+            padding-left: 2rem;
+            padding-right: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+       .glass-panel > *:first-child {
+            padding-top: 2rem;
+        }
+       .glass-panel > *:last-child {
+            padding-bottom: 2rem;
+        }
+
+        /* SCANLINES CRT */
+       .glass-panel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 245, 255, 0.03) 0px,
+                transparent 1px,
+                transparent 2px,
+                rgba(0, 245, 255, 0.03) 3px
+            );
+            pointer-events: none;
+            z-index: 1;
+        }
+
+       .banner {
             width: 100%;
             max-height: 280px;
             object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 2rem;
             border: 2px solid var(--cyan);
             box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);
             transition: transform 0.4s ease;
+            clip-path: polygon(
+                0 8px, 8px 0, 
+                calc(100% - 8px) 0, 100% 8px,
+                100% calc(100% - 8px), calc(100% - 8px) 100%,
+                8px 100%, 0 calc(100% - 8px)
+            );
         }
-    .banner:hover {
+       .banner:hover {
             transform: scale(1.02);
         }
 
@@ -244,7 +309,7 @@
             margin: 2rem 0 1rem;
             font-size: 1.3rem;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 10px rgba(255, 255, 0.3);
         }
 
         p { margin-bottom: 1rem; font-size: 1.1rem; }
@@ -261,7 +326,7 @@
             text-shadow: 0 0 15px var(--cyan);
         }
 
-    .badge {
+       .badge {
             background: linear-gradient(135deg, var(--purple), var(--cyan));
             color: #000;
             padding: 10px 18px;
@@ -276,17 +341,16 @@
             box-shadow: 0 0 20px var(--purple-glow);
         }
 
-    .links {
+       .links {
             margin: 2rem 0;
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-    .links a {
+       .links a {
             background: rgba(0, 245, 255, 0.1);
             padding: 14px 24px;
-            border-radius: 12px;
             border: 1px solid var(--cyan);
             transition: all 0.3s ease;
             font-family: 'Orbitron', sans-serif;
@@ -295,9 +359,10 @@
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
+            clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));
         }
 
-    .links a:hover {
+       .links a:hover {
             background: var(--cyan);
             color: var(--bg-void);
             transform: translateY(-3px);
@@ -305,18 +370,18 @@
             text-shadow: none;
         }
 
-    .whatsapp-btn {
+       .whatsapp-btn {
             background: rgba(37, 211, 102, 0.2)!important;
             border-color: #25D366!important;
         }
 
-    .whatsapp-btn:hover {
+       .whatsapp-btn:hover {
             background: #25D366!important;
             color: #000!important;
             box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5)!important;
         }
 
-    .tiktok-btn {
+       .tiktok-btn {
             background: rgba(0, 0, 0, 0.3)!important;
             border-color: #ff0050!important;
             display: flex;
@@ -324,13 +389,13 @@
             gap: 10px;
         }
 
-    .tiktok-btn:hover {
+       .tiktok-btn:hover {
             background: #ff0050!important;
             color: #fff!important;
             box-shadow: 0 10px 30px rgba(255, 0, 80, 0.5)!important;
         }
 
-    .tiktok-avatar {
+       .tiktok-avatar {
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -339,7 +404,7 @@
             box-shadow: 0 0 20px rgba(255, 0, 80, 0.6);
         }
 
-    .tiktok-highlight {
+       .tiktok-highlight {
             background: linear-gradient(135deg, rgba(255, 0, 80, 0.2), rgba(0, 245, 255, 0.1));
             border: 2px solid #ff0050;
             text-align: center;
@@ -375,7 +440,7 @@
             box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-    .footer {
+       .footer {
             font-size: 0.9rem;
             color: var(--text-dim);
             text-align: center;
@@ -383,9 +448,9 @@
             font-family: 'Orbitron', sans-serif;
         }
 
-    .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
+       .hn-badge { background: linear-gradient(135deg, #ff6600, #ff3300); }
 
-    .music-player {
+       .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -402,7 +467,7 @@
             box-shadow: 0 0 25px var(--cyan-glow), 0 0 50px var(--purple-glow);
         }
 
-    .music-btn {
+       .music-btn {
             width: 34px;
             height: 34px;
             border-radius: 50%;
@@ -418,25 +483,25 @@
             transition: all 0.3s ease;
         }
 
-    .music-btn:hover {
+       .music-btn:hover {
             background: var(--cyan);
             color: #000;
             transform: scale(1.1);
             box-shadow: 0 0 25px var(--cyan-glow);
         }
 
-    .play-btn-music {
+       .play-btn-music {
             width: 42px;
             height: 42px;
             font-size: 1rem;
         }
 
-    .track-info {
+       .track-info {
             font-family: 'Orbitron', sans-serif;
             max-width: 100px;
         }
 
-    .track-name {
+       .track-name {
             font-size: 0.65rem;
             font-weight: 700;
             color: var(--cyan);
@@ -448,24 +513,25 @@
         }
 
         @media (max-width: 600px) {
-        .container { padding: 2rem 1rem; }
-        .glass-panel { padding: 1.5rem; backdrop-filter: blur(4px); }
-        .links { flex-direction: column; }
-        .links a { width: 100%; justify-content: center; }
-        .music-player {
+           .container { padding: 2rem 1rem; }
+           .glass-panel { padding: 0; }
+           .glass-panel > * { padding-left: 1.5rem; padding-right: 1.5rem; }
+           .links { flex-direction: column; }
+           .links a { width: 100%; justify-content: center; }
+           .music-player {
                 bottom: 12px;
                 right: 12px;
                 padding: 5px 10px 5px;
                 gap: 5px;
             }
-        .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-        .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
-        .track-info { max-width: 70px; }
-        .track-name { font-size: 0.55rem; }
-        .tiktok-avatar { width: 50px; height: 50px; }
-        .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
-        .nav-buttons { flex-wrap: wrap; justify-content: center; }
-        .title-dash-container { flex-direction: column; align-items: flex-start; }
+           .music-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+           .play-btn-music { width: 40px; height: 40px; font-size: 1rem; }
+           .track-info { max-width: 70px; }
+           .track-name { font-size: 0.55rem; }
+           .tiktok-avatar { width: 50px; height: 50px; }
+           .nav-container { padding: 1rem; flex-direction: column; gap: 1rem; }
+           .nav-buttons { flex-wrap: wrap; justify-content: center; }
+           .title-dash-container { flex-direction: column; align-items: flex-start; }
         }
     </style>
 </head>
@@ -497,22 +563,24 @@
     <div class="container">
         <img src="https://i.postimg.cc/BvC5ptHf/thumb-350-1334857.webp" alt="Manguito Programs™ Banner" class="banner" loading="eager">
 
-                <!-- 🔥 ANUNCIO MUSICAL - MUSICFLOW STUDIO 🔥 -->
-        <div class="glass-panel" style="border-color: var(--cyan); text-align: center; padding: 1.5rem; margin: 1.5rem 0; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 0, 255, 0.1));">
+        <!-- 🔥 ANUNCIO MUSICAL - MUSICFLOW STUDIO 🔥 -->
+        <div class="glass-panel" data-title="● ● ● MUSIC_PLAYER.EXE" style="border-color: var(--cyan); text-align: center; background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 0, 255, 0.1));">
             <p style="color: var(--cyan); font-size: 0.7rem; margin-bottom: 0.8rem; font-family: 'Orbitron'; letter-spacing: 3px;">MUSICFLOW STUDIO PRESENTA</p>
-            <h3 style="color: #fff; margin: 0 0 1rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.5rem;">🎵NUEVO LANZAMIENTO🎵</h3>
+            <h3 style="color: #fff; margin: 0 0 1rem 0; text-shadow: 0 0 20px var(--cyan-glow); font-size: 1.5rem;">🎵 NUEVO LANZAMIENTO 🎵</h3>
 
-            <iframe
-                width="100%"
-                height="315"
-                style="max-width: 560px; border-radius: 12px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow);"
-                src="https://www.youtube.com/embed/2ZgUW95M3oI"
-                title="MusicFlow Studio"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy">
-            </iframe>
+            <div style="padding: 0 2rem;">
+                <iframe
+                    width="100%"
+                    height="315"
+                    style="max-width: 560px; border: 2px solid var(--cyan); box-shadow: 0 0 40px var(--cyan-glow), 0 0 80px var(--purple-glow); clip-path: polygon(0 4px, 4px 0, calc(100% - 4px) 0, 100% 4px, 100% calc(100% - 4px), calc(100% - 4px) 100%, 4px 100%, 0 calc(100% - 4px));"
+                    src="https://www.youtube.com/embed/2ZgUW95M3oI"
+                    title="MusicFlow Studio"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+            </div>
 
             <p style="margin-top: 1.2rem; font-size: 1.1rem; color: var(--text); font-weight: 700;">
                 Dale play y siente el Flow Deja tu like y suscríbete<br>para más lanzamientos uwuu 🥭⚡
@@ -526,8 +594,10 @@
                     🔔 SUSCRÍBETE
                 </a>
             </div>
+        </div>
         <!-- 🔥 FIN ANUNCIO MUSICAL 🔥 -->
-        <div class="glass-panel tiktok-highlight">
+
+        <div class="glass-panel tiktok-highlight" data-title="● ● ● TIKTOK_MODULE.EXE">
             <h2 style="margin-top: 0; text-align: center;">🔥 SÍGUEME EN TIKTOK 🔥</h2>
             <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1.5rem 0;">
                 <img src="https://i.postimg.cc/cJRRwD7k/IMG-20260429-WA0015.jpg" alt="ERICK LOPEZ" class="tiktok-avatar">
@@ -552,7 +622,7 @@
             </div>
         </div>
 
-        <div class="glass-panel">
+        <div class="glass-panel" data-title="● ● ● SYSTEM_CORE.EXE">
             <header>
                 <div class="title-dash-container">
                     <h1 style="margin: 0;">🥭 MANGUITO PROGRAMS™</h1>
@@ -565,7 +635,7 @@
             </header>
         </div>
 
-        <div class="glass-panel">
+        <div class="glass-panel" data-title="● ● ● GOJOBOT_MD.EXE">
             <section>
                 <h2>PROYECTO DESTACADO</h2>
                 <h3>GOJOBOT-MD <span class="badge hn-badge">TRENDING EN HN</span></h3>
@@ -585,7 +655,7 @@
             </section>
         </div>
 
-        <div class="glass-panel" style="border-color: #ff3300; box-shadow: 0 0 40px rgba(255, 51, 0, 0.4);">
+        <div class="glass-panel" data-title="● ● ● LICENSE_PROTOCOL.EXE" style="border-color: #ff3300; box-shadow: 0 0 40px rgba(255, 51, 0, 0.4);">
             <h3>⚠️ PROTOCOLO DE LICENCIA</h3>
             <p>GOJOBOT-MD es propiedad intelectual de Manguito Programs™. Queda terminantemente prohibido el uso comercial, modificación, distribución o ingeniería inversa sin autorización criptográfica verificada.</p>
             <div class="links">
@@ -593,7 +663,7 @@
             </div>
         </div>
 
-        <div class="glass-panel">
+        <div class="glass-panel" data-title="● ● ● CONTACT_CHANNEL.EXE">
             <h3>📡 CANAL DE COMUNICACIÓN</h3>
             <p>¿Soporte técnico, implementación o consultas? Establece conexión directa. Tiempo de respuesta: < 24h</p>
             <div class="links">
@@ -601,7 +671,7 @@
             </div>
         </div>
 
-        <div class="glass-panel">
+        <div class="glass-panel" data-title="● ● ● ARCHITECT_INFO.EXE">
             <h2>ARQUITECTO PRINCIPAL</h2>
             <p><strong>CARLOS RAMÍREZ [MANGUITO]</strong><br>
              Desarrollador de Software | Trujillo, Perú<br>
@@ -705,133 +775,4 @@
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
         const trackName = document.getElementById('trackName');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        const playlist = [
-            { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
-            { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
-            { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' }, 
-            { name: 'Don Aitor - Rap Attack', url: 'https://files.catbox.moe/jyvc1l.m4a' },
-            { name: 'Don Aitor_ Ivangel Music - No Hay Miedo', url: 'https://files.catbox.moe/j416u7.m4a' },
-            { name: 'Don Aitor - Viviendo el sueño', url: 'https://files.catbox.moe/ytu1q0.m4a' }, 
-            { name: 'Mr Novo x Don Aitor - Fuego', url: 'https://files.catbox.moe/e1obm3.m4a' },
-            { name: 'Jon Z x Baby Rasta x Boy Wonder CF - Nunca Me Amó', url: 'https://files.catbox.moe/c5jmwy.mp3' },
-            { name: 'Santaflow - La Respuesta', url: 'https://files.catbox.moe/r111mz.m4a' }
-        ];
-
-        const musicChannel = new BroadcastChannel('manguito_music');
-        let currentTrack = parseInt(localStorage.getItem('manguito_track')) || 0;
-        let isPlaying = localStorage.getItem('manguito_playing') === 'true';
-        let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
-        let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
-
-        document.addEventListener('click', () => {
-            if (!hasInteracted) {
-                hasInteracted = true;
-                localStorage.setItem('manguito_interacted', 'true');
-            }
-        }, { once: true });
-
-        function saveState() {
-            localStorage.setItem('manguito_track', currentTrack);
-            localStorage.setItem('manguito_playing', isPlaying);
-            localStorage.setItem('manguito_time', audio.currentTime);
-            localStorage.setItem('manguito_last_update', Date.now());
-        }
-
-        function loadTrack(index) {
-            currentTrack = index;
-            audio.src = playlist[index].url;
-            trackName.textContent = playlist[index].name;
-        }
-
-        function updateUI() {
-            playIcon.textContent = isPlaying? '⏸' : '▶';
-        }
-
-        function playAudio(force = false) {
-            const playPromise = audio.play();
-            if (playPromise!== undefined) {
-                playPromise.then(() => {
-                    isPlaying = true;
-                    updateUI();
-                    saveState();
-                }).catch(() => {
-                    isPlaying = false;
-                    updateUI();
-                });
-            }
-        }
-
-        function playPause() {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-            } else {
-                playAudio(true);
-            }
-            updateUI();
-            saveState();
-            musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
-        }
-
-        function nextTrack() {
-            currentTrack = (currentTrack + 1) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playAudio();
-            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-            saveState();
-        }
-
-        function prevTrack() {
-            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-            loadTrack(currentTrack);
-            if (isPlaying) playAudio();
-            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
-            saveState();
-        }
-
-                musicChannel.onmessage = (e) => {
-            if (e.data.action === 'sync') {
-                if (e.data.track!== currentTrack) loadTrack(e.data.track);
-                if (e.data.playing &&!isPlaying) {
-                    audio.currentTime = e.data.time;
-                    playAudio();
-                } else if (!e.data.playing && isPlaying) {
-                    audio.pause();
-                    isPlaying = false;
-                    updateUI();
-                }
-            }
-            if (e.data.action === 'track') {
-                loadTrack(e.data.track);
-                if (e.data.playing) playAudio();
-            }
-        };
-
-        playBtn.addEventListener('click', playPause);
-        nextBtn.addEventListener('click', nextTrack);
-        prevBtn.addEventListener('click', prevTrack);
-        audio.addEventListener('ended', nextTrack);
-        audio.addEventListener('timeupdate', () => {
-            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
-        });
-
-        window.addEventListener('load', () => {
-            loadTrack(currentTrack);
-            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
-            const timeDiff = (Date.now() - lastUpdate) / 1000;
-            if (isPlaying || hasInteracted) {
-                audio.currentTime = lastTime + timeDiff;
-                setTimeout(() => playAudio(true), 100);
-            } else {
-                audio.currentTime = lastTime;
-                updateUI();
-            }
-        });
-
-        window.addEventListener('beforeunload', saveState);
-    </script>
-</body>
-</html>
+        const prevBtn = document.get 
