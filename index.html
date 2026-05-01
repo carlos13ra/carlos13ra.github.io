@@ -770,9 +770,138 @@
         initParticles();
         animateParticles();
 
-        // REPRODUCTOR PERSISTENTE
+                // REPRODUCTOR PERSISTENTE
         const audio = document.getElementById('bgMusic');
         const playBtn = document.getElementById('playPauseBtn');
         const playIcon = document.getElementById('playIcon');
         const trackName = document.getElementById('trackName');
-        const prevBtn = document.get 
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const playlist = [
+            { name: 'Se Te Hizo Tarde', url: 'https://files.catbox.moe/xj1d4i.mp3' },
+            { name: 'Chencho Corleone Peso Pluma - HUMO', url: 'https://files.catbox.moe/w4upnl.m4a' },
+            { name: 'Dutty Love', url: 'https://files.catbox.moe/22nxug.m4a' },
+            { name: 'Don Aitor - Rap Attack', url: 'https://files.catbox.moe/jyvc1l.m4a' },
+            { name: 'Don Aitor_ Ivangel Music - No Hay Miedo', url: 'https://files.catbox.moe/j416u7.m4a' },
+            { name: 'Don Aitor - Viviendo el sueño', url: 'https://files.catbox.moe/ytu1q0.m4a' },
+            { name: 'Mr Novo x Don Aitor - Fuego', url: 'https://files.catbox.moe/e1obm3.m4a' },
+            { name: 'Jon Z x Baby Rasta x Boy Wonder CF - Nunca Me Amó', url: 'https://files.catbox.moe/c5jmwy.mp3' },
+            { name: 'Santaflow - La Respuesta', url: 'https://files.catbox.moe/r111mz.m4a' }
+        ];
+
+        const musicChannel = new BroadcastChannel('manguito_music');
+        let currentTrack = parseInt(localStorage.getItem('manguito_track')) || 0;
+        let isPlaying = localStorage.getItem('manguito_playing') === 'true';
+        let lastTime = parseFloat(localStorage.getItem('manguito_time')) || 0;
+        let hasInteracted = localStorage.getItem('manguito_interacted') === 'true';
+
+        document.addEventListener('click', () => {
+            if (!hasInteracted) {
+                hasInteracted = true;
+                localStorage.setItem('manguito_interacted', 'true');
+            }
+        }, { once: true });
+
+        function saveState() {
+            localStorage.setItem('manguito_track', currentTrack);
+            localStorage.setItem('manguito_playing', isPlaying);
+            localStorage.setItem('manguito_time', audio.currentTime);
+            localStorage.setItem('manguito_last_update', Date.now());
+        }
+
+        function loadTrack(index) {
+            currentTrack = index;
+            audio.src = playlist[index].url;
+            trackName.textContent = playlist[index].name;
+        }
+
+        function updateUI() {
+            playIcon.textContent = isPlaying? '⏸' : '▶';
+        }
+
+        function playAudio(force = false) {
+            const playPromise = audio.play();
+            if (playPromise!== undefined) {
+                playPromise.then(() => {
+                    isPlaying = true;
+                    updateUI();
+                    saveState();
+                }).catch(() => {
+                    isPlaying = false;
+                    updateUI();
+                });
+            }
+        }
+
+        function playPause() {
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+            } else {
+                playAudio(true);
+            }
+            updateUI();
+            saveState();
+            musicChannel.postMessage({action: 'sync', playing: isPlaying, track: currentTrack, time: audio.currentTime});
+        }
+
+        function nextTrack() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        function prevTrack() {
+            currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrack);
+            if (isPlaying) playAudio();
+            musicChannel.postMessage({action: 'track', track: currentTrack, playing: isPlaying});
+            saveState();
+        }
+
+        musicChannel.onmessage = (e) => {
+            if (e.data.action === 'sync') {
+                if (e.data.track!== currentTrack) loadTrack(e.data.track);
+                if (e.data.playing &&!isPlaying) {
+                    audio.currentTime = e.data.time;
+                    playAudio();
+                } else if (!e.data.playing && isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    updateUI();
+                }
+            }
+            if (e.data.action === 'track') {
+                loadTrack(e.data.track);
+                if (e.data.playing) playAudio();
+            }
+        };
+
+        playBtn.addEventListener('click', playPause);
+        nextBtn.addEventListener('click', nextTrack);
+        prevBtn.addEventListener('click', prevTrack);
+        audio.addEventListener('ended', nextTrack);
+        audio.addEventListener('timeupdate', () => {
+            if (Math.floor(audio.currentTime) % 2 === 0) saveState();
+        });
+
+        window.addEventListener('load', () => {
+            loadTrack(currentTrack);
+            const lastUpdate = parseInt(localStorage.getItem('manguito_last_update')) || 0;
+            const timeDiff = (Date.now() - lastUpdate) / 1000;
+            if (isPlaying || hasInteracted) {
+                audio.currentTime = lastTime + timeDiff;
+                setTimeout(() => playAudio(true), 100);
+            } else {
+                audio.currentTime = lastTime;
+                updateUI();
+            }
+        });
+
+        window.addEventListener('beforeunload', saveState);
+    </script>
+</body>
+</html>
